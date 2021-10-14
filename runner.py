@@ -4,11 +4,14 @@ from os import environ
 import tests.cobra
 import tests.yaml
 
-api_endpoint = 'https://api.github.com/graphql'
-api_token = environ['GH_TOKEN']
-header_auth = {'Authorization': 'token %s' % api_token}
-model_filename = 'model.yml'
-additional_branches = ['develop']
+API_ENDPOINT = 'https://api.github.com/graphql'
+API_TOKEN = environ['GH_TOKEN']
+MODEL_FILENAME = 'model.yml'
+RELEASES = 10
+
+header_auth = {'Authorization': 'token %s' % API_TOKEN}
+additional_branch_tags = []
+# additional_branch_tags = ['develop']
 
 def gem_repositories():
     json_request = {"query" : """
@@ -25,7 +28,7 @@ def gem_repositories():
                 }
             }
         }""" }
-    r = requests.post(url=api_endpoint, json=json_request, headers=header_auth)
+    r = requests.post(url=API_ENDPOINT, json=json_request, headers=header_auth)
     json_data = json.loads(r.text)['data']['search']['repos']
     gem_repositories = map(lambda x: x['repo']['nameWithOwner'], json_data)
     filtered_repositories = filter(lambda x: 'standard-GEM' not in x, gem_repositories)
@@ -38,19 +41,19 @@ def releases(nameWithOwner):
             owner: \"%s\",
             name: \"%s\"
             )
-            { releases(last: 10){
+            { releases(last: %s){
                     edges {
                         node { tagName }
                    }
                 }
             }
-        }""" % (owner, repo) }
-    r = requests.post(url=api_endpoint, json=json_request, headers=header_auth)
+        }""" % (owner, repo, RELEASES) }
+    r = requests.post(url=API_ENDPOINT, json=json_request, headers=header_auth)
     json_data = json.loads(r.text)['data']['repository']['releases']['edges']
     release_tags = list(map(lambda x: x['node']['tagName'], json_data))
     if not release_tags:
         return []
-    return release_tags + additional_branches
+    return release_tags + additional_branch_tags
 
 def matrix():
     m = list(map(lambda g: { 'gem': g }, gem_repositories()))
@@ -72,16 +75,20 @@ def validate(nameWithOwner):
     data[nameWithOwner] = []
     for model_release in releases(nameWithOwner):
         release_data = {}
-        for standard_version in releases('MetabolicAtlas/standard-GEM'):
-            print("Release: {} | Standard: {}".format(model_release, standard_version))
+        standard_gem_releases = releases('MetabolicAtlas/standard-GEM')
+        last_standard = standard_gem_releases[len(standard_gem_releases)-1:]
+        for standard_version in last_standard:
+            print("{}: {} | Standard-GEM: {}".format(nameWithOwner, model_release, standard_version))
             gem_is_standard = gem_follows_standard(nameWithOwner, model_release, standard_version)
             test_results = {}
             if gem_is_standard:
                 response = requests.get('https://raw.githubusercontent.com/{}/{}/model/{}.yml'.format(nameWithOwner, model_release, model))
-                with open(model_filename, 'w') as file:
+                with open(MODEL_FILENAME, 'w') as file:
                     file.write(response.text)
-                test_results.update(tests.yaml.validate(model_filename))
-                test_results.update(tests.yaml.validate(model_filename))
+                test_results.update(tests.yaml.validate(MODEL_FILENAME))
+                test_results.update(tests.cobra.validate(MODEL_FILENAME))
+            else:
+                print('is not following standard')
             release_data = { 'standard-GEM' : [ { standard_version : gem_is_standard }, { 'test_results' : test_results} ] }
         data[nameWithOwner].append({ model_release: release_data })
     with open('results/{}_{}.json'.format(owner, model), 'w') as output:
