@@ -70,6 +70,7 @@ def validate(nameWithOwner):
     owner, model = nameWithOwner.split('/')
     data = {}
     data[nameWithOwner] = []
+    print(data)
     for model_release in releases(nameWithOwner):
         release_data = {}
         for standard_version in releases('MetabolicAtlas/standard-GEM'):
@@ -77,6 +78,7 @@ def validate(nameWithOwner):
             gem_is_standard = gem_follows_standard(nameWithOwner, model_release, standard_version)
             test_results = {}
             if gem_is_standard:
+                print('is standard')
                 response = requests.get('https://raw.githubusercontent.com/{}/{}/model/{}.yml'.format(nameWithOwner, model_release, model))
                 with open(model_filename, 'w') as file:
                     file.write(response.text)
