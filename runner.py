@@ -76,8 +76,7 @@ def validate(nameWithOwner):
     for model_release in releases(nameWithOwner):
         release_data = {}
         standard_gem_releases = releases('MetabolicAtlas/standard-GEM')
-        last_standard = standard_gem_releases[len(standard_gem_releases)-1:]
-        for standard_version in last_standard:
+        for standard_version in standard_gem_releases[-1:]:
             print("{}: {} | Standard-GEM: {}".format(nameWithOwner, model_release, standard_version))
             gem_is_standard = gem_follows_standard(nameWithOwner, model_release, standard_version)
             test_results = {}
