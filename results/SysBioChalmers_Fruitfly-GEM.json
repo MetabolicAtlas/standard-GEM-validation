@@ -1,0 +1,44 @@
+{
+  "SysBioChalmers/Fruitfly-GEM": [
+    {
+      "v1.0.0": {
+        "standard-GEM": [
+          {
+            "0.5": true
+          },
+          {
+            "test_results": {
+              "cobrapy-yaml-load": {
+                "0.22.1": true
+              },
+              "yamllint": {
+                "1.26.3": "True",
+                "errors": []
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "v1.1.0": {
+        "standard-GEM": [
+          {
+            "0.5": true
+          },
+          {
+            "test_results": {
+              "cobrapy-yaml-load": {
+                "0.22.1": true
+              },
+              "yamllint": {
+                "1.26.3": "True",
+                "errors": []
+              }
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
