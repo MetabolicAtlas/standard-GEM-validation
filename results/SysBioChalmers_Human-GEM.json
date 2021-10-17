@@ -49,8 +49,8 @@
                 "errors": "\"Error -3 while decompressing data: incorrect header check\""
               },
               "yamllint": {
-                "1.26.3": "False",
-                "errors": ""
+                "1.26.3": "True",
+                "errors": []
               }
             }
           }
@@ -70,8 +70,8 @@
                 "errors": "\"Error -3 while decompressing data: incorrect header check\""
               },
               "yamllint": {
-                "1.26.3": "False",
-                "errors": ""
+                "1.26.3": "True",
+                "errors": []
               }
             }
           }
@@ -91,8 +91,8 @@
                 "errors": "\"Error -3 while decompressing data: incorrect header check\""
               },
               "yamllint": {
-                "1.26.3": "False",
-                "errors": ""
+                "1.26.3": "True",
+                "errors": []
               }
             }
           }
@@ -112,8 +112,8 @@
                 "errors": "\"Error -3 while decompressing data: incorrect header check\""
               },
               "yamllint": {
-                "1.26.3": "False",
-                "errors": ""
+                "1.26.3": "True",
+                "errors": []
               }
             }
           }
@@ -133,8 +133,8 @@
                 "errors": "\"Error -3 while decompressing data: incorrect header check\""
               },
               "yamllint": {
-                "1.26.3": "False",
-                "errors": ""
+                "1.26.3": "True",
+                "errors": []
               }
             }
           }
@@ -154,8 +154,8 @@
                 "errors": "\"Error -3 while decompressing data: incorrect header check\""
               },
               "yamllint": {
-                "1.26.3": "False",
-                "errors": ""
+                "1.26.3": "True",
+                "errors": []
               }
             }
           }
@@ -175,8 +175,8 @@
                 "errors": "\"Error -3 while decompressing data: incorrect header check\""
               },
               "yamllint": {
-                "1.26.3": "False",
-                "errors": ""
+                "1.26.3": "True",
+                "errors": []
               }
             }
           }
