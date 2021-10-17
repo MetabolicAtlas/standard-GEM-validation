@@ -8,7 +8,7 @@ def validate(model_filename):
     errors = ''
     try:
         conf = YamlLintConfig('{extends: default, rules: {line-length: disable}}')
-        with open(model_filename, 'r') as file:
+        with open(model_filename + '.yml', 'r') as file:
             errors = list(map(str, yamllint.linter.run(file, conf)))
         if len(errors) == 0:
             is_valid_yaml = True

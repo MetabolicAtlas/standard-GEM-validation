@@ -6,7 +6,8 @@ import tests.yaml
 
 API_ENDPOINT = 'https://api.github.com/graphql'
 API_TOKEN = environ['GH_TOKEN']
-MODEL_FILENAME = 'model.yml'
+MODEL_FILENAME = 'model'
+MODEL_FORMATS = ['.yml', '.xml', '.mat', '.json']
 RELEASES = 10
 
 header_auth = {'Authorization': 'token %s' % API_TOKEN}
@@ -81,11 +82,13 @@ def validate(nameWithOwner):
             gem_is_standard = gem_follows_standard(nameWithOwner, model_release, standard_version)
             test_results = {}
             if gem_is_standard:
-                response = requests.get('https://raw.githubusercontent.com/{}/{}/model/{}.yml'.format(nameWithOwner, model_release, model))
-                with open(MODEL_FILENAME, 'w') as file:
-                    file.write(response.text)
-                test_results.update(tests.yaml.validate(MODEL_FILENAME))
-                test_results.update(tests.cobra.validate(MODEL_FILENAME))
+                for model_format in MODEL_FORMATS:
+                    my_model = model + model_format
+                    response = requests.get('https://raw.githubusercontent.com/{}/{}/model/{}'.format(nameWithOwner, model_release, my_model))
+                    with open(my_model, 'w') as file:
+                        file.write(response.text)
+                test_results.update(tests.yaml.validate(model))
+                test_results.update(tests.cobra.validate(model))
             else:
                 print('is not following standard')
             release_data = { 'standard-GEM' : [ { standard_version : gem_is_standard }, { 'test_results' : test_results} ] }

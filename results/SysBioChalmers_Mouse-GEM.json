@@ -9,7 +9,8 @@
           {
             "test_results": {
               "cobrapy-yaml-load": {
-                "0.22.1": true
+                "0.22.1": false,
+                "errors": "\"Error -3 while decompressing data: incorrect header check\""
               },
               "yamllint": {
                 "1.26.3": "True",
@@ -29,7 +30,8 @@
           {
             "test_results": {
               "cobrapy-yaml-load": {
-                "0.22.1": true
+                "0.22.1": false,
+                "errors": "\"Error -3 while decompressing data: incorrect header check\""
               },
               "yamllint": {
                 "1.26.3": "True",
@@ -49,7 +51,8 @@
           {
             "test_results": {
               "cobrapy-yaml-load": {
-                "0.22.1": true
+                "0.22.1": false,
+                "errors": "\"Error -3 while decompressing data: incorrect header check\""
               },
               "yamllint": {
                 "1.26.3": "True",

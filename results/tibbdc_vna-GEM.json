@@ -9,7 +9,8 @@
           {
             "test_results": {
               "cobrapy-yaml-load": {
-                "0.22.1": false
+                "0.22.1": false,
+                "errors": "\"Object has no reactions attribute. Cannot load.\""
               },
               "yamllint": {
                 "1.26.3": "False",
