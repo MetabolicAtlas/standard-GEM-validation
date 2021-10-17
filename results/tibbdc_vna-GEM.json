@@ -12,7 +12,8 @@
                 "0.22.1": false
               },
               "yamllint": {
-                "1.26.3": false
+                "1.26.3": "False",
+                "errors": "[\"1:1: missing document start \\\"---\\\" (document-start)\", \"1:15: no new line character at the end of file (new-line-at-end-of-file)\"]"
               }
             }
           }
