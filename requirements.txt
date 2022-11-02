@@ -2,3 +2,4 @@ requests
 yamllint
 cobra
 scipy
+memote
