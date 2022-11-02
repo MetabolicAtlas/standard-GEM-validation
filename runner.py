@@ -3,6 +3,7 @@ import json
 from os import environ
 import tests.cobra
 import tests.yaml
+import tests.memote
 
 API_ENDPOINT = 'https://api.github.com/graphql'
 API_TOKEN = environ['GH_TOKEN']
@@ -91,6 +92,7 @@ def validate(nameWithOwner):
                 test_results.update(tests.yaml.validate(model))
                 test_results.update(tests.cobra.load(model))
                 test_results.update(tests.cobra.validateSBML(model))
+                test_results.update(tests.memote.get_consistency(model))
             else:
                 print('is not following standard')
             release_data = { 'standard-GEM' : [ { standard_version : gem_is_standard }, { 'test_results' : test_results} ] }
