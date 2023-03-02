@@ -1,20 +1,41 @@
 {
   "SysBioChalmers/Fruitfly-GEM": [
     {
-      "v1.0.0": {
+      "v1.2.1": {
         "standard-GEM": [
           {
-            "0.5": true
+            "0.4": true
           },
           {
             "test_results": {
               "cobrapy-yaml-load": {
-                "0.22.1": false,
-                "errors": "\"Something went wrong reading the SBML model. Most likely the SBML model is not valid. Please check that your model is valid using the `cobra.io.sbml.validate_sbml_model` function or via the online validator at http://sbml.org/validator .\\n\\t`(model, errors) = validate_sbml_model(filename)`\\nIf the model is valid and cannot be read please open an issue at https://github.com/opencobra/cobrapy/issues .\""
+                "0.26.2": false,
+                "errors": "\"Unsupported operation: <ast.Subscript object at 0x7f5f0e16dd50>\""
               },
               "yamllint": {
-                "1.26.3": "False",
-                "errors": ""
+                "1.29.0": "True",
+                "errors": []
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "v1.2.0": {
+        "standard-GEM": [
+          {
+            "0.4": true
+          },
+          {
+            "test_results": {
+              "cobrapy-yaml-load": {
+                "0.26.2": false,
+                "errors": "\"Unsupported operation: <ast.Subscript object at 0x7f5f0e7590f0>\""
+              },
+              "yamllint": {
+                "1.29.0": "True",
+                "errors": []
               }
             }
           }
@@ -25,17 +46,38 @@
       "v1.1.0": {
         "standard-GEM": [
           {
-            "0.5": true
+            "0.4": true
           },
           {
             "test_results": {
               "cobrapy-yaml-load": {
-                "0.22.1": false,
-                "errors": "\"Something went wrong reading the SBML model. Most likely the SBML model is not valid. Please check that your model is valid using the `cobra.io.sbml.validate_sbml_model` function or via the online validator at http://sbml.org/validator .\\n\\t`(model, errors) = validate_sbml_model(filename)`\\nIf the model is valid and cannot be read please open an issue at https://github.com/opencobra/cobrapy/issues .\""
+                "0.26.2": false,
+                "errors": "\"Unsupported operation: <ast.Subscript object at 0x7f5f0e6c1a80>\""
               },
               "yamllint": {
-                "1.26.3": "False",
-                "errors": ""
+                "1.29.0": "True",
+                "errors": []
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "v1.0.0": {
+        "standard-GEM": [
+          {
+            "0.4": true
+          },
+          {
+            "test_results": {
+              "cobrapy-yaml-load": {
+                "0.26.2": false,
+                "errors": "\"Unsupported operation: <ast.Subscript object at 0x7f5f100dbbe0>\""
+              },
+              "yamllint": {
+                "1.29.0": "True",
+                "errors": []
               }
             }
           }
