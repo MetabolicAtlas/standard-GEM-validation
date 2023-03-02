@@ -23,9 +23,9 @@ def validateSBML(model_filename):
     print('  validate sbml with cobrapy')
     is_valid_sbml = False
     try:
-        result = cobra.io.sbml.validate_sbml_model(model_filename + '.xml')
-        if result[1] != {}:
-            raise Exception(result[1])
+        _, result = cobra.io.sbml.validate_sbml_model(model_filename + '.xml')
+        if result != {}:
+            raise Exception(result)
     except Exception as e:
         errors = json.dumps(str(e))
         print(e)
