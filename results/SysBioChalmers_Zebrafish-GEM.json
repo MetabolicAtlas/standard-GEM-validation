@@ -1,19 +1,40 @@
 {
   "SysBioChalmers/Zebrafish-GEM": [
     {
-      "v1.0.0": {
+      "v1.2.1": {
         "standard-GEM": [
           {
-            "0.5": true
+            "0.4": true
           },
           {
             "test_results": {
               "cobrapy-yaml-load": {
-                "0.22.1": false,
+                "0.26.2": false,
                 "errors": "\"Error -3 while decompressing data: incorrect header check\""
               },
               "yamllint": {
-                "1.26.3": "True",
+                "1.29.0": "True",
+                "errors": []
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "v1.2.0": {
+        "standard-GEM": [
+          {
+            "0.4": true
+          },
+          {
+            "test_results": {
+              "cobrapy-yaml-load": {
+                "0.26.2": false,
+                "errors": "\"Error -3 while decompressing data: incorrect header check\""
+              },
+              "yamllint": {
+                "1.29.0": "True",
                 "errors": []
               }
             }
@@ -25,16 +46,37 @@
       "v1.1.0": {
         "standard-GEM": [
           {
-            "0.5": true
+            "0.4": true
           },
           {
             "test_results": {
               "cobrapy-yaml-load": {
-                "0.22.1": false,
+                "0.26.2": false,
                 "errors": "\"Error -3 while decompressing data: incorrect header check\""
               },
               "yamllint": {
-                "1.26.3": "True",
+                "1.29.0": "True",
+                "errors": []
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "v1.0.0": {
+        "standard-GEM": [
+          {
+            "0.4": true
+          },
+          {
+            "test_results": {
+              "cobrapy-yaml-load": {
+                "0.26.2": false,
+                "errors": "\"Error -3 while decompressing data: incorrect header check\""
+              },
+              "yamllint": {
+                "1.29.0": "True",
                 "errors": []
               }
             }
