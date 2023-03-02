@@ -1,46 +1,10 @@
 {
   "SysBioChalmers/Sco-GEM": [
     {
-      "v1.0": {
+      "v1.3.1": {
         "standard-GEM": [
           {
-            "0.5": false
-          },
-          {
-            "test_results": {}
-          }
-        ]
-      }
-    },
-    {
-      "v1.1": {
-        "standard-GEM": [
-          {
-            "0.5": false
-          },
-          {
-            "test_results": {}
-          }
-        ]
-      }
-    },
-    {
-      "v1.2.0": {
-        "standard-GEM": [
-          {
-            "0.5": false
-          },
-          {
-            "test_results": {}
-          }
-        ]
-      }
-    },
-    {
-      "v1.2.1": {
-        "standard-GEM": [
-          {
-            "0.5": false
+            "0.4": false
           },
           {
             "test_results": {}
@@ -52,7 +16,7 @@
       "v1.3.0": {
         "standard-GEM": [
           {
-            "0.5": false
+            "0.4": false
           },
           {
             "test_results": {}
@@ -61,10 +25,46 @@
       }
     },
     {
-      "v1.3.1": {
+      "v1.2.1": {
         "standard-GEM": [
           {
-            "0.5": false
+            "0.4": false
+          },
+          {
+            "test_results": {}
+          }
+        ]
+      }
+    },
+    {
+      "v1.2.0": {
+        "standard-GEM": [
+          {
+            "0.4": false
+          },
+          {
+            "test_results": {}
+          }
+        ]
+      }
+    },
+    {
+      "v1.1": {
+        "standard-GEM": [
+          {
+            "0.4": false
+          },
+          {
+            "test_results": {}
+          }
+        ]
+      }
+    },
+    {
+      "v1.0": {
+        "standard-GEM": [
+          {
+            "0.4": false
           },
           {
             "test_results": {}
