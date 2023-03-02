@@ -1,7 +1,8 @@
 name: validation
 
 on:
-  pull-request:
+  pull_request:
+    types: [opened, reopened]
   schedule:
     - cron: "0 0 * * *"
 
