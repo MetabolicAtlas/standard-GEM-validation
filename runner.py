@@ -89,7 +89,8 @@ def validate(nameWithOwner):
                     with open(my_model, 'w') as file:
                         file.write(response.text)
                 test_results.update(tests.yaml.validate(model))
-                test_results.update(tests.cobra.validate(model))
+                test_results.update(tests.cobra.load(model))
+                test_results.update(tests.cobra.validateSBML(model))
             else:
                 print('is not following standard')
             release_data = { 'standard-GEM' : [ { standard_version : gem_is_standard }, { 'test_results' : test_results} ] }

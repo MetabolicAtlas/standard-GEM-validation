@@ -2,7 +2,7 @@ import cobra
 import json
 from os.path import exists
 
-def validate(model_filename):
+def load(model_filename):
     print('  load model with cobrapy')
     is_valid_cobrapy = False
     errors = ''
@@ -17,4 +17,16 @@ def validate(model_filename):
     except Exception as e:
         errors = json.dumps(str(e))
         print(e)
-    return {'cobrapy-yaml-load': { cobra.__version__ : is_valid_cobrapy, 'errors': errors } }
+    return {'cobrapy-load': { cobra.__version__ : is_valid_cobrapy, 'errors': errors } }
+
+def validateSBML(model_filename):
+    print('  validate sbml with cobrapy')
+    is_valid_sbml = False
+    try:
+        result = cobra.io.sbml.validate_sbml_model(model_filename)
+        if result[1] != {}:
+            raise Exception(result[1])
+    except Exception as e:
+        errors = json.dumps(str(e))
+        print(e)
+    return {'cobrapy-validate-sbml': { cobra.__version__ : is_valid_sbmls, 'errors': errors } }
