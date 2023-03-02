@@ -8,9 +8,13 @@
           },
           {
             "test_results": {
-              "cobrapy-yaml-load": {
+              "cobrapy-load": {
                 "0.26.2": false,
                 "errors": "\"Error -3 while decompressing data: incorrect header check\""
+              },
+              "cobrapy-validate-sbml": {
+                "0.26.2": false,
+                "errors": "\"{'SBML_FATAL': [], 'SBML_ERROR': [], 'SBML_SCHEMA_ERROR': [], 'SBML_WARNING': ['E0 (Warning): General SBML conformance (core, L3); RDF does not contain valid ModelHistory; LibSBML expected to read the annotation into a ModelHistory object. Unfortunately, some attributes were not present or correct and the resulting ModelHistory object will not correctly produce the annotation.  This functionality will be improved in later versions of libSBML. \\\\nReference: L3V1 Section 6.3\\\\n An invalid ModelHistory element has been stored.\\\\n', 'E1 (Warning): General SBML conformance (core, L3); RDF does not contain valid ModelHistory; LibSBML expected to read the annotation into a ModelHistory object. Unfortunately, some attributes were not present or correct and the resulting ModelHistory object will not correctly produce the annotation.  This functionality will be improved in later versions of libSBML. \\\\nReference: L3V1 Section 6.3\\\\n An invalid ModelHistory element has been stored.\\\\n'], 'COBRA_FATAL': [], 'COBRA_ERROR': [], 'COBRA_WARNING': [\\\"https://identifiers.org/taxonomy/ does not conform to 'http(s)://identifiers.org/collection/id' or'http(s)://identifiers.org/COLLECTION:id\\\"], 'COBRA_CHECK': []}\""
               },
               "yamllint": {
                 "1.29.0": "True",
@@ -29,9 +33,13 @@
           },
           {
             "test_results": {
-              "cobrapy-yaml-load": {
+              "cobrapy-load": {
                 "0.26.2": false,
                 "errors": "\"Error -3 while decompressing data: incorrect header check\""
+              },
+              "cobrapy-validate-sbml": {
+                "0.26.2": false,
+                "errors": "\"{'SBML_FATAL': [], 'SBML_ERROR': [], 'SBML_SCHEMA_ERROR': [], 'SBML_WARNING': ['E0 (Warning): General SBML conformance (core, L3); RDF does not contain valid ModelHistory; LibSBML expected to read the annotation into a ModelHistory object. Unfortunately, some attributes were not present or correct and the resulting ModelHistory object will not correctly produce the annotation.  This functionality will be improved in later versions of libSBML. \\\\nReference: L3V1 Section 6.3\\\\n An invalid ModelHistory element has been stored.\\\\n', 'E1 (Warning): General SBML conformance (core, L3); RDF does not contain valid ModelHistory; LibSBML expected to read the annotation into a ModelHistory object. Unfortunately, some attributes were not present or correct and the resulting ModelHistory object will not correctly produce the annotation.  This functionality will be improved in later versions of libSBML. \\\\nReference: L3V1 Section 6.3\\\\n An invalid ModelHistory element has been stored.\\\\n'], 'COBRA_FATAL': [], 'COBRA_ERROR': [], 'COBRA_WARNING': [\\\"https://identifiers.org/taxonomy/ does not conform to 'http(s)://identifiers.org/collection/id' or'http(s)://identifiers.org/COLLECTION:id\\\"], 'COBRA_CHECK': []}\""
               },
               "yamllint": {
                 "1.29.0": "True",
@@ -50,9 +58,13 @@
           },
           {
             "test_results": {
-              "cobrapy-yaml-load": {
+              "cobrapy-load": {
                 "0.26.2": false,
                 "errors": "\"Error -3 while decompressing data: incorrect header check\""
+              },
+              "cobrapy-validate-sbml": {
+                "0.26.2": false,
+                "errors": "\"{'SBML_FATAL': [], 'SBML_ERROR': [], 'SBML_SCHEMA_ERROR': [], 'SBML_WARNING': ['E0 (Warning): General SBML conformance (core, L3); RDF does not contain valid ModelHistory; LibSBML expected to read the annotation into a ModelHistory object. Unfortunately, some attributes were not present or correct and the resulting ModelHistory object will not correctly produce the annotation.  This functionality will be improved in later versions of libSBML. \\\\nReference: L3V1 Section 6.3\\\\n An invalid ModelHistory element has been stored.\\\\n', 'E1 (Warning): General SBML conformance (core, L3); RDF does not contain valid ModelHistory; LibSBML expected to read the annotation into a ModelHistory object. Unfortunately, some attributes were not present or correct and the resulting ModelHistory object will not correctly produce the annotation.  This functionality will be improved in later versions of libSBML. \\\\nReference: L3V1 Section 6.3\\\\n An invalid ModelHistory element has been stored.\\\\n'], 'COBRA_FATAL': [], 'COBRA_ERROR': [\\\"'' is not a valid SBML 'SId'.\\\"], 'COBRA_WARNING': [\\\"https://identifiers.org/taxonomy/ does not conform to 'http(s)://identifiers.org/collection/id' or'http(s)://identifiers.org/COLLECTION:id\\\"], 'COBRA_CHECK': []}\""
               },
               "yamllint": {
                 "1.29.0": "True",
@@ -71,9 +83,13 @@
           },
           {
             "test_results": {
-              "cobrapy-yaml-load": {
+              "cobrapy-load": {
                 "0.26.2": false,
                 "errors": "\"Error -3 while decompressing data: incorrect header check\""
+              },
+              "cobrapy-validate-sbml": {
+                "0.26.2": false,
+                "errors": "\"{'SBML_FATAL': [], 'SBML_ERROR': [], 'SBML_SCHEMA_ERROR': [], 'SBML_WARNING': ['E0 (Warning): General SBML conformance (core, L3); RDF does not contain valid ModelHistory; LibSBML expected to read the annotation into a ModelHistory object. Unfortunately, some attributes were not present or correct and the resulting ModelHistory object will not correctly produce the annotation.  This functionality will be improved in later versions of libSBML. \\\\nReference: L3V1 Section 6.3\\\\n An invalid ModelHistory element has been stored.\\\\n', 'E1 (Warning): General SBML conformance (core, L3); RDF does not contain valid ModelHistory; LibSBML expected to read the annotation into a ModelHistory object. Unfortunately, some attributes were not present or correct and the resulting ModelHistory object will not correctly produce the annotation.  This functionality will be improved in later versions of libSBML. \\\\nReference: L3V1 Section 6.3\\\\n An invalid ModelHistory element has been stored.\\\\n'], 'COBRA_FATAL': [], 'COBRA_ERROR': [\\\"'' is not a valid SBML 'SId'.\\\"], 'COBRA_WARNING': [\\\"https://identifiers.org/taxonomy/ does not conform to 'http(s)://identifiers.org/collection/id' or'http(s)://identifiers.org/COLLECTION:id\\\"], 'COBRA_CHECK': []}\""
               },
               "yamllint": {
                 "1.29.0": "True",
@@ -92,9 +108,13 @@
           },
           {
             "test_results": {
-              "cobrapy-yaml-load": {
+              "cobrapy-load": {
                 "0.26.2": false,
                 "errors": "\"Error -3 while decompressing data: incorrect header check\""
+              },
+              "cobrapy-validate-sbml": {
+                "0.26.2": false,
+                "errors": "\"{'SBML_FATAL': [], 'SBML_ERROR': [], 'SBML_SCHEMA_ERROR': [], 'SBML_WARNING': ['E0 (Warning): General SBML conformance (core, L3); RDF does not contain valid ModelHistory; LibSBML expected to read the annotation into a ModelHistory object. Unfortunately, some attributes were not present or correct and the resulting ModelHistory object will not correctly produce the annotation.  This functionality will be improved in later versions of libSBML. \\\\nReference: L3V1 Section 6.3\\\\n An invalid ModelHistory element has been stored.\\\\n', 'E1 (Warning): General SBML conformance (core, L3); RDF does not contain valid ModelHistory; LibSBML expected to read the annotation into a ModelHistory object. Unfortunately, some attributes were not present or correct and the resulting ModelHistory object will not correctly produce the annotation.  This functionality will be improved in later versions of libSBML. \\\\nReference: L3V1 Section 6.3\\\\n An invalid ModelHistory element has been stored.\\\\n'], 'COBRA_FATAL': [], 'COBRA_ERROR': [\\\"'' is not a valid SBML 'SId'.\\\"], 'COBRA_WARNING': [\\\"http://identifiers.org/taxonomy/ does not conform to 'http(s)://identifiers.org/collection/id' or'http(s)://identifiers.org/COLLECTION:id\\\"], 'COBRA_CHECK': []}\""
               },
               "yamllint": {
                 "1.29.0": "True",
