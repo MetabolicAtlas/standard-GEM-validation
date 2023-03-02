@@ -4,16 +4,16 @@
       "0.1": {
         "standard-GEM": [
           {
-            "0.5": true
+            "0.4": true
           },
           {
             "test_results": {
               "cobrapy-yaml-load": {
-                "0.22.1": false,
-                "errors": "\"Object has no reactions attribute. Cannot load.\""
+                "0.26.2": false,
+                "errors": "\"Object has no .reactions attribute. Cannot load.\""
               },
               "yamllint": {
-                "1.26.3": "False",
+                "1.29.0": "False",
                 "errors": "[\"1:1: missing document start \\\"---\\\" (document-start)\", \"1:15: no new line character at the end of file (new-line-at-end-of-file)\"]"
               }
             }
