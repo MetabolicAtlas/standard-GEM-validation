@@ -4,15 +4,20 @@
       "0.1": {
         "standard-GEM": [
           {
-            "0.5": true
+            "0.4": true
           },
           {
             "test_results": {
-              "cobrapy-yaml-load": {
-                "0.22.1": false
+              "cobrapy-load": {
+                "0.26.2": false,
+                "errors": "\"Object has no .reactions attribute. Cannot load.\""
+              },
+              "cobrapy-validate-sbml": {
+                "0.26.2": false,
+                "errors": "\"{'SBML_FATAL': [], 'SBML_ERROR': ['E0 (Error): XML content (core, L1); Badly formed XML; XML content is not well-formed.\\\\n'], 'SBML_SCHEMA_ERROR': [], 'SBML_WARNING': [], 'COBRA_FATAL': [], 'COBRA_ERROR': ['No SBML model detected in file.'], 'COBRA_WARNING': [], 'COBRA_CHECK': []}\""
               },
               "yamllint": {
-                "1.26.3": "False",
+                "1.29.0": "False",
                 "errors": "[\"1:1: missing document start \\\"---\\\" (document-start)\", \"1:15: no new line character at the end of file (new-line-at-end-of-file)\"]"
               }
             }

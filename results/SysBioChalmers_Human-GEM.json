@@ -1,10 +1,10 @@
 {
   "SysBioChalmers/Human-GEM": [
     {
-      "v1.3.1": {
+      "v0.5.2": {
         "standard-GEM": [
           {
-            "0.5": false
+            "0.4": false
           },
           {
             "test_results": {}
@@ -13,10 +13,10 @@
       }
     },
     {
-      "v1.3.2": {
+      "v0.5.1": {
         "standard-GEM": [
           {
-            "0.5": false
+            "0.4": false
           },
           {
             "test_results": {}
@@ -25,10 +25,10 @@
       }
     },
     {
-      "v1.4.0": {
+      "v0.5.0": {
         "standard-GEM": [
           {
-            "0.5": false
+            "0.4": false
           },
           {
             "test_results": {}
@@ -37,141 +37,85 @@
       }
     },
     {
-      "v1.4.1": {
+      "v0.4.2": {
         "standard-GEM": [
           {
-            "0.5": true
+            "0.4": false
           },
           {
-            "test_results": {
-              "cobrapy-yaml-load": {
-                "0.22.1": true
-              },
-              "yamllint": {
-                "1.26.3": "True",
-                "errors": []
-              }
-            }
+            "test_results": {}
           }
         ]
       }
     },
     {
-      "v1.5.0": {
+      "v0.4.1": {
         "standard-GEM": [
           {
-            "0.5": true
+            "0.4": false
           },
           {
-            "test_results": {
-              "cobrapy-yaml-load": {
-                "0.22.1": true
-              },
-              "yamllint": {
-                "1.26.3": "True",
-                "errors": []
-              }
-            }
+            "test_results": {}
           }
         ]
       }
     },
     {
-      "v1.6.0": {
+      "v0.4.0": {
         "standard-GEM": [
           {
-            "0.5": true
+            "0.4": false
           },
           {
-            "test_results": {
-              "cobrapy-yaml-load": {
-                "0.22.1": true
-              },
-              "yamllint": {
-                "1.26.3": "True",
-                "errors": []
-              }
-            }
+            "test_results": {}
           }
         ]
       }
     },
     {
-      "v1.7.0": {
+      "v0.3.1": {
         "standard-GEM": [
           {
-            "0.5": true
+            "0.4": false
           },
           {
-            "test_results": {
-              "cobrapy-yaml-load": {
-                "0.22.1": true
-              },
-              "yamllint": {
-                "1.26.3": "True",
-                "errors": []
-              }
-            }
+            "test_results": {}
           }
         ]
       }
     },
     {
-      "v1.8.0": {
+      "v0.3.0": {
         "standard-GEM": [
           {
-            "0.5": true
+            "0.4": false
           },
           {
-            "test_results": {
-              "cobrapy-yaml-load": {
-                "0.22.1": true
-              },
-              "yamllint": {
-                "1.26.3": "True",
-                "errors": []
-              }
-            }
+            "test_results": {}
           }
         ]
       }
     },
     {
-      "v1.9.0": {
+      "v0.2.0": {
         "standard-GEM": [
           {
-            "0.5": true
+            "0.4": false
           },
           {
-            "test_results": {
-              "cobrapy-yaml-load": {
-                "0.22.1": true
-              },
-              "yamllint": {
-                "1.26.3": "True",
-                "errors": []
-              }
-            }
+            "test_results": {}
           }
         ]
       }
     },
     {
-      "v1.10.0": {
+      "v0.1.0": {
         "standard-GEM": [
           {
-            "0.5": true
+            "0.4": false
           },
           {
-            "test_results": {
-              "cobrapy-yaml-load": {
-                "0.22.1": true
-              },
-              "yamllint": {
-                "1.26.3": "True",
-                "errors": []
-              }
-            }
+            "test_results": {}
           }
         ]
       }
