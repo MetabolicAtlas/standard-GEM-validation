@@ -19,23 +19,16 @@ jobs:
         with:
           fetch-depth: 1
 
-      - name: Set up Python 3
-        uses: actions/setup-python@v4
-        with:
-          python-version: "3.x"
-
-      - name: Install dependencies
-        run: pip install -r requirements.txt
-
       - id: set-matrix
-        run: echo "matrix=$(python -c 'import runner; runner.matrix()')" >> $GITHUB_OUTPUT
-
-      - name: Cache pip directory
-        uses: actions/cache@v3
-        id: cache
+        name: Fetch list of repositories
+        uses: addnab/docker-run-action@v3
         with:
-          path: ~/.cache/pip
-          key: ${{ github.sha }}
+          image: opencobra/memote:latest
+          options: -v ${{ github.workspace }}:/project
+          shell: bash
+          run: |
+            cd /project
+            echo "matrix=$(python -c 'import runner; runner.matrix()')" >> $GITHUB_OUTPUT
 
   validate:
     needs: setup
@@ -55,23 +48,15 @@ jobs:
         with:
           fetch-depth: 1
 
-      - name: Set up Python 3
-        uses: actions/setup-python@v4
-        with:
-          python-version: "3.x"
-
-      - name: Restore pip cache directory
-        uses: actions/cache@v3
-        id: cache
-        with:
-          path: ~/.cache/pip
-          key: ${{ github.sha }}
-
-      - name: Install dependencies
-        run: pip install -r requirements.txt
-
       - name: Validate repository
-        run: python -c 'import runner; runner.validate("${{ matrix.gem }}")'
+        uses: addnab/docker-run-action@v3
+        with:
+          image: opencobra/memote:latest
+          options: -v ${{ github.workspace }}:/project
+          shell: bash
+          run: |
+            cd /project
+            python -c 'import runner; runner.validate("${{ matrix.gem }}")'
 
       - name: Update branch
         run: git pull --ff
