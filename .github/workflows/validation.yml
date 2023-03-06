@@ -23,7 +23,7 @@ jobs:
         name: Fetch list of repositories
         uses: addnab/docker-run-action@v3
         with:
-          image: opencobra/memote:latest
+          image: ghcr.io/metabolicatlas/memote-docker:0.13
           options: -v ${{ github.workspace }}:/project
           shell: bash
           run: |
@@ -51,7 +51,7 @@ jobs:
       - name: Validate repository
         uses: addnab/docker-run-action@v3
         with:
-          image: opencobra/memote:latest
+          image: ghcr.io/metabolicatlas/memote-docker:0.13
           options: -v ${{ github.workspace }}:/project
           shell: bash
           run: |
