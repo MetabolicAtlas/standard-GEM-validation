@@ -28,7 +28,7 @@ jobs:
         run: pip install -r requirements.txt
 
       - id: set-matrix
-        run: echo "::set-output name=matrix::$(python -c 'import runner; runner.matrix()')"
+        run: echo "matrix=$(python -c 'import runner; runner.matrix()')" >> $GITHUB_OUTPUT
 
       - name: Cache pip directory
         uses: actions/cache@v3
@@ -45,7 +45,7 @@ jobs:
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     strategy:
       fail-fast: false
-      matrix: ${{fromJson(needs.setup.outputs.matrix)}}
+      matrix: ${{ needs.setup.outputs.matrix }}
       max-parallel: 1
 
     steps:
