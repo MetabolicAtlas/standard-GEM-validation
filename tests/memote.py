@@ -1,18 +1,18 @@
-import memote
 import cobra
 import json
-from memote.support import consistency
-# needed by memote.support.consitency
-from memote.support import consistency_helpers as con_helpers
+import memote
 
-def get_consistency(model_filename):
+def scoreAnnotationAndConsistency(model_filename):
+    print('  memote scoring)
+    memote_score = 'Scoring failed'
     errors = ''
-    is_consistent = 'Not tested'
     try:
         model = cobra.io.read_sbml_model(model_filename + '.xml')
-        is_consistent = consistency.check_stoichiometric_consistency(model)
+        _, results = memote.suite.api.test_model(model, None, True, None, {"basic", "annotation", "consistency"})
+        processed_results = memote.suite.api.snapshot_report(results, None, False)
+        results_json = json.loads(processed_results)
+        memote_score = results_json['score']['total_score']
     except Exception as e:
         errors = json.dumps(str(e))
         print(e)
-    
-    return {'memote-tests': { memote.__version__ : is_consistent, 'errors': errors } }
+    return {'memote-score': { memote.__version__ : is_consistent, 'errors': errors } }
