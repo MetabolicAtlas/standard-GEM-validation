@@ -3,7 +3,7 @@ import json
 import memote
 
 def scoreAnnotationAndConsistency(model_filename):
-    print('  memote scoring)
+    print('  memote scoring')
     memote_score = 'Scoring failed'
     errors = ''
     try:
