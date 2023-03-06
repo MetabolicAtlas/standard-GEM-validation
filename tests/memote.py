@@ -15,4 +15,4 @@ def scoreAnnotationAndConsistency(model_filename):
     except Exception as e:
         errors = json.dumps(str(e))
         print(e)
-    return {'memote-score': { memote.__version__ : is_consistent, 'errors': errors } }
+    return {'memote-score': { memote.__version__ : memote_score, 'errors': errors } }
