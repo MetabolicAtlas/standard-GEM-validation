@@ -58,8 +58,8 @@ def releases(nameWithOwner):
     return release_tags + additional_branch_tags
 
 def matrix():
-    m = list(map(lambda g: { 'gem': g }, gem_repositories()))
-    print(json.dumps({"include": m }))
+    m = json.dumps(list(gem_repositories()))
+    print(m)
 
 def gem_follows_standard(nameWithOwner, release, version):
     repo_standard = requests.get('https://raw.githubusercontent.com/{}/{}/.standard-GEM.md'.format(nameWithOwner, release))

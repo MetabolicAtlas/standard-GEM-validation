@@ -45,7 +45,8 @@ jobs:
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     strategy:
       fail-fast: false
-      matrix: ${{ needs.setup.outputs.matrix }}
+      matrix:
+        gem: ${{ fromJSON(needs.setup.outputs.matrix) }}
       max-parallel: 1
 
     steps:
