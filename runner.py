@@ -43,7 +43,7 @@ def releases(nameWithOwner):
             owner: \"%s\",
             name: \"%s\"
             )
-            { releases(last: %s){
+            { releases(first: %s){
                     edges {
                         node { tagName }
                    }
