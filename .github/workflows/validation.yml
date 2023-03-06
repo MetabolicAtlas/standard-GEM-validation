@@ -8,6 +8,11 @@ on:
 jobs:
   setup:
     runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/metabolicatlas/memote-docker:0.13
+      volumes:
+        - ${{ github.workspace }}:/project:rw
+      options: --user root --workdir /project
     outputs:
       matrix: ${{ steps.set-matrix.outputs.matrix }}
     env:
@@ -19,20 +24,32 @@ jobs:
         with:
           fetch-depth: 1
 
-      - id: set-matrix
-        name: Fetch list of repositories
-        uses: addnab/docker-run-action@v3
+      - name: Fetch list of repositories
+        run: |
+          git config --global --add safe.directory /__w/standard-GEM-validation/standard-GEM-validation
+          python -c 'import runner; runner.matrix()'
+
+      - name: Commit index of standard-GEMs
+        uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          image: ghcr.io/metabolicatlas/memote-docker:0.13
-          options: -v ${{ github.workspace }}:/project
-          shell: bash
-          run: |
-            cd /project
-            echo "matrix=$(python -c 'import runner; runner.matrix()')" >> $GITHUB_OUTPUT
+          commit_user_name: validation-bot
+          commit_message: update index of standard-GEMs
+          file_pattern: results/index.json
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Define job matrix from index
+        id: set-matrix
+        run: echo "matrix=$(cat results/index.json)" >> $GITHUB_OUTPUT
 
   validate:
     needs: setup
     runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/metabolicatlas/memote-docker:0.13
+      volumes:
+        - ${{ github.workspace }}:/project:rw
+      options: --user root --workdir /project
     continue-on-error: true
     env:
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -49,14 +66,9 @@ jobs:
           fetch-depth: 1
 
       - name: Validate repository
-        uses: addnab/docker-run-action@v3
-        with:
-          image: ghcr.io/metabolicatlas/memote-docker:0.13
-          options: -v ${{ github.workspace }}:/project
-          shell: bash
-          run: |
-            cd /project
-            python -c 'import runner; runner.validate("${{ matrix.gem }}")'
+        run: |
+          git config --global --add safe.directory /__w/standard-GEM-validation/standard-GEM-validation
+          python -c 'import runner; runner.validate("${{ matrix.gem }}")'
 
       - name: Update branch
         run: git pull --ff

@@ -59,7 +59,8 @@ def releases(nameWithOwner):
 
 def matrix():
     m = json.dumps(list(gem_repositories()))
-    print(m)
+    with open("results/index.json", "w") as file:
+        file.write(m)
 
 def gem_follows_standard(nameWithOwner, release, version):
     repo_standard = requests.get('https://raw.githubusercontent.com/{}/{}/.standard-GEM.md'.format(nameWithOwner, release))
