@@ -34,13 +34,13 @@ jobs:
         with:
           commit_user_name: validation-bot
           commit_message: update index of standard-GEMs
-          file_pattern: results/index.json
+          file_pattern: index.json
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Define job matrix from index
         id: set-matrix
-        run: echo "matrix=$(cat results/index.json)" >> $GITHUB_OUTPUT
+        run: echo "matrix=$(cat index.json)" >> $GITHUB_OUTPUT
 
   validate:
     needs: setup
