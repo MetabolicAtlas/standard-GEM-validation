@@ -1,6 +1,6 @@
 import cobra
 import json
-from os.path import exists
+from os.path import exists, getsize
 
 def load(model_filename):
     print('  load model with cobrapy')
@@ -9,10 +9,12 @@ def load(model_filename):
     try:
         cobra.io.load_yaml_model(model_filename + '.yml')
         cobra.io.read_sbml_model(model_filename + '.xml')
-        if exists(model_filename + '.mat'):
-            cobra.io.load_matlab_model(model_filename + '.mat')
-        if exists(model_filename + '.json'):
-            cobra.io.load_json_model(model_filename + '.json')
+        matFile = model_filename + '.matFile'
+        if exists(matFile) and getsize(matFile) > 0:
+            cobra.io.load_matlab_model(matFile)
+        jsonFile = model_filename + '.json'
+        if exists(jsonFile) and getsize(jsonFile) > 0:
+            cobra.io.load_json_model(jsonFile)
         is_valid_cobrapy = True
     except Exception as e:
         errors = json.dumps(str(e))
