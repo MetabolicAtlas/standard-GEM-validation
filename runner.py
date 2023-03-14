@@ -87,9 +87,10 @@ def validate(nameWithOwner):
             if gem_is_standard:
                 for model_format in MODEL_FORMATS:
                     my_model = model + model_format
-                    response = requests.get('https://raw.githubusercontent.com/{}/{}/model/{}'.format(nameWithOwner, model_release, my_model))
-                    with open(my_model, 'w') as file:
-                        file.write(response.text)
+                    response = requests.get('https://raw.githubusercontent.com/{}/{}/model/{}'.format(nameWithOwner, model_release, my_model), timeout=10)
+                    if response.ok:
+                        with open(my_model, 'w') as file:
+                            file.write(response.text)
                 test_results.update(tests.yaml.validate(model))
                 test_results.update(tests.cobra.loadYaml(model))
                 test_results.update(tests.cobra.loadSbml(model))
