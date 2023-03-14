@@ -9,7 +9,7 @@ API_ENDPOINT = 'https://api.github.com/graphql'
 API_TOKEN = environ['GH_TOKEN']
 MODEL_FILENAME = 'model'
 MODEL_FORMATS = ['.yml', '.xml', '.mat', '.json']
-RELEASES = 10
+RELEASES = 1
 
 header_auth = {'Authorization': 'token %s' % API_TOKEN}
 additional_branch_tags = []
@@ -59,7 +59,8 @@ def releases(nameWithOwner):
 
 def matrix():
     m = json.dumps(list(gem_repositories()))
-    print(m)
+    with open("index.json", "w") as file:
+        file.write(m)
 
 def gem_follows_standard(nameWithOwner, release, version):
     repo_standard = requests.get('https://raw.githubusercontent.com/{}/{}/.standard-GEM.md'.format(nameWithOwner, release))
@@ -86,12 +87,16 @@ def validate(nameWithOwner):
             if gem_is_standard:
                 for model_format in MODEL_FORMATS:
                     my_model = model + model_format
-                    response = requests.get('https://raw.githubusercontent.com/{}/{}/model/{}'.format(nameWithOwner, model_release, my_model))
-                    with open(my_model, 'w') as file:
-                        file.write(response.text)
+                    response = requests.get('https://raw.githubusercontent.com/{}/{}/model/{}'.format(nameWithOwner, model_release, my_model), timeout=10)
+                    if response.ok:
+                        with open(my_model, 'w') as file:
+                            file.write(response.text)
                 test_results.update(tests.yaml.validate(model))
-                test_results.update(tests.cobra.load(model))
-                test_results.update(tests.cobra.validateSBML(model))
+                test_results.update(tests.cobra.loadYaml(model))
+                test_results.update(tests.cobra.loadSbml(model))
+                test_results.update(tests.cobra.loadMatlab(model))
+                test_results.update(tests.cobra.loadJson(model))
+                test_results.update(tests.cobra.validateSbml(model))
                 test_results.update(tests.memote.scoreAnnotationAndConsistency(model))
             else:
                 print('is not following standard')
