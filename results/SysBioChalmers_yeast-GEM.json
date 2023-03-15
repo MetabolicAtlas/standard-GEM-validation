@@ -4,7 +4,55 @@
       "v8.6.2": {
         "standard-GEM": [
           {
-            "0.5": false
+            "0.4": false
+          },
+          {
+            "test_results": {}
+          }
+        ]
+      }
+    },
+    {
+      "v8.6.1": {
+        "standard-GEM": [
+          {
+            "0.4": false
+          },
+          {
+            "test_results": {}
+          }
+        ]
+      }
+    },
+    {
+      "v8.6.0": {
+        "standard-GEM": [
+          {
+            "0.4": false
+          },
+          {
+            "test_results": {}
+          }
+        ]
+      }
+    },
+    {
+      "v8.5.0": {
+        "standard-GEM": [
+          {
+            "0.4": false
+          },
+          {
+            "test_results": {}
+          }
+        ]
+      }
+    },
+    {
+      "v8.4.2": {
+        "standard-GEM": [
+          {
+            "0.4": false
           },
           {
             "test_results": {}
