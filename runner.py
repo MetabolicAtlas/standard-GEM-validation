@@ -9,7 +9,7 @@ API_ENDPOINT = 'https://api.github.com/graphql'
 API_TOKEN = environ['GH_TOKEN']
 MODEL_FILENAME = 'model'
 MODEL_FORMATS = ['.yml', '.xml', '.mat', '.json']
-RELEASES = 1
+RELEASES = 5
 
 header_auth = {'Authorization': 'token %s' % API_TOKEN}
 additional_branch_tags = []
