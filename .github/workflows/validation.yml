@@ -8,6 +8,11 @@ on:
 jobs:
   setup:
     runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/metabolicatlas/memote-docker:0.13
+      volumes:
+        - ${{ github.workspace }}:/project:rw
+      options: --user root --workdir /project
     outputs:
       matrix: ${{ steps.set-matrix.outputs.matrix }}
     env:
@@ -19,33 +24,39 @@ jobs:
         with:
           fetch-depth: 1
 
-      - name: Set up Python 3
-        uses: actions/setup-python@v4
+      - name: Fetch list of repositories
+        run: |
+          git config --global --add safe.directory /__w/standard-GEM-validation/standard-GEM-validation
+          python -c 'import runner; runner.matrix()'
+
+      - name: Commit index of standard-GEMs
+        uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          python-version: "3.x"
+          commit_user_name: validation-bot
+          commit_message: update index of standard-GEMs
+          file_pattern: index.json
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Install dependencies
-        run: pip install -r requirements.txt
-
-      - id: set-matrix
-        run: echo "::set-output name=matrix::$(python -c 'import runner; runner.matrix()')"
-
-      - name: Cache pip directory
-        uses: actions/cache@v3
-        id: cache
-        with:
-          path: ~/.cache/pip
-          key: ${{ github.sha }}
+      - name: Define job matrix from index
+        id: set-matrix
+        run: echo "matrix=$(cat index.json)" >> $GITHUB_OUTPUT
 
   validate:
     needs: setup
     runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/metabolicatlas/memote-docker:0.13
+      volumes:
+        - ${{ github.workspace }}:/project:rw
+      options: --user root --workdir /project
     continue-on-error: true
     env:
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     strategy:
       fail-fast: false
-      matrix: ${{fromJson(needs.setup.outputs.matrix)}}
+      matrix:
+        gem: ${{ fromJSON(needs.setup.outputs.matrix) }}
       max-parallel: 1
 
     steps:
@@ -54,29 +65,16 @@ jobs:
         with:
           fetch-depth: 1
 
-      - name: Set up Python 3
-        uses: actions/setup-python@v4
-        with:
-          python-version: "3.x"
-
-      - name: Restore pip cache directory
-        uses: actions/cache@v3
-        id: cache
-        with:
-          path: ~/.cache/pip
-          key: ${{ github.sha }}
-
-      - name: Install dependencies
-        run: pip install -r requirements.txt
-
       - name: Validate repository
-        run: python -c 'import runner; runner.validate("${{ matrix.gem }}")'
+        run: |
+          git config --global --add safe.directory /__w/standard-GEM-validation/standard-GEM-validation
+          python -c 'import runner; runner.validate("${{ matrix.gem }}")'
 
       - name: Update branch
         run: git pull --ff
 
       - name: Auto-commit results
-        uses: stefanzweifel/git-auto-commit-action@v4.4.0
+        uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_user_name: validation-bot
           commit_message: update validation results for ${{ matrix.gem }}

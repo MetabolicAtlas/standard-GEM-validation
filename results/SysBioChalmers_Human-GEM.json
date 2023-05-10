@@ -1,121 +1,206 @@
 {
   "SysBioChalmers/Human-GEM": [
     {
-      "v0.5.2": {
+      "v1.14.0": {
         "standard-GEM": [
           {
-            "0.4": false
+            "0.4": true
           },
           {
-            "test_results": {}
+            "test_results": {
+              "cobrapy-load-json": {
+                "0.26.2": false,
+                "errors": "\"[Errno 2] No such file or directory: 'Human-GEM.json'\""
+              },
+              "cobrapy-load-matlab": {
+                "0.26.2": false,
+                "errors": "\"Error -3 while decompressing data: incorrect header check\""
+              },
+              "cobrapy-load-sbml": {
+                "0.26.2": true,
+                "errors": ""
+              },
+              "cobrapy-load-yaml": {
+                "0.26.2": true,
+                "errors": ""
+              },
+              "cobrapy-validate-sbml": {
+                "0.26.2": false,
+                "errors": "\"{'SBML_FATAL': [], 'SBML_ERROR': [], 'SBML_SCHEMA_ERROR': [], 'SBML_WARNING': ['E0 (Warning): General SBML conformance (core, L3); RDF does not contain valid ModelHistory; LibSBML expected to read the annotation into a ModelHistory object. Unfortunately, some attributes were not present or correct and the resulting ModelHistory object will not correctly produce the annotation.  This functionality will be improved in later versions of libSBML. \\\\nReference: L3V1 Section 6.3\\\\n An invalid ModelHistory element has been stored.\\\\n', 'E1 (Warning): General SBML conformance (core, L3); RDF does not contain valid ModelHistory; LibSBML expected to read the annotation into a ModelHistory object. Unfortunately, some attributes were not present or correct and the resulting ModelHistory object will not correctly produce the annotation.  This functionality will be improved in later versions of libSBML. \\\\nReference: L3V1 Section 6.3\\\\n An invalid ModelHistory element has been stored.\\\\n'], 'COBRA_FATAL': [], 'COBRA_ERROR': [], 'COBRA_WARNING': [], 'COBRA_CHECK': []}\""
+              },
+              "memote-score": {
+                "0.13.0": 0.4740305818784403,
+                "errors": ""
+              },
+              "yamllint": {
+                "1.29.0": true,
+                "errors": []
+              }
+            }
           }
         ]
       }
     },
     {
-      "v0.5.1": {
+      "v1.13.0": {
         "standard-GEM": [
           {
-            "0.4": false
+            "0.4": true
           },
           {
-            "test_results": {}
+            "test_results": {
+              "cobrapy-load-json": {
+                "0.26.2": false,
+                "errors": "\"[Errno 2] No such file or directory: 'Human-GEM.json'\""
+              },
+              "cobrapy-load-matlab": {
+                "0.26.2": false,
+                "errors": "\"Error -3 while decompressing data: incorrect header check\""
+              },
+              "cobrapy-load-sbml": {
+                "0.26.2": true,
+                "errors": ""
+              },
+              "cobrapy-load-yaml": {
+                "0.26.2": true,
+                "errors": ""
+              },
+              "cobrapy-validate-sbml": {
+                "0.26.2": false,
+                "errors": "\"{'SBML_FATAL': [], 'SBML_ERROR': [], 'SBML_SCHEMA_ERROR': [], 'SBML_WARNING': ['E0 (Warning): General SBML conformance (core, L3); RDF does not contain valid ModelHistory; LibSBML expected to read the annotation into a ModelHistory object. Unfortunately, some attributes were not present or correct and the resulting ModelHistory object will not correctly produce the annotation.  This functionality will be improved in later versions of libSBML. \\\\nReference: L3V1 Section 6.3\\\\n An invalid ModelHistory element has been stored.\\\\n', 'E1 (Warning): General SBML conformance (core, L3); RDF does not contain valid ModelHistory; LibSBML expected to read the annotation into a ModelHistory object. Unfortunately, some attributes were not present or correct and the resulting ModelHistory object will not correctly produce the annotation.  This functionality will be improved in later versions of libSBML. \\\\nReference: L3V1 Section 6.3\\\\n An invalid ModelHistory element has been stored.\\\\n'], 'COBRA_FATAL': [], 'COBRA_ERROR': [], 'COBRA_WARNING': [], 'COBRA_CHECK': []}\""
+              },
+              "memote-score": {
+                "0.13.0": 0.47403057916252217,
+                "errors": ""
+              },
+              "yamllint": {
+                "1.29.0": true,
+                "errors": []
+              }
+            }
           }
         ]
       }
     },
     {
-      "v0.5.0": {
+      "v1.12.0": {
         "standard-GEM": [
           {
-            "0.4": false
+            "0.4": true
           },
           {
-            "test_results": {}
+            "test_results": {
+              "cobrapy-load-json": {
+                "0.26.2": false,
+                "errors": "\"[Errno 2] No such file or directory: 'Human-GEM.json'\""
+              },
+              "cobrapy-load-matlab": {
+                "0.26.2": false,
+                "errors": "\"Error -3 while decompressing data: incorrect header check\""
+              },
+              "cobrapy-load-sbml": {
+                "0.26.2": true,
+                "errors": ""
+              },
+              "cobrapy-load-yaml": {
+                "0.26.2": true,
+                "errors": ""
+              },
+              "cobrapy-validate-sbml": {
+                "0.26.2": false,
+                "errors": "\"{'SBML_FATAL': [], 'SBML_ERROR': [], 'SBML_SCHEMA_ERROR': [], 'SBML_WARNING': ['E0 (Warning): General SBML conformance (core, L3); RDF does not contain valid ModelHistory; LibSBML expected to read the annotation into a ModelHistory object. Unfortunately, some attributes were not present or correct and the resulting ModelHistory object will not correctly produce the annotation.  This functionality will be improved in later versions of libSBML. \\\\nReference: L3V1 Section 6.3\\\\n An invalid ModelHistory element has been stored.\\\\n', 'E1 (Warning): General SBML conformance (core, L3); RDF does not contain valid ModelHistory; LibSBML expected to read the annotation into a ModelHistory object. Unfortunately, some attributes were not present or correct and the resulting ModelHistory object will not correctly produce the annotation.  This functionality will be improved in later versions of libSBML. \\\\nReference: L3V1 Section 6.3\\\\n An invalid ModelHistory element has been stored.\\\\n'], 'COBRA_FATAL': [], 'COBRA_ERROR': [], 'COBRA_WARNING': [], 'COBRA_CHECK': []}\""
+              },
+              "memote-score": {
+                "0.13.0": 0.47564756532249464,
+                "errors": ""
+              },
+              "yamllint": {
+                "1.29.0": true,
+                "errors": []
+              }
+            }
           }
         ]
       }
     },
     {
-      "v0.4.2": {
+      "v1.11.0": {
         "standard-GEM": [
           {
-            "0.4": false
+            "0.4": true
           },
           {
-            "test_results": {}
+            "test_results": {
+              "cobrapy-load-json": {
+                "0.26.2": false,
+                "errors": "\"[Errno 2] No such file or directory: 'Human-GEM.json'\""
+              },
+              "cobrapy-load-matlab": {
+                "0.26.2": false,
+                "errors": "\"Error -3 while decompressing data: incorrect header check\""
+              },
+              "cobrapy-load-sbml": {
+                "0.26.2": true,
+                "errors": ""
+              },
+              "cobrapy-load-yaml": {
+                "0.26.2": true,
+                "errors": ""
+              },
+              "cobrapy-validate-sbml": {
+                "0.26.2": false,
+                "errors": "\"{'SBML_FATAL': [], 'SBML_ERROR': [], 'SBML_SCHEMA_ERROR': [], 'SBML_WARNING': ['E0 (Warning): General SBML conformance (core, L3); RDF does not contain valid ModelHistory; LibSBML expected to read the annotation into a ModelHistory object. Unfortunately, some attributes were not present or correct and the resulting ModelHistory object will not correctly produce the annotation.  This functionality will be improved in later versions of libSBML. \\\\nReference: L3V1 Section 6.3\\\\n An invalid ModelHistory element has been stored.\\\\n', 'E1 (Warning): General SBML conformance (core, L3); RDF does not contain valid ModelHistory; LibSBML expected to read the annotation into a ModelHistory object. Unfortunately, some attributes were not present or correct and the resulting ModelHistory object will not correctly produce the annotation.  This functionality will be improved in later versions of libSBML. \\\\nReference: L3V1 Section 6.3\\\\n An invalid ModelHistory element has been stored.\\\\n'], 'COBRA_FATAL': [], 'COBRA_ERROR': [], 'COBRA_WARNING': [], 'COBRA_CHECK': []}\""
+              },
+              "memote-score": {
+                "0.13.0": 0.4813329434104094,
+                "errors": ""
+              },
+              "yamllint": {
+                "1.29.0": true,
+                "errors": []
+              }
+            }
           }
         ]
       }
     },
     {
-      "v0.4.1": {
+      "v1.10.0": {
         "standard-GEM": [
           {
-            "0.4": false
+            "0.4": true
           },
           {
-            "test_results": {}
-          }
-        ]
-      }
-    },
-    {
-      "v0.4.0": {
-        "standard-GEM": [
-          {
-            "0.4": false
-          },
-          {
-            "test_results": {}
-          }
-        ]
-      }
-    },
-    {
-      "v0.3.1": {
-        "standard-GEM": [
-          {
-            "0.4": false
-          },
-          {
-            "test_results": {}
-          }
-        ]
-      }
-    },
-    {
-      "v0.3.0": {
-        "standard-GEM": [
-          {
-            "0.4": false
-          },
-          {
-            "test_results": {}
-          }
-        ]
-      }
-    },
-    {
-      "v0.2.0": {
-        "standard-GEM": [
-          {
-            "0.4": false
-          },
-          {
-            "test_results": {}
-          }
-        ]
-      }
-    },
-    {
-      "v0.1.0": {
-        "standard-GEM": [
-          {
-            "0.4": false
-          },
-          {
-            "test_results": {}
+            "test_results": {
+              "cobrapy-load-json": {
+                "0.26.2": false,
+                "errors": "\"[Errno 2] No such file or directory: 'Human-GEM.json'\""
+              },
+              "cobrapy-load-matlab": {
+                "0.26.2": false,
+                "errors": "\"Error -3 while decompressing data: incorrect header check\""
+              },
+              "cobrapy-load-sbml": {
+                "0.26.2": true,
+                "errors": ""
+              },
+              "cobrapy-load-yaml": {
+                "0.26.2": true,
+                "errors": ""
+              },
+              "cobrapy-validate-sbml": {
+                "0.26.2": false,
+                "errors": "\"{'SBML_FATAL': [], 'SBML_ERROR': [], 'SBML_SCHEMA_ERROR': [], 'SBML_WARNING': ['E0 (Warning): General SBML conformance (core, L3); RDF does not contain valid ModelHistory; LibSBML expected to read the annotation into a ModelHistory object. Unfortunately, some attributes were not present or correct and the resulting ModelHistory object will not correctly produce the annotation.  This functionality will be improved in later versions of libSBML. \\\\nReference: L3V1 Section 6.3\\\\n An invalid ModelHistory element has been stored.\\\\n', 'E1 (Warning): General SBML conformance (core, L3); RDF does not contain valid ModelHistory; LibSBML expected to read the annotation into a ModelHistory object. Unfortunately, some attributes were not present or correct and the resulting ModelHistory object will not correctly produce the annotation.  This functionality will be improved in later versions of libSBML. \\\\nReference: L3V1 Section 6.3\\\\n An invalid ModelHistory element has been stored.\\\\n'], 'COBRA_FATAL': [], 'COBRA_ERROR': [], 'COBRA_WARNING': [], 'COBRA_CHECK': []}\""
+              },
+              "memote-score": {
+                "0.13.0": 0.48129904134791174,
+                "errors": ""
+              },
+              "yamllint": {
+                "1.29.0": true,
+                "errors": []
+              }
+            }
           }
         ]
       }

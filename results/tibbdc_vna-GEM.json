@@ -4,21 +4,37 @@
       "0.1": {
         "standard-GEM": [
           {
-            "0.4": true
+            "0.5": true
           },
           {
             "test_results": {
-              "cobrapy-load": {
+              "cobrapy-load-json": {
                 "0.26.2": false,
-                "errors": "\"Object has no .reactions attribute. Cannot load.\""
+                "errors": "\"[Errno 2] No such file or directory: 'vna-GEM.json'\""
+              },
+              "cobrapy-load-matlab": {
+                "0.26.2": false,
+                "errors": "\"[Errno 2] No such file or directory: 'vna-GEM.mat'\""
+              },
+              "cobrapy-load-sbml": {
+                "0.26.2": false,
+                "errors": "\"The file with 'vna-GEM.xml' does not exist, or is not an SBML string. Provide the path to an existing SBML file or a valid SBML string representation:\\n\""
+              },
+              "cobrapy-load-yaml": {
+                "0.26.2": false,
+                "errors": "\"[Errno 2] No such file or directory: 'vna-GEM.yml'\""
               },
               "cobrapy-validate-sbml": {
                 "0.26.2": false,
-                "errors": "\"{'SBML_FATAL': [], 'SBML_ERROR': ['E0 (Error): XML content (core, L1); Badly formed XML; XML content is not well-formed.\\\\n'], 'SBML_SCHEMA_ERROR': [], 'SBML_WARNING': [], 'COBRA_FATAL': [], 'COBRA_ERROR': ['No SBML model detected in file.'], 'COBRA_WARNING': [], 'COBRA_CHECK': []}\""
+                "errors": "\"The file with 'vna-GEM.xml' does not exist, or is not an SBML string. Provide the path to an existing SBML file or a valid SBML string representation:\\n\""
+              },
+              "memote-score": {
+                "0.13.0": false,
+                "errors": "\"The file with 'vna-GEM.xml' does not exist, or is not an SBML string. Provide the path to an existing SBML file or a valid SBML string representation:\\n\""
               },
               "yamllint": {
-                "1.29.0": "False",
-                "errors": "[\"1:1: missing document start \\\"---\\\" (document-start)\", \"1:15: no new line character at the end of file (new-line-at-end-of-file)\"]"
+                "1.29.0": false,
+                "errors": "\"[Errno 2] No such file or directory: 'vna-GEM.yml'\""
               }
             }
           }

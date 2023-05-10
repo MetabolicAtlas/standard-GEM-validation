@@ -1,7 +1,7 @@
 {
   "SysBioChalmers/yeast-GEM": [
     {
-      "v8.1.0": {
+      "v8.6.2": {
         "standard-GEM": [
           {
             "0.4": false
@@ -13,7 +13,7 @@
       }
     },
     {
-      "v8.0.2": {
+      "v8.6.1": {
         "standard-GEM": [
           {
             "0.4": false
@@ -25,7 +25,7 @@
       }
     },
     {
-      "v8.0.1": {
+      "v8.6.0": {
         "standard-GEM": [
           {
             "0.4": false
@@ -37,7 +37,7 @@
       }
     },
     {
-      "v8.0.0": {
+      "v8.5.0": {
         "standard-GEM": [
           {
             "0.4": false
@@ -49,67 +49,7 @@
       }
     },
     {
-      "v7.8.3": {
-        "standard-GEM": [
-          {
-            "0.4": false
-          },
-          {
-            "test_results": {}
-          }
-        ]
-      }
-    },
-    {
-      "v7.8.2": {
-        "standard-GEM": [
-          {
-            "0.4": false
-          },
-          {
-            "test_results": {}
-          }
-        ]
-      }
-    },
-    {
-      "v7.8.1": {
-        "standard-GEM": [
-          {
-            "0.4": false
-          },
-          {
-            "test_results": {}
-          }
-        ]
-      }
-    },
-    {
-      "v7.8.0": {
-        "standard-GEM": [
-          {
-            "0.4": false
-          },
-          {
-            "test_results": {}
-          }
-        ]
-      }
-    },
-    {
-      "v7.7.0": {
-        "standard-GEM": [
-          {
-            "0.4": false
-          },
-          {
-            "test_results": {}
-          }
-        ]
-      }
-    },
-    {
-      "v7.6.0": {
+      "v8.4.2": {
         "standard-GEM": [
           {
             "0.4": false
