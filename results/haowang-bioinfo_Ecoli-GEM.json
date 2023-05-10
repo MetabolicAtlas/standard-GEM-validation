@@ -1,0 +1,45 @@
+{
+  "haowang-bioinfo/Ecoli-GEM": [
+    {
+      "v0.0.1": {
+        "standard-GEM": [
+          {
+            "0.5": true
+          },
+          {
+            "test_results": {
+              "cobrapy-load-json": {
+                "0.26.2": false,
+                "errors": "\"[Errno 2] No such file or directory: 'Ecoli-GEM.json'\""
+              },
+              "cobrapy-load-matlab": {
+                "0.26.2": false,
+                "errors": "\"[Errno 2] No such file or directory: 'Ecoli-GEM.mat'\""
+              },
+              "cobrapy-load-sbml": {
+                "0.26.2": false,
+                "errors": "\"The file with 'Ecoli-GEM.xml' does not exist, or is not an SBML string. Provide the path to an existing SBML file or a valid SBML string representation:\\n\""
+              },
+              "cobrapy-load-yaml": {
+                "0.26.2": false,
+                "errors": "\"[Errno 2] No such file or directory: 'Ecoli-GEM.yml'\""
+              },
+              "cobrapy-validate-sbml": {
+                "0.26.2": false,
+                "errors": "\"The file with 'Ecoli-GEM.xml' does not exist, or is not an SBML string. Provide the path to an existing SBML file or a valid SBML string representation:\\n\""
+              },
+              "memote-score": {
+                "0.13.0": false,
+                "errors": "\"The file with 'Ecoli-GEM.xml' does not exist, or is not an SBML string. Provide the path to an existing SBML file or a valid SBML string representation:\\n\""
+              },
+              "yamllint": {
+                "1.29.0": false,
+                "errors": "\"[Errno 2] No such file or directory: 'Ecoli-GEM.yml'\""
+              }
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
