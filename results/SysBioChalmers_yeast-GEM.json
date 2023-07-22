@@ -1,6 +1,18 @@
 {
   "SysBioChalmers/yeast-GEM": [
     {
+      "v8.7.0": {
+        "standard-GEM": [
+          {
+            "0.4": false
+          },
+          {
+            "test_results": {}
+          }
+        ]
+      }
+    },
+    {
       "v8.6.3": {
         "standard-GEM": [
           {
@@ -38,18 +50,6 @@
     },
     {
       "v8.6.0": {
-        "standard-GEM": [
-          {
-            "0.4": false
-          },
-          {
-            "test_results": {}
-          }
-        ]
-      }
-    },
-    {
-      "v8.5.0": {
         "standard-GEM": [
           {
             "0.4": false
