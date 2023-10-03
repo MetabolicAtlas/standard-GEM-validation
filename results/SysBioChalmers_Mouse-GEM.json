@@ -1,6 +1,47 @@
 {
   "SysBioChalmers/Mouse-GEM": [
     {
+      "v1.7.0": {
+        "standard-GEM": [
+          {
+            "0.4": true
+          },
+          {
+            "test_results": {
+              "cobrapy-load-json": {
+                "0.26.2": false,
+                "errors": "\"[Errno 2] No such file or directory: 'Mouse-GEM.json'\""
+              },
+              "cobrapy-load-matlab": {
+                "0.26.2": false,
+                "errors": "\"Error -3 while decompressing data: incorrect header check\""
+              },
+              "cobrapy-load-sbml": {
+                "0.26.2": false,
+                "errors": "\"The file with 'Mouse-GEM.xml' does not exist, or is not an SBML string. Provide the path to an existing SBML file or a valid SBML string representation:\\n\""
+              },
+              "cobrapy-load-yaml": {
+                "0.26.2": false,
+                "errors": "\"[Errno 2] No such file or directory: 'Mouse-GEM.yml'\""
+              },
+              "cobrapy-validate-sbml": {
+                "0.26.2": false,
+                "errors": "\"The file with 'Mouse-GEM.xml' does not exist, or is not an SBML string. Provide the path to an existing SBML file or a valid SBML string representation:\\n\""
+              },
+              "memote-score": {
+                "0.13.0": false,
+                "errors": "\"The file with 'Mouse-GEM.xml' does not exist, or is not an SBML string. Provide the path to an existing SBML file or a valid SBML string representation:\\n\""
+              },
+              "yamllint": {
+                "1.29.0": false,
+                "errors": "\"[Errno 2] No such file or directory: 'Mouse-GEM.yml'\""
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
       "v1.6.0": {
         "standard-GEM": [
           {
@@ -21,8 +62,8 @@
                 "errors": ""
               },
               "cobrapy-load-yaml": {
-                "0.26.2": true,
-                "errors": ""
+                "0.26.2": false,
+                "errors": "\"[Errno 2] No such file or directory: 'Mouse-GEM.yml'\""
               },
               "cobrapy-validate-sbml": {
                 "0.26.2": false,
@@ -33,8 +74,8 @@
                 "errors": ""
               },
               "yamllint": {
-                "1.29.0": true,
-                "errors": []
+                "1.29.0": false,
+                "errors": "\"[Errno 2] No such file or directory: 'Mouse-GEM.yml'\""
               }
             }
           }
@@ -153,47 +194,6 @@
               },
               "memote-score": {
                 "0.13.0": 0.46693522976473417,
-                "errors": ""
-              },
-              "yamllint": {
-                "1.29.0": true,
-                "errors": []
-              }
-            }
-          }
-        ]
-      }
-    },
-    {
-      "v1.3.0": {
-        "standard-GEM": [
-          {
-            "0.4": true
-          },
-          {
-            "test_results": {
-              "cobrapy-load-json": {
-                "0.26.2": false,
-                "errors": "\"[Errno 2] No such file or directory: 'Mouse-GEM.json'\""
-              },
-              "cobrapy-load-matlab": {
-                "0.26.2": false,
-                "errors": "\"Error -3 while decompressing data: incorrect header check\""
-              },
-              "cobrapy-load-sbml": {
-                "0.26.2": true,
-                "errors": ""
-              },
-              "cobrapy-load-yaml": {
-                "0.26.2": true,
-                "errors": ""
-              },
-              "cobrapy-validate-sbml": {
-                "0.26.2": false,
-                "errors": "\"{'SBML_FATAL': [], 'SBML_ERROR': [], 'SBML_SCHEMA_ERROR': [], 'SBML_WARNING': ['E0 (Warning): General SBML conformance (core, L3); RDF does not contain valid ModelHistory; LibSBML expected to read the annotation into a ModelHistory object. Unfortunately, some attributes were not present or correct and the resulting ModelHistory object will not correctly produce the annotation.  This functionality will be improved in later versions of libSBML. \\\\nReference: L3V1 Section 6.3\\\\n An invalid ModelHistory element has been stored.\\\\n', 'E1 (Warning): General SBML conformance (core, L3); RDF does not contain valid ModelHistory; LibSBML expected to read the annotation into a ModelHistory object. Unfortunately, some attributes were not present or correct and the resulting ModelHistory object will not correctly produce the annotation.  This functionality will be improved in later versions of libSBML. \\\\nReference: L3V1 Section 6.3\\\\n An invalid ModelHistory element has been stored.\\\\n'], 'COBRA_FATAL': [], 'COBRA_ERROR': [], 'COBRA_WARNING': [\\\"https://identifiers.org/taxonomy/ does not conform to 'http(s)://identifiers.org/collection/id' or'http(s)://identifiers.org/COLLECTION:id\\\"], 'COBRA_CHECK': []}\""
-              },
-              "memote-score": {
-                "0.13.0": 0.46678347238534457,
                 "errors": ""
               },
               "yamllint": {
