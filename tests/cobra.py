@@ -1,73 +1,83 @@
 import cobra
 import json
+from pathlib import Path
 
 def loadYaml(model_name):
-    print('load yaml')
-    is_valid = False
+    description = 'Check if the model in YAML can be loaded with cobrapy.'
+    print(description)
+    status = False
     errors = ''
     try:
         cobra.io.load_yaml_model(model_name + '.yml')
-        is_valid = True
+        status = True
     except FileNotFoundError:
         errors = "File missing"
     except Exception as e:
         errors = json.dumps(str(e))
         print(e)
-    return 'cobrapy-load-yaml', cobra.__version__, is_valid, errors
+    return 'cobrapy-load-yaml',  description, cobra.__version__, status, errors
 
 def loadSbml(model_name):
-    print('load sbml')
-    is_valid = False
+    description = 'Check if the model in SBML format can be loaded with cobrapy.'
+    print(description)
+    status = False
     errors = ''
     try:
         cobra.io.read_sbml_model(model_name + '.xml')
-        is_valid = True
+        status = True
     except FileNotFoundError:
         errors = "File missing"
     except Exception as e:
         errors = json.dumps(str(e))
         print(e)
-    return 'cobrapy-load-sbml', cobra.__version__, is_valid, errors
+    return 'cobrapy-load-sbml', description, cobra.__version__, status, errors
 
 def loadMatlab(model_name):
-    print('load matlab')
-    is_valid = False
+    description = 'Check if the model in Matlab format can be loaded with cobrapy.'
+    print(description)
+    status = False
     errors = ''
     try:
-        cobra.io.load_matlab_model(model_name + '.mat')
-        is_valid = True
+        data_dir = Path(".") / ".." 
+        data_dir = data_dir.resolve()
+        model_path = data_dir / "{}.mat".format(model_name)
+        cobra.io.load_matlab_model(str(model_path.resolve()))
+        status = True
     except FileNotFoundError:
         errors = "File missing"
     except Exception as e:
         errors = json.dumps(str(e))
         print(e)
-    return 'cobrapy-load-matlab', cobra.__version__, is_valid, errors
+    return 'cobrapy-load-matlab', description, cobra.__version__, status, errors
 
 def loadJson(model_name):
-    print('load json')
-    is_valid = False
+    description = 'Check if the model in JSON format can be loaded with cobrapy.'
+    print(description)
+    status = False
     errors = ''
     try:
         cobra.io.load_json_model(model_name + '.json')
-        is_valid = True
+        status = True
     except FileNotFoundError:
         errors = "File missing"
     except Exception as e:
         errors = json.dumps(str(e))
         print(e)
-    return 'cobrapy-load-json', cobra.__version__, is_valid, errors
+    return 'cobrapy-load-json', description, cobra.__version__, status, errors
 
 
 def validateSbml(model_name):
-    print('validate sbml with cobrapy')
-    is_valid = False
+    description = 'Check with cobrapy if the model in SBML format is valid.'
+    print(description)
+    status = False
+    errors = ''
     try:
         _, result = cobra.io.sbml.validate_sbml_model(model_name + '.xml')
-        if result == {}:
-            is_valid = True
+        if result['SBML_FATAL'] == [] and result['SBML_ERROR'] == [] and result['SBML_SCHEMA_ERROR'] == [] and result['COBRA_FATAL'] == [] and result['COBRA_ERROR'] == []:
+            status = True
         else:
             raise Exception(result)
     except Exception as e:
         errors = json.dumps(str(e))
         print(e)
-    return 'cobrapy-validate-sbml', cobra.__version__, is_valid, errors
+    return 'cobrapy-validate-sbml', description, cobra.__version__, status, errors

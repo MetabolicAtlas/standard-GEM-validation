@@ -10,7 +10,6 @@ API_TOKEN = environ['GH_TOKEN']
 MODEL_FILENAME = 'model'
 MODEL_FORMATS = ['.yml', '.xml', '.mat', '.json']
 RELEASES = 5
-TEST_RESULTS = {}
 
 header_auth = {'Authorization': 'token %s' % API_TOKEN}
 # additional_branch_tags = []
@@ -56,7 +55,7 @@ def releases(nameWithOwner):
     release_tags = list(map(lambda x: x['node']['tagName'], json_data))
     if not release_tags:
         return []
-    return release_tags + additional_branch_tags
+    return additional_branch_tags + release_tags 
 
 def matrix():
     m = json.dumps(list(gem_repositories()))
@@ -80,10 +79,11 @@ def validate(nameWithOwner):
     for model_release in releases(nameWithOwner):
         release_data = {}
         standard_gem_releases = releases('MetabolicAtlas/standard-GEM')
-        last_standard = standard_gem_releases[len(standard_gem_releases)-3:-2]
+        last_standard = standard_gem_releases[len(standard_gem_releases)-1:]
         for standard_version in last_standard:
             print("{}: {} | standard-GEM version: {}".format(nameWithOwner, model_release, standard_version))
             gem_is_standard = gem_follows_standard(nameWithOwner, model_release, standard_version)
+            test_results = {}
             if gem_is_standard:
                 for model_format in MODEL_FORMATS:
                     my_model = model + model_format
@@ -91,13 +91,13 @@ def validate(nameWithOwner):
                     if response.ok:
                         with open(my_model, 'w') as file:
                             file.write(response.text)
-                resultJSONString(tests.yaml.validate, model)
-                resultJSONString(tests.cobra.loadYaml, model)
-                resultJSONString(tests.cobra.loadSbml, model)
-                resultJSONString(tests.cobra.loadMatlab, model)
-                resultJSONString(tests.cobra.loadJson, model)
-                resultJSONString(tests.cobra.validateSbml, model)
-                resultJSONString(tests.memote.scoreAnnotationAndConsistency, model)
+                test_results.update(resultJSONString(tests.cobra.loadYaml, model))
+                test_results.update(resultJSONString(tests.cobra.loadSbml, model))
+                test_results.update(resultJSONString(tests.cobra.loadMatlab, model))
+                test_results.update(resultJSONString(tests.cobra.loadJson, model))
+                test_results.update(resultJSONString(tests.cobra.validateSbml, model))
+                test_results.update(resultJSONString(tests.yaml.validate, model))
+                test_results.update(resultJSONString(tests.memote.scoreAnnotationAndConsistency, model))
             else:
                 print('is not following standard')
             release_data = { 'standard-GEM' : [ { standard_version : gem_is_standard }, { 'test_results' : test_results} ] }
@@ -106,5 +106,5 @@ def validate(nameWithOwner):
         output.write(json.dumps(data, indent=2, sort_keys=True))
 
 def resultJSONString(testToRun, model):
-    testModule, moduleVersion, status, errors = testToRun(model)
-    TEST_RESULTS.update({testModule: { moduleVersion : status, 'errors': errors[:300] } })
+    testModule, description, moduleVersion, status, errors = testToRun(model)
+    return {testModule: { 'description': description, 'version': moduleVersion, 'status': status, 'errors': errors[:300] } }
