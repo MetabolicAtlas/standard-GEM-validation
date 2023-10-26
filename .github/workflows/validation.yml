@@ -11,7 +11,7 @@ jobs:
     container:
       image: ghcr.io/metabolicatlas/memote-docker:0.13
       volumes:
-        - ${{ github.workspace }}:/project:rw
+        - /Users/petre/standard-gem-validation/crap:/project:rw
       options: --user root --workdir /project
     outputs:
       matrix: ${{ steps.set-matrix.outputs.matrix }}
@@ -29,14 +29,14 @@ jobs:
           git config --global --add safe.directory /__w/standard-GEM-validation/standard-GEM-validation
           python -c 'import runner; runner.matrix()'
 
-      - name: Commit index of standard-GEMs
-        uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          commit_user_name: validation-bot
-          commit_message: update index of standard-GEMs
-          file_pattern: index.json
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # - name: Commit index of standard-GEMs
+      #   uses: stefanzweifel/git-auto-commit-action@v5
+      #   with:
+      #     commit_user_name: validation-bot
+      #     commit_message: update index of standard-GEMs
+      #     file_pattern: index.json
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Define job matrix from index
         id: set-matrix
@@ -48,7 +48,7 @@ jobs:
     container:
       image: ghcr.io/metabolicatlas/memote-docker:0.13
       volumes:
-        - ${{ github.workspace }}:/project:rw
+        - /Users/petre/standard-gem-validation/crap:/project:rw
       options: --user root --workdir /project
     continue-on-error: true
     env:
@@ -61,7 +61,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           fetch-depth: 1
 
@@ -70,14 +70,14 @@ jobs:
           git config --global --add safe.directory /__w/standard-GEM-validation/standard-GEM-validation
           python -c 'import runner; runner.validate("${{ matrix.gem }}")'
 
-      - name: Update branch
-        run: git pull --ff
+      # - name: Update branch
+      #   run: git pull --ff
 
-      - name: Auto-commit results
-        uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          commit_user_name: validation-bot
-          commit_message: update validation results for ${{ matrix.gem }}
-          file_pattern: results/*.json
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # - name: Auto-commit results
+      #   uses: stefanzweifel/git-auto-commit-action@v5
+      #   with:
+      #     commit_user_name: validation-bot
+      #     commit_message: update validation results for ${{ matrix.gem }}
+      #     file_pattern: results/*.json
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

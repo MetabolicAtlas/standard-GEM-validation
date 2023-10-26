@@ -17,4 +17,4 @@ def validate(model_name):
     except Exception as e:
         errors = json.dumps(str(e))
         print(e)
-    return {'yamllint': { yamllint.__version__ : is_valid, 'errors': errors } }
+    return 'yamllint', yamllint.__version__, is_valid, errors
