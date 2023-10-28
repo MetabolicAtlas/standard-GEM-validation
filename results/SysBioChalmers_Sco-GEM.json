@@ -1,6 +1,18 @@
 {
   "SysBioChalmers/Sco-GEM": [
     {
+      "main": {
+        "standard-GEM": [
+          {
+            "0.4": false
+          },
+          {
+            "test_results": {}
+          }
+        ]
+      }
+    },
+    {
       "v1.3.1": {
         "standard-GEM": [
           {
