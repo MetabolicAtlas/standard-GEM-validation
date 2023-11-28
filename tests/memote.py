@@ -3,7 +3,8 @@ import json
 import memote
 
 def scoreAnnotationAndConsistency(model_name):
-    print('memote scoring')
+    description = 'Check the score of the model in SBML format with Memote.'
+    print(description)
     memote_score = False
     errors = ''
     try:
@@ -16,4 +17,4 @@ def scoreAnnotationAndConsistency(model_name):
     except Exception as e:
         errors = json.dumps(str(e))
         print(e)
-    return {'memote-score': { memote.__version__ : memote_score, 'errors': errors } }
+    return 'memote-score', description, memote.__version__, memote_score, errors

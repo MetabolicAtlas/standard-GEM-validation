@@ -30,7 +30,7 @@ jobs:
           python -c 'import runner; runner.matrix()'
 
       - name: Commit index of standard-GEMs
-        uses: stefanzweifel/git-auto-commit-action@v4
+        uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_user_name: validation-bot
           commit_message: update index of standard-GEMs
@@ -61,7 +61,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           fetch-depth: 1
 
@@ -74,7 +74,7 @@ jobs:
         run: git pull --ff
 
       - name: Auto-commit results
-        uses: stefanzweifel/git-auto-commit-action@v4
+        uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_user_name: validation-bot
           commit_message: update validation results for ${{ matrix.gem }}

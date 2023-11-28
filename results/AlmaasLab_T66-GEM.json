@@ -1,6 +1,61 @@
 {
   "AlmaasLab/T66-GEM": [
     {
+      "main": {
+        "standard-GEM": [
+          {
+            "0.4": true
+          },
+          {
+            "test_results": {
+              "cobrapy-load-json": {
+                "description": "Check if the model in JSON format can be loaded with cobrapy.",
+                "errors": "File missing",
+                "status": false,
+                "version": "0.26.2"
+              },
+              "cobrapy-load-matlab": {
+                "description": "Check if the model in Matlab format can be loaded with cobrapy.",
+                "errors": "File missing",
+                "status": false,
+                "version": "0.26.2"
+              },
+              "cobrapy-load-sbml": {
+                "description": "Check if the model in SBML format can be loaded with cobrapy.",
+                "errors": "",
+                "status": true,
+                "version": "0.26.2"
+              },
+              "cobrapy-load-yaml": {
+                "description": "Check if the model in YAML can be loaded with cobrapy.",
+                "errors": "\"while parsing a block mapping\\n  in \\\"T66-GEM.yml\\\", line 51085, column 9\\nexpected <block end>, but found '<scalar>'\\n  in \\\"T66-GEM.yml\\\", line 51085, column 18\"",
+                "status": false,
+                "version": "0.26.2"
+              },
+              "cobrapy-validate-sbml": {
+                "description": "Check with cobrapy if the model in SBML format is valid.",
+                "errors": "",
+                "status": true,
+                "version": "0.26.2"
+              },
+              "memote-score": {
+                "description": "Check the score of the model in SBML format with Memote.",
+                "errors": "",
+                "status": 0.48120642579796324,
+                "version": "0.13.0"
+              },
+              "yamllint": {
+                "description": "Check if the model in YAML format is formatted correctly.",
+                "errors": "[\"51085:18: syntax error: expected <block end>, but found '<scalar>' (syntax)\"]",
+                "status": false,
+                "version": "1.29.0"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
       "v0.1.0-alpha": {
         "standard-GEM": [
           {
@@ -9,32 +64,46 @@
           {
             "test_results": {
               "cobrapy-load-json": {
-                "0.26.2": false,
-                "errors": "\"[Errno 2] No such file or directory: 'T66-GEM.json'\""
+                "description": "Check if the model in JSON format can be loaded with cobrapy.",
+                "errors": "File missing",
+                "status": false,
+                "version": "0.26.2"
               },
               "cobrapy-load-matlab": {
-                "0.26.2": false,
-                "errors": "\"[Errno 2] No such file or directory: 'T66-GEM.mat'\""
+                "description": "Check if the model in Matlab format can be loaded with cobrapy.",
+                "errors": "File missing",
+                "status": false,
+                "version": "0.26.2"
               },
               "cobrapy-load-sbml": {
-                "0.26.2": false,
-                "errors": "\"The file with 'T66-GEM.xml' does not exist, or is not an SBML string. Provide the path to an existing SBML file or a valid SBML string representation:\\n\""
+                "description": "Check if the model in SBML format can be loaded with cobrapy.",
+                "errors": "",
+                "status": true,
+                "version": "0.26.2"
               },
               "cobrapy-load-yaml": {
-                "0.26.2": false,
-                "errors": "\"[Errno 2] No such file or directory: 'T66-GEM.yml'\""
+                "description": "Check if the model in YAML can be loaded with cobrapy.",
+                "errors": "\"while parsing a block mapping\\n  in \\\"T66-GEM.yml\\\", line 51085, column 9\\nexpected <block end>, but found '<scalar>'\\n  in \\\"T66-GEM.yml\\\", line 51085, column 18\"",
+                "status": false,
+                "version": "0.26.2"
               },
               "cobrapy-validate-sbml": {
-                "0.26.2": false,
-                "errors": "\"The file with 'T66-GEM.xml' does not exist, or is not an SBML string. Provide the path to an existing SBML file or a valid SBML string representation:\\n\""
+                "description": "Check with cobrapy if the model in SBML format is valid.",
+                "errors": "",
+                "status": true,
+                "version": "0.26.2"
               },
               "memote-score": {
-                "0.13.0": false,
-                "errors": "\"The file with 'T66-GEM.xml' does not exist, or is not an SBML string. Provide the path to an existing SBML file or a valid SBML string representation:\\n\""
+                "description": "Check the score of the model in SBML format with Memote.",
+                "errors": "",
+                "status": 0.48120642579796324,
+                "version": "0.13.0"
               },
               "yamllint": {
-                "1.29.0": false,
-                "errors": "\"[Errno 2] No such file or directory: 'T66-GEM.yml'\""
+                "description": "Check if the model in YAML format is formatted correctly.",
+                "errors": "[\"51085:18: syntax error: expected <block end>, but found '<scalar>' (syntax)\"]",
+                "status": false,
+                "version": "1.29.0"
               }
             }
           }

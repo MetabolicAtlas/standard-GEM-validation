@@ -3,7 +3,8 @@ from yamllint.config import YamlLintConfig
 import json
 
 def validate(model_name):
-    print('validate YAML with yamllint')
+    description = 'Check if the model in YAML format is formatted correctly.'
+    print(description)
     is_valid = False
     errors = ''
     try:
@@ -17,4 +18,4 @@ def validate(model_name):
     except Exception as e:
         errors = json.dumps(str(e))
         print(e)
-    return {'yamllint': { yamllint.__version__ : is_valid, 'errors': errors } }
+    return 'yamllint', description, yamllint.__version__, is_valid, errors
