@@ -57,7 +57,7 @@ jobs:
       fail-fast: false
       matrix:
         gem: ${{ fromJSON(needs.setup.outputs.matrix) }}
-      max-parallel: 1
+      # max-parallel: 1
 
     steps:
       - name: Checkout repository
