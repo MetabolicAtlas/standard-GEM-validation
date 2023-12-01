@@ -7,7 +7,7 @@ on:
 
 jobs:
   setup:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     container:
       image: ghcr.io/metabolicatlas/memote-docker:0.13
       volumes:
@@ -44,7 +44,7 @@ jobs:
 
   validate:
     needs: setup
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     container:
       image: ghcr.io/metabolicatlas/memote-docker:0.13
       volumes:
