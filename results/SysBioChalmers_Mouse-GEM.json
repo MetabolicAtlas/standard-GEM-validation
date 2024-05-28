@@ -1,6 +1,116 @@
 {
   "SysBioChalmers/Mouse-GEM": [
     {
+      "main": {
+        "standard-GEM": [
+          {
+            "0.4": true
+          },
+          {
+            "test_results": {
+              "cobrapy-load-json": {
+                "description": "Check if the model in JSON format can be loaded with cobrapy.",
+                "errors": "File missing",
+                "status": false,
+                "version": "0.26.2"
+              },
+              "cobrapy-load-matlab": {
+                "description": "Check if the model in Matlab format can be loaded with cobrapy.",
+                "errors": "File missing",
+                "status": false,
+                "version": "0.26.2"
+              },
+              "cobrapy-load-sbml": {
+                "description": "Check if the model in SBML format can be loaded with cobrapy.",
+                "errors": "",
+                "status": true,
+                "version": "0.26.2"
+              },
+              "cobrapy-load-yaml": {
+                "description": "Check if the model in YAML can be loaded with cobrapy.",
+                "errors": "",
+                "status": true,
+                "version": "0.26.2"
+              },
+              "cobrapy-validate-sbml": {
+                "description": "Check with cobrapy if the model in SBML format is valid.",
+                "errors": "",
+                "status": true,
+                "version": "0.26.2"
+              },
+              "memote-score": {
+                "description": "Check the score of the model in SBML format with Memote.",
+                "errors": "",
+                "status": 0.3022270751320366,
+                "version": "0.13.0"
+              },
+              "yamllint": {
+                "description": "Check if the model in YAML format is formatted correctly.",
+                "errors": [],
+                "status": true,
+                "version": "1.29.0"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "v1.8.0": {
+        "standard-GEM": [
+          {
+            "0.4": true
+          },
+          {
+            "test_results": {
+              "cobrapy-load-json": {
+                "description": "Check if the model in JSON format can be loaded with cobrapy.",
+                "errors": "File missing",
+                "status": false,
+                "version": "0.26.2"
+              },
+              "cobrapy-load-matlab": {
+                "description": "Check if the model in Matlab format can be loaded with cobrapy.",
+                "errors": "File missing",
+                "status": false,
+                "version": "0.26.2"
+              },
+              "cobrapy-load-sbml": {
+                "description": "Check if the model in SBML format can be loaded with cobrapy.",
+                "errors": "",
+                "status": true,
+                "version": "0.26.2"
+              },
+              "cobrapy-load-yaml": {
+                "description": "Check if the model in YAML can be loaded with cobrapy.",
+                "errors": "",
+                "status": true,
+                "version": "0.26.2"
+              },
+              "cobrapy-validate-sbml": {
+                "description": "Check with cobrapy if the model in SBML format is valid.",
+                "errors": "",
+                "status": true,
+                "version": "0.26.2"
+              },
+              "memote-score": {
+                "description": "Check the score of the model in SBML format with Memote.",
+                "errors": "",
+                "status": 0.3022270751320366,
+                "version": "0.13.0"
+              },
+              "yamllint": {
+                "description": "Check if the model in YAML format is formatted correctly.",
+                "errors": [],
+                "status": true,
+                "version": "1.29.0"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
       "v1.7.0": {
         "standard-GEM": [
           {
@@ -9,32 +119,46 @@
           {
             "test_results": {
               "cobrapy-load-json": {
-                "0.26.2": false,
-                "errors": "\"[Errno 2] No such file or directory: 'Mouse-GEM.json'\""
+                "description": "Check if the model in JSON format can be loaded with cobrapy.",
+                "errors": "File missing",
+                "status": false,
+                "version": "0.26.2"
               },
               "cobrapy-load-matlab": {
-                "0.26.2": false,
-                "errors": "\"Error -3 while decompressing data: incorrect header check\""
+                "description": "Check if the model in Matlab format can be loaded with cobrapy.",
+                "errors": "File missing",
+                "status": false,
+                "version": "0.26.2"
               },
               "cobrapy-load-sbml": {
-                "0.26.2": true,
-                "errors": ""
+                "description": "Check if the model in SBML format can be loaded with cobrapy.",
+                "errors": "",
+                "status": true,
+                "version": "0.26.2"
               },
               "cobrapy-load-yaml": {
-                "0.26.2": true,
-                "errors": ""
+                "description": "Check if the model in YAML can be loaded with cobrapy.",
+                "errors": "",
+                "status": true,
+                "version": "0.26.2"
               },
               "cobrapy-validate-sbml": {
-                "0.26.2": false,
-                "errors": "\"{'SBML_FATAL': [], 'SBML_ERROR': [], 'SBML_SCHEMA_ERROR': [], 'SBML_WARNING': ['E0 (Warning): General SBML conformance (core, L3); RDF does not contain valid ModelHistory; LibSBML expected to read the annotation into a ModelHistory object. Unfortunately, some attributes were not present or correct and the resulting ModelHistory object will not correctly produce the annotation.  This functionality will be improved in later versions of libSBML. \\\\nReference: L3V1 Section 6.3\\\\n An invalid ModelHistory element has been stored.\\\\n', 'E1 (Warning): General SBML conformance (core, L3); RDF does not contain valid ModelHistory; LibSBML expected to read the annotation into a ModelHistory object. Unfortunately, some attributes were not present or correct and the resulting ModelHistory object will not correctly produce the annotation.  This functionality will be improved in later versions of libSBML. \\\\nReference: L3V1 Section 6.3\\\\n An invalid ModelHistory element has been stored.\\\\n'], 'COBRA_FATAL': [], 'COBRA_ERROR': [], 'COBRA_WARNING': [\\\"https://identifiers.org/taxonomy/ does not conform to 'http(s)://identifiers.org/collection/id' or'http(s)://identifiers.org/COLLECTION:id\\\"], 'COBRA_CHECK': []}\""
+                "description": "Check with cobrapy if the model in SBML format is valid.",
+                "errors": "",
+                "status": true,
+                "version": "0.26.2"
               },
               "memote-score": {
-                "0.13.0": 0.30222247915538863,
-                "errors": ""
+                "description": "Check the score of the model in SBML format with Memote.",
+                "errors": "",
+                "status": 0.30222247915538863,
+                "version": "0.13.0"
               },
               "yamllint": {
-                "1.29.0": true,
-                "errors": []
+                "description": "Check if the model in YAML format is formatted correctly.",
+                "errors": [],
+                "status": true,
+                "version": "1.29.0"
               }
             }
           }
@@ -50,32 +174,46 @@
           {
             "test_results": {
               "cobrapy-load-json": {
-                "0.26.2": false,
-                "errors": "\"[Errno 2] No such file or directory: 'Mouse-GEM.json'\""
+                "description": "Check if the model in JSON format can be loaded with cobrapy.",
+                "errors": "File missing",
+                "status": false,
+                "version": "0.26.2"
               },
               "cobrapy-load-matlab": {
-                "0.26.2": false,
-                "errors": "\"Error -3 while decompressing data: incorrect header check\""
+                "description": "Check if the model in Matlab format can be loaded with cobrapy.",
+                "errors": "File missing",
+                "status": false,
+                "version": "0.26.2"
               },
               "cobrapy-load-sbml": {
-                "0.26.2": true,
-                "errors": ""
+                "description": "Check if the model in SBML format can be loaded with cobrapy.",
+                "errors": "",
+                "status": true,
+                "version": "0.26.2"
               },
               "cobrapy-load-yaml": {
-                "0.26.2": true,
-                "errors": ""
+                "description": "Check if the model in YAML can be loaded with cobrapy.",
+                "errors": "",
+                "status": true,
+                "version": "0.26.2"
               },
               "cobrapy-validate-sbml": {
-                "0.26.2": false,
-                "errors": "\"{'SBML_FATAL': [], 'SBML_ERROR': [], 'SBML_SCHEMA_ERROR': [], 'SBML_WARNING': ['E0 (Warning): General SBML conformance (core, L3); RDF does not contain valid ModelHistory; LibSBML expected to read the annotation into a ModelHistory object. Unfortunately, some attributes were not present or correct and the resulting ModelHistory object will not correctly produce the annotation.  This functionality will be improved in later versions of libSBML. \\\\nReference: L3V1 Section 6.3\\\\n An invalid ModelHistory element has been stored.\\\\n', 'E1 (Warning): General SBML conformance (core, L3); RDF does not contain valid ModelHistory; LibSBML expected to read the annotation into a ModelHistory object. Unfortunately, some attributes were not present or correct and the resulting ModelHistory object will not correctly produce the annotation.  This functionality will be improved in later versions of libSBML. \\\\nReference: L3V1 Section 6.3\\\\n An invalid ModelHistory element has been stored.\\\\n'], 'COBRA_FATAL': [], 'COBRA_ERROR': [], 'COBRA_WARNING': [\\\"https://identifiers.org/taxonomy/ does not conform to 'http(s)://identifiers.org/collection/id' or'http(s)://identifiers.org/COLLECTION:id\\\"], 'COBRA_CHECK': []}\""
+                "description": "Check with cobrapy if the model in SBML format is valid.",
+                "errors": "",
+                "status": true,
+                "version": "0.26.2"
               },
               "memote-score": {
-                "0.13.0": 0.3020616782073982,
-                "errors": ""
+                "description": "Check the score of the model in SBML format with Memote.",
+                "errors": "",
+                "status": 0.3020616782073982,
+                "version": "0.13.0"
               },
               "yamllint": {
-                "1.29.0": true,
-                "errors": []
+                "description": "Check if the model in YAML format is formatted correctly.",
+                "errors": [],
+                "status": true,
+                "version": "1.29.0"
               }
             }
           }
@@ -91,32 +229,46 @@
           {
             "test_results": {
               "cobrapy-load-json": {
-                "0.26.2": false,
-                "errors": "\"[Errno 2] No such file or directory: 'Mouse-GEM.json'\""
+                "description": "Check if the model in JSON format can be loaded with cobrapy.",
+                "errors": "File missing",
+                "status": false,
+                "version": "0.26.2"
               },
               "cobrapy-load-matlab": {
-                "0.26.2": false,
-                "errors": "\"Error -3 while decompressing data: incorrect header check\""
+                "description": "Check if the model in Matlab format can be loaded with cobrapy.",
+                "errors": "File missing",
+                "status": false,
+                "version": "0.26.2"
               },
               "cobrapy-load-sbml": {
-                "0.26.2": true,
-                "errors": ""
+                "description": "Check if the model in SBML format can be loaded with cobrapy.",
+                "errors": "",
+                "status": true,
+                "version": "0.26.2"
               },
               "cobrapy-load-yaml": {
-                "0.26.2": true,
-                "errors": ""
+                "description": "Check if the model in YAML can be loaded with cobrapy.",
+                "errors": "",
+                "status": true,
+                "version": "0.26.2"
               },
               "cobrapy-validate-sbml": {
-                "0.26.2": false,
-                "errors": "\"{'SBML_FATAL': [], 'SBML_ERROR': [], 'SBML_SCHEMA_ERROR': [], 'SBML_WARNING': ['E0 (Warning): General SBML conformance (core, L3); RDF does not contain valid ModelHistory; LibSBML expected to read the annotation into a ModelHistory object. Unfortunately, some attributes were not present or correct and the resulting ModelHistory object will not correctly produce the annotation.  This functionality will be improved in later versions of libSBML. \\\\nReference: L3V1 Section 6.3\\\\n An invalid ModelHistory element has been stored.\\\\n', 'E1 (Warning): General SBML conformance (core, L3); RDF does not contain valid ModelHistory; LibSBML expected to read the annotation into a ModelHistory object. Unfortunately, some attributes were not present or correct and the resulting ModelHistory object will not correctly produce the annotation.  This functionality will be improved in later versions of libSBML. \\\\nReference: L3V1 Section 6.3\\\\n An invalid ModelHistory element has been stored.\\\\n'], 'COBRA_FATAL': [], 'COBRA_ERROR': [], 'COBRA_WARNING': [\\\"https://identifiers.org/taxonomy/ does not conform to 'http(s)://identifiers.org/collection/id' or'http(s)://identifiers.org/COLLECTION:id\\\"], 'COBRA_CHECK': []}\""
+                "description": "Check with cobrapy if the model in SBML format is valid.",
+                "errors": "",
+                "status": true,
+                "version": "0.26.2"
               },
               "memote-score": {
-                "0.13.0": 0.46496787982446,
-                "errors": ""
+                "description": "Check the score of the model in SBML format with Memote.",
+                "errors": "",
+                "status": 0.46496787982446,
+                "version": "0.13.0"
               },
               "yamllint": {
-                "1.29.0": true,
-                "errors": []
+                "description": "Check if the model in YAML format is formatted correctly.",
+                "errors": [],
+                "status": true,
+                "version": "1.29.0"
               }
             }
           }
@@ -132,73 +284,46 @@
           {
             "test_results": {
               "cobrapy-load-json": {
-                "0.26.2": false,
-                "errors": "\"[Errno 2] No such file or directory: 'Mouse-GEM.json'\""
+                "description": "Check if the model in JSON format can be loaded with cobrapy.",
+                "errors": "File missing",
+                "status": false,
+                "version": "0.26.2"
               },
               "cobrapy-load-matlab": {
-                "0.26.2": false,
-                "errors": "\"Error -3 while decompressing data: incorrect header check\""
+                "description": "Check if the model in Matlab format can be loaded with cobrapy.",
+                "errors": "File missing",
+                "status": false,
+                "version": "0.26.2"
               },
               "cobrapy-load-sbml": {
-                "0.26.2": true,
-                "errors": ""
+                "description": "Check if the model in SBML format can be loaded with cobrapy.",
+                "errors": "",
+                "status": true,
+                "version": "0.26.2"
               },
               "cobrapy-load-yaml": {
-                "0.26.2": true,
-                "errors": ""
+                "description": "Check if the model in YAML can be loaded with cobrapy.",
+                "errors": "",
+                "status": true,
+                "version": "0.26.2"
               },
               "cobrapy-validate-sbml": {
-                "0.26.2": false,
-                "errors": "\"{'SBML_FATAL': [], 'SBML_ERROR': [], 'SBML_SCHEMA_ERROR': [], 'SBML_WARNING': ['E0 (Warning): General SBML conformance (core, L3); RDF does not contain valid ModelHistory; LibSBML expected to read the annotation into a ModelHistory object. Unfortunately, some attributes were not present or correct and the resulting ModelHistory object will not correctly produce the annotation.  This functionality will be improved in later versions of libSBML. \\\\nReference: L3V1 Section 6.3\\\\n An invalid ModelHistory element has been stored.\\\\n', 'E1 (Warning): General SBML conformance (core, L3); RDF does not contain valid ModelHistory; LibSBML expected to read the annotation into a ModelHistory object. Unfortunately, some attributes were not present or correct and the resulting ModelHistory object will not correctly produce the annotation.  This functionality will be improved in later versions of libSBML. \\\\nReference: L3V1 Section 6.3\\\\n An invalid ModelHistory element has been stored.\\\\n'], 'COBRA_FATAL': [], 'COBRA_ERROR': [], 'COBRA_WARNING': [\\\"https://identifiers.org/taxonomy/ does not conform to 'http(s)://identifiers.org/collection/id' or'http(s)://identifiers.org/COLLECTION:id\\\"], 'COBRA_CHECK': []}\""
+                "description": "Check with cobrapy if the model in SBML format is valid.",
+                "errors": "",
+                "status": true,
+                "version": "0.26.2"
               },
               "memote-score": {
-                "0.13.0": 0.46526268303774065,
-                "errors": ""
+                "description": "Check the score of the model in SBML format with Memote.",
+                "errors": "",
+                "status": 0.46526268303774065,
+                "version": "0.13.0"
               },
               "yamllint": {
-                "1.29.0": true,
-                "errors": []
-              }
-            }
-          }
-        ]
-      }
-    },
-    {
-      "v1.3.1": {
-        "standard-GEM": [
-          {
-            "0.4": true
-          },
-          {
-            "test_results": {
-              "cobrapy-load-json": {
-                "0.26.2": false,
-                "errors": "\"[Errno 2] No such file or directory: 'Mouse-GEM.json'\""
-              },
-              "cobrapy-load-matlab": {
-                "0.26.2": false,
-                "errors": "\"Error -3 while decompressing data: incorrect header check\""
-              },
-              "cobrapy-load-sbml": {
-                "0.26.2": true,
-                "errors": ""
-              },
-              "cobrapy-load-yaml": {
-                "0.26.2": true,
-                "errors": ""
-              },
-              "cobrapy-validate-sbml": {
-                "0.26.2": false,
-                "errors": "\"{'SBML_FATAL': [], 'SBML_ERROR': [], 'SBML_SCHEMA_ERROR': [], 'SBML_WARNING': ['E0 (Warning): General SBML conformance (core, L3); RDF does not contain valid ModelHistory; LibSBML expected to read the annotation into a ModelHistory object. Unfortunately, some attributes were not present or correct and the resulting ModelHistory object will not correctly produce the annotation.  This functionality will be improved in later versions of libSBML. \\\\nReference: L3V1 Section 6.3\\\\n An invalid ModelHistory element has been stored.\\\\n', 'E1 (Warning): General SBML conformance (core, L3); RDF does not contain valid ModelHistory; LibSBML expected to read the annotation into a ModelHistory object. Unfortunately, some attributes were not present or correct and the resulting ModelHistory object will not correctly produce the annotation.  This functionality will be improved in later versions of libSBML. \\\\nReference: L3V1 Section 6.3\\\\n An invalid ModelHistory element has been stored.\\\\n'], 'COBRA_FATAL': [], 'COBRA_ERROR': [], 'COBRA_WARNING': [\\\"https://identifiers.org/taxonomy/ does not conform to 'http(s)://identifiers.org/collection/id' or'http(s)://identifiers.org/COLLECTION:id\\\"], 'COBRA_CHECK': []}\""
-              },
-              "memote-score": {
-                "0.13.0": 0.46693522976473417,
-                "errors": ""
-              },
-              "yamllint": {
-                "1.29.0": true,
-                "errors": []
+                "description": "Check if the model in YAML format is formatted correctly.",
+                "errors": [],
+                "status": true,
+                "version": "1.29.0"
               }
             }
           }
