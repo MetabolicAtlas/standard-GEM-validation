@@ -28,7 +28,7 @@
               },
               "cobrapy-load-yaml": {
                 "description": "Check if the model in YAML can be loaded with cobrapy.",
-                "errors": "\"Unsupported operation: <ast.Subscript object at 0x7fb9b929dc40>\"",
+                "errors": "\"Unsupported operation: <ast.Subscript object at 0x7fc7eb999c10>\"",
                 "status": false,
                 "version": "0.26.2"
               },
@@ -83,7 +83,7 @@
               },
               "cobrapy-load-yaml": {
                 "description": "Check if the model in YAML can be loaded with cobrapy.",
-                "errors": "\"Unsupported operation: <ast.Subscript object at 0x7fb9b225d6d0>\"",
+                "errors": "\"Unsupported operation: <ast.Subscript object at 0x7fc7e52a0e50>\"",
                 "status": false,
                 "version": "0.26.2"
               },
@@ -138,7 +138,7 @@
               },
               "cobrapy-load-yaml": {
                 "description": "Check if the model in YAML can be loaded with cobrapy.",
-                "errors": "\"Unsupported operation: <ast.Subscript object at 0x7fb9a8040fa0>\"",
+                "errors": "\"Unsupported operation: <ast.Subscript object at 0x7fc805152ac0>\"",
                 "status": false,
                 "version": "0.26.2"
               },
@@ -193,7 +193,7 @@
               },
               "cobrapy-load-yaml": {
                 "description": "Check if the model in YAML can be loaded with cobrapy.",
-                "errors": "\"Unsupported operation: <ast.Subscript object at 0x7fb95ce5c250>\"",
+                "errors": "\"Unsupported operation: <ast.Subscript object at 0x7fc78d6fc130>\"",
                 "status": false,
                 "version": "0.26.2"
               },
@@ -248,7 +248,7 @@
               },
               "cobrapy-load-yaml": {
                 "description": "Check if the model in YAML can be loaded with cobrapy.",
-                "errors": "\"Unsupported operation: <ast.Subscript object at 0x7fb9669a08b0>\"",
+                "errors": "\"Unsupported operation: <ast.Subscript object at 0x7fc79de9f7c0>\"",
                 "status": false,
                 "version": "0.26.2"
               },
@@ -303,20 +303,20 @@
               },
               "cobrapy-load-yaml": {
                 "description": "Check if the model in YAML can be loaded with cobrapy.",
-                "errors": "\"Unsupported operation: <ast.Subscript object at 0x7fb95fc7f610>\"",
+                "errors": "\"Unsupported operation: <ast.Subscript object at 0x7fc7b11950a0>\"",
                 "status": false,
                 "version": "0.26.2"
               },
               "cobrapy-validate-sbml": {
                 "description": "Check with cobrapy if the model in SBML format is valid.",
-                "errors": "\"{'SBML_FATAL': [], 'SBML_ERROR': [\\\"E2 (Error): SBML component consistency (fbc, L133118); 'fbc:geneProduct' must point to existing <GeneProduct>; The attribute 'fbc:geneProduct' on a <GeneProductRef>  if set, must refer to 'id' of a <GeneProduct> in the <Model>. \\\\nReference: L3V1 Fbc V3 Section 3",
+                "errors": "\"{'SBML_FATAL': [], 'SBML_ERROR': [\\\"E2 (Error): SBML component consistency (fbc, L132529); 'fbc:geneProduct' must point to existing <GeneProduct>; The attribute 'fbc:geneProduct' on a <GeneProductRef>  if set, must refer to 'id' of a <GeneProduct> in the <Model>. \\\\nReference: L3V1 Fbc V3 Section 3",
                 "status": false,
                 "version": "0.26.2"
               },
               "memote-score": {
                 "description": "Check the score of the model in SBML format with Memote.",
                 "errors": "",
-                "status": 0.46538161144096635,
+                "status": 0.46512820654439235,
                 "version": "0.13.0"
               },
               "yamllint": {
