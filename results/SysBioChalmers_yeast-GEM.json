@@ -151,7 +151,7 @@
               "memote-score": {
                 "description": "Check the score of the model in SBML format with Memote.",
                 "errors": "",
-                "status": 0.33274428177362786,
+                "status": 0.3332655589625404,
                 "version": "0.13.0"
               },
               "yamllint": {
