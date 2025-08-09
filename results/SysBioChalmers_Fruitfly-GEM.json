@@ -28,7 +28,7 @@
               },
               "cobrapy-load-yaml": {
                 "description": "Check if the model in YAML can be loaded with cobrapy.",
-                "errors": "\"Unsupported operation: <ast.Subscript object at 0x7f1c58fecc40>\"",
+                "errors": "\"Unsupported operation: <ast.Subscript object at 0x7ff5b7ba6cd0>\"",
                 "status": false,
                 "version": "0.26.2"
               },
@@ -83,7 +83,7 @@
               },
               "cobrapy-load-yaml": {
                 "description": "Check if the model in YAML can be loaded with cobrapy.",
-                "errors": "\"Unsupported operation: <ast.Subscript object at 0x7f1c4b18af70>\"",
+                "errors": "\"Unsupported operation: <ast.Subscript object at 0x7ff5a3ae9520>\"",
                 "status": false,
                 "version": "0.26.2"
               },
@@ -138,20 +138,20 @@
               },
               "cobrapy-load-yaml": {
                 "description": "Check if the model in YAML can be loaded with cobrapy.",
-                "errors": "\"Unsupported operation: <ast.Subscript object at 0x7f1c5e9b0580>\"",
+                "errors": "\"Unsupported operation: <ast.Subscript object at 0x7ff5b749cee0>\"",
                 "status": false,
                 "version": "0.26.2"
               },
               "cobrapy-validate-sbml": {
                 "description": "Check with cobrapy if the model in SBML format is valid.",
-                "errors": "\"{'SBML_FATAL': [], 'SBML_ERROR': [\\\"E2 (Error): SBML component consistency (fbc, L132896); 'fbc:geneProduct' must point to existing <GeneProduct>; The attribute 'fbc:geneProduct' on a <GeneProductRef>  if set, must refer to 'id' of a <GeneProduct> in the <Model>. \\\\nReference: L3V1 Fbc V3 Section 3",
+                "errors": "\"{'SBML_FATAL': [], 'SBML_ERROR': [\\\"E2 (Error): SBML component consistency (fbc, L132953); 'fbc:geneProduct' must point to existing <GeneProduct>; The attribute 'fbc:geneProduct' on a <GeneProductRef>  if set, must refer to 'id' of a <GeneProduct> in the <Model>. \\\\nReference: L3V1 Fbc V3 Section 3",
                 "status": false,
                 "version": "0.26.2"
               },
               "memote-score": {
                 "description": "Check the score of the model in SBML format with Memote.",
                 "errors": "",
-                "status": 0.30122216828365445,
+                "status": 0.30115813692792104,
                 "version": "0.13.0"
               },
               "yamllint": {
@@ -193,20 +193,20 @@
               },
               "cobrapy-load-yaml": {
                 "description": "Check if the model in YAML can be loaded with cobrapy.",
-                "errors": "\"Unsupported operation: <ast.Subscript object at 0x7f1c40942280>\"",
+                "errors": "\"Unsupported operation: <ast.Subscript object at 0x7ff55d0a3820>\"",
                 "status": false,
                 "version": "0.26.2"
               },
               "cobrapy-validate-sbml": {
                 "description": "Check with cobrapy if the model in SBML format is valid.",
-                "errors": "\"{'SBML_FATAL': [], 'SBML_ERROR': [\\\"E2 (Error): SBML component consistency (fbc, L132896); 'fbc:geneProduct' must point to existing <GeneProduct>; The attribute 'fbc:geneProduct' on a <GeneProductRef>  if set, must refer to 'id' of a <GeneProduct> in the <Model>. \\\\nReference: L3V1 Fbc V3 Section 3",
+                "errors": "\"{'SBML_FATAL': [], 'SBML_ERROR': [\\\"E2 (Error): SBML component consistency (fbc, L133547); 'fbc:geneProduct' must point to existing <GeneProduct>; The attribute 'fbc:geneProduct' on a <GeneProductRef>  if set, must refer to 'id' of a <GeneProduct> in the <Model>. \\\\nReference: L3V1 Fbc V3 Section 3",
                 "status": false,
                 "version": "0.26.2"
               },
               "memote-score": {
                 "description": "Check the score of the model in SBML format with Memote.",
                 "errors": "",
-                "status": 0.30122216828365445,
+                "status": 0.29755299500167076,
                 "version": "0.13.0"
               },
               "yamllint": {
@@ -248,20 +248,20 @@
               },
               "cobrapy-load-yaml": {
                 "description": "Check if the model in YAML can be loaded with cobrapy.",
-                "errors": "\"Unsupported operation: <ast.Subscript object at 0x7f1c457ef250>\"",
+                "errors": "\"Unsupported operation: <ast.Subscript object at 0x7ff5583b2e80>\"",
                 "status": false,
                 "version": "0.26.2"
               },
               "cobrapy-validate-sbml": {
                 "description": "Check with cobrapy if the model in SBML format is valid.",
-                "errors": "\"{'SBML_FATAL': [], 'SBML_ERROR': [\\\"E2 (Error): SBML component consistency (fbc, L132896); 'fbc:geneProduct' must point to existing <GeneProduct>; The attribute 'fbc:geneProduct' on a <GeneProductRef>  if set, must refer to 'id' of a <GeneProduct> in the <Model>. \\\\nReference: L3V1 Fbc V3 Section 3",
+                "errors": "\"{'SBML_FATAL': [], 'SBML_ERROR': [\\\"E2 (Error): SBML component consistency (fbc, L133118); 'fbc:geneProduct' must point to existing <GeneProduct>; The attribute 'fbc:geneProduct' on a <GeneProductRef>  if set, must refer to 'id' of a <GeneProduct> in the <Model>. \\\\nReference: L3V1 Fbc V3 Section 3",
                 "status": false,
                 "version": "0.26.2"
               },
               "memote-score": {
                 "description": "Check the score of the model in SBML format with Memote.",
                 "errors": "",
-                "status": 0.30122216828365445,
+                "status": 0.46538161144096635,
                 "version": "0.13.0"
               },
               "yamllint": {
@@ -303,20 +303,20 @@
               },
               "cobrapy-load-yaml": {
                 "description": "Check if the model in YAML can be loaded with cobrapy.",
-                "errors": "\"Unsupported operation: <ast.Subscript object at 0x7f1c453cc550>\"",
+                "errors": "\"Unsupported operation: <ast.Subscript object at 0x7ff5b9d22280>\"",
                 "status": false,
                 "version": "0.26.2"
               },
               "cobrapy-validate-sbml": {
                 "description": "Check with cobrapy if the model in SBML format is valid.",
-                "errors": "\"{'SBML_FATAL': [], 'SBML_ERROR': [\\\"E2 (Error): SBML component consistency (fbc, L132896); 'fbc:geneProduct' must point to existing <GeneProduct>; The attribute 'fbc:geneProduct' on a <GeneProductRef>  if set, must refer to 'id' of a <GeneProduct> in the <Model>. \\\\nReference: L3V1 Fbc V3 Section 3",
+                "errors": "\"{'SBML_FATAL': [], 'SBML_ERROR': [\\\"E2 (Error): SBML component consistency (fbc, L132529); 'fbc:geneProduct' must point to existing <GeneProduct>; The attribute 'fbc:geneProduct' on a <GeneProductRef>  if set, must refer to 'id' of a <GeneProduct> in the <Model>. \\\\nReference: L3V1 Fbc V3 Section 3",
                 "status": false,
                 "version": "0.26.2"
               },
               "memote-score": {
                 "description": "Check the score of the model in SBML format with Memote.",
                 "errors": "",
-                "status": 0.30122216828365445,
+                "status": 0.46512820654439235,
                 "version": "0.13.0"
               },
               "yamllint": {
