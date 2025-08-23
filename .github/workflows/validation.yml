@@ -17,8 +17,12 @@ jobs:
       matrix: ${{ steps.set-matrix.outputs.matrix }}
     env:
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GL_TOKEN: ${{ secrets.GL_TOKEN }}
 
     steps:
+      - name: Install jq
+        run: apt-get update && apt-get install -y jq
+
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
@@ -40,7 +44,9 @@ jobs:
 
       - name: Define job matrix from index
         id: set-matrix
-        run: echo "matrix=$(cat index.json)" >> $GITHUB_OUTPUT
+        run: |
+          MATRIX_JSON=$(jq -c '{include: [to_entries[] as $p | $p.value[] | {gem: ., provider: $p.key}]}' index.json)
+          echo "matrix=${MATRIX_JSON}" >> "$GITHUB_OUTPUT"
 
   validate:
     needs: setup
@@ -53,10 +59,10 @@ jobs:
     continue-on-error: true
     env:
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GL_TOKEN: ${{ secrets.GL_TOKEN }}
     strategy:
       fail-fast: false
-      matrix:
-        gem: ${{ fromJSON(needs.setup.outputs.matrix) }}
+      matrix: ${{ fromJson(needs.setup.outputs.matrix) }}
       # max-parallel: 1
 
     steps:
@@ -68,7 +74,7 @@ jobs:
       - name: Validate repository
         run: |
           git config --global --add safe.directory /__w/standard-GEM-validation/standard-GEM-validation
-          python -c 'import runner; runner.validate("${{ matrix.gem }}")'
+          python -c 'import runner; runner.validate("${{ matrix.gem }}", "${{ matrix.provider }}"))'
 
       - name: Update branch
         run: git pull --ff
