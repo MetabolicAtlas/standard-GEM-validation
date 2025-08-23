@@ -1,4 +1,4 @@
-name: validation
+name: GEM validation pipeline
 
 on:
   push:
@@ -74,7 +74,7 @@ jobs:
       - name: Validate repository
         run: |
           git config --global --add safe.directory /__w/standard-GEM-validation/standard-GEM-validation
-          python -c 'import runner; runner.validate("${{ matrix.gem }}", "${{ matrix.provider }}"))'
+          python -c 'import runner; runner.validate("${{ matrix.gem }}", "${{ matrix.provider }}")'
 
       - name: Update branch
         run: git pull --ff
