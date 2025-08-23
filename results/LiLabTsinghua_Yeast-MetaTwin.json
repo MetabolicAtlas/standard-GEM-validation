@@ -1,3 +1,16 @@
 {
-  "LiLabTsinghua/Yeast-MetaTwin": []
+  "LiLabTsinghua/Yeast-MetaTwin": [
+    {
+      "main": {
+        "standard-GEM": [
+          {
+            "0.4": false
+          },
+          {
+            "test_results": {}
+          }
+        ]
+      }
+    }
+  ]
 }

@@ -1,1 +1,25 @@
-["SysBioChalmers/Human-GEM", "SysBioChalmers/yeast-GEM", "SysBioChalmers/Mouse-GEM", "SysBioChalmers/Fruitfly-GEM", "SysBioChalmers/Zebrafish-GEM", "SysBioChalmers/Worm-GEM", "LiLabTsinghua/Yeast-MetaTwin", "SysBioChalmers/Sco-GEM", "iAMB-RWTH-Aachen/Opol-GSMM", "SysBioChalmers/Rat-GEM", "z-haiman/RBC-GEM", "tibbdc/vna-GEM", "AlmaasLab/T66-GEM", "mdziurzynski/iUmbe1-GEM", "FengxuSysbio/Mech-GEM", "Total-RD/Mgaditana-GEM", "SysBioChalmers/sint-GEM"]
+{
+  "github": [
+    "SysBioChalmers/Human-GEM",
+    "SysBioChalmers/yeast-GEM",
+    "SysBioChalmers/Mouse-GEM",
+    "SysBioChalmers/Fruitfly-GEM",
+    "SysBioChalmers/Zebrafish-GEM",
+    "SysBioChalmers/Worm-GEM",
+    "LiLabTsinghua/Yeast-MetaTwin",
+    "SysBioChalmers/Sco-GEM",
+    "iAMB-RWTH-Aachen/Opol-GSMM",
+    "SysBioChalmers/Rat-GEM",
+    "z-haiman/RBC-GEM",
+    "tibbdc/vna-GEM",
+    "AlmaasLab/T66-GEM",
+    "mdziurzynski/iUmbe1-GEM",
+    "FengxuSysbio/Mech-GEM",
+    "Total-RD/Mgaditana-GEM",
+    "SysBioChalmers/sint-GEM"
+  ],
+  "gitlab": [
+    "wurssb/Modelling/AWIEJM-GEM",
+    "wurssb/Modelling/Anaerotignum_neopropionicum"
+  ]
+}
