@@ -2,10 +2,12 @@
 
 import json
 import inspect
+import re
 import requests
 from importlib import import_module
 from os import environ
 from pathlib import Path
+from urllib.parse import quote, urlparse
 
 
 # GitHub configuration
@@ -26,6 +28,8 @@ MODEL_FILENAME = "model"
 MODEL_FORMATS = [".yml", ".xml", ".mat", ".json"]
 RELEASES = 5
 ADDITIONAL_BRANCH_TAGS = ["main"]
+AVATARS_DIR = Path("avatars")
+RESULTS_DIR = Path("results")
 
 
 def discover_tests():
@@ -55,7 +59,6 @@ TESTS = discover_tests()
 #     tests.yaml.validate,
 #     tests.memote.scoreAnnotationAndConsistency,
 # ]
-
 
 def github_repositories():
     """Return GitHub repositories tagged with standard-GEM excluding the template."""
@@ -117,6 +120,146 @@ def matrix():
 
     with open("index.json", "w") as file:
         json.dump(gem_repositories(), file, indent=2, sort_keys=True)
+
+def repository_metadata(name_with_owner, provider, existing_avatar=None):
+    """Return metadata for a repository.
+
+    If ``existing_avatar`` is provided, it will be reused and no new
+    avatar will be downloaded.
+    """
+
+    owner, repo = name_with_owner.rsplit("/", 1)
+    if provider == "github":
+        json_request = {
+            "query": f"""
+            {{
+                repository(owner: \"{owner}\", name: \"{repo}\") {{
+                    owner {{
+                        login
+                        ... on Organization {{ avatarUrl name }}
+                        ... on User {{ avatarUrl name }}
+                    }}
+                    defaultBranchRef {{
+                        target {{
+                            ... on Commit {{
+                                committedDate
+                                history {{ totalCount }}
+                            }}
+                        }}
+                    }}
+                }}
+            }}
+            """,
+        }
+        response = requests.post(
+            GITHUB_ENDPOINT, json=json_request, headers=GITHUB_HEADERS, timeout=10
+        )
+        response.raise_for_status()
+        repo_data = response.json()["data"]["repository"]
+        commit_data = repo_data["defaultBranchRef"]["target"]
+        commit_count = commit_data["history"]["totalCount"]
+        latest_commit_date = commit_data["committedDate"]
+        owner_data = repo_data["owner"]
+        owner_name = owner_data.get("login")
+        avatar_url = owner_data.get("avatarUrl")
+        avatar_filename = existing_avatar
+        if not avatar_filename and avatar_url:
+            AVATARS_DIR.mkdir(exist_ok=True)
+            ext = Path(urlparse(avatar_url).path).suffix or ".png"
+            safe_owner = re.sub(r"[^A-Za-z0-9._-]", "_", owner_name or "avatar")
+            filename = f"{safe_owner}{ext}"
+            file_path = AVATARS_DIR / filename
+            if not file_path.exists():
+                img_resp = requests.get(avatar_url, timeout=10)
+                img_resp.raise_for_status()
+                with open(file_path, "wb") as img_file:
+                    img_file.write(img_resp.content)
+            avatar_filename = filename
+        contrib_url = (
+            f"https://api.github.com/repos/{owner}/{repo}/contributors?per_page=1&anon=true"
+        )
+        contrib_response = requests.get(
+            contrib_url, headers=GITHUB_HEADERS, timeout=10
+        )
+        contrib_response.raise_for_status()
+        if "link" in contrib_response.headers:
+            match = re.search(
+                r"&page=(\d+)>; rel=\"last\"",
+                contrib_response.headers["link"],
+            )
+            if match:
+                contributor_count = int(match.group(1))
+            else:
+                contributor_count = len(contrib_response.json())
+        else:
+            contributor_count = len(contrib_response.json())
+
+        return {
+            "commits": commit_count,
+            "contributors": contributor_count,
+            "latest_commit_date": latest_commit_date,
+            "owner": owner_name,
+            "avatar": avatar_filename,
+        }
+
+    elif provider == "gitlab":
+        encoded = quote(name_with_owner, safe="")
+        headers = {"Private-Token": GITLAB_TOKEN}
+        project_response = requests.get(
+            f"https://gitlab.com/api/v4/projects/{encoded}",
+            headers=headers,
+            timeout=10,
+        )
+        project_response.raise_for_status()
+        project = project_response.json()
+        namespace = project.get("namespace", {})
+        owner_name = (
+            namespace.get("full_path")
+            or namespace.get("name")
+            or name_with_owner.split("/")[0]
+        )
+        avatar_url = namespace.get("avatar_url")
+        avatar_filename = existing_avatar
+        if not avatar_filename and avatar_url:
+            AVATARS_DIR.mkdir(exist_ok=True)
+            ext = Path(urlparse(avatar_url).path).suffix or ".png"
+            safe_owner = re.sub(r"[^A-Za-z0-9._-]", "_", owner_name or "avatar")
+            filename = f"{safe_owner}{ext}"
+            file_path = AVATARS_DIR / filename
+            if not file_path.exists():
+                img_resp = requests.get(avatar_url, timeout=10)
+                img_resp.raise_for_status()
+                with open(file_path, "wb") as img_file:
+                    img_file.write(img_resp.content)
+            avatar_filename = filename
+        commits_response = requests.get(
+            f"https://gitlab.com/api/v4/projects/{project['id']}/repository/commits?per_page=1",
+            headers=headers,
+            timeout=10,
+        )
+        commits_response.raise_for_status()
+        commits = commits_response.json()
+        latest_commit_date = commits[0]["committed_date"] if commits else None
+        commit_count = int(commits_response.headers.get("X-Total", len(commits)))
+
+        contributors_response = requests.get(
+            f"https://gitlab.com/api/v4/projects/{project['id']}/repository/contributors",
+            headers=headers,
+            timeout=10,
+        )
+        contributors_response.raise_for_status()
+        contributor_count = len(contributors_response.json())
+
+        return {
+            "commits": commit_count,
+            "contributors": contributor_count,
+            "latest_commit_date": latest_commit_date,
+            "owner": owner_name,
+            "avatar": avatar_filename,
+        }
+
+    else:
+        raise ValueError(f"Unknown provider: {provider}")
 
 ###### Per-repository validation below ######
 
@@ -193,7 +336,21 @@ def validate(name_with_owner, provider):
     """Validate a repository and write test results to disk."""
 
     owner, model = name_with_owner.rsplit("/", 1)
-    data = {name_with_owner: []}
+    filename = RESULTS_DIR / f"{model}.json"
+    prev_avatar = None
+    if filename.exists():
+        with open(filename) as file:
+            previous = json.load(file)
+        prev_avatar = (
+            previous.get(model, {})
+            .get("metadata", {})
+            .get("avatar")
+        )
+    metadata = repository_metadata(
+        name_with_owner, provider, existing_avatar=prev_avatar
+    )
+    metadata.setdefault("owner", owner)
+    data = {model: {"metadata": metadata, "releases": []}}
     standard_versions = releases("MetabolicAtlas/standard-GEM", "github")[-1:]
     for model_release in releases(name_with_owner, provider):
         release_data = {}
@@ -232,10 +389,7 @@ def validate(name_with_owner, provider):
                     {"test_results": test_results},
                 ]
             }
-        data[name_with_owner].append({model_release: release_data})
-    results_dir = Path("results")
-    results_dir.mkdir(exist_ok=True)
-    filename = results_dir / f"{owner}_{model}.json"
+        data[model]["releases"].append({model_release: release_data})
     with open(filename, "w") as output:
         json.dump(data, output, indent=2, sort_keys=True)
 

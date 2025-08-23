@@ -84,6 +84,6 @@ jobs:
         with:
           commit_user_name: validation-bot
           commit_message: update validation results for ${{ matrix.gem }}
-          file_pattern: results/*.json
+          file_pattern: 'results/*.json avatars/*'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
