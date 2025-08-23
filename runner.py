@@ -123,7 +123,7 @@ def matrix():
 def releases(name_with_owner, provider):
     """Return release tags for a given repository."""
 
-    owner, repo = name_with_owner.split("/")
+    owner, repo = name_with_owner.rsplit("/", 1)
     release_tags = []
     if provider == "github":
         json_request = {
@@ -149,7 +149,7 @@ def releases(name_with_owner, provider):
     elif provider == "gitlab":
         json_request = {
             "query": f"""
-            {{ project(fullPath: \"{owner}/{repo}\") {{
+            {{ project(fullPath: \"{name_with_owner}\") {{
                 releases(first: {RELEASES}) {{
                     edges {{ node {{ tagName }} }}
                 }}
@@ -192,7 +192,7 @@ def gem_follows_standard(name_with_owner, release, version, provider):
 def validate(name_with_owner, provider):
     """Validate a repository and write test results to disk."""
 
-    owner, model = name_with_owner.split("/")
+    owner, model = name_with_owner.rsplit("/", 1)
     data = {name_with_owner: []}
     standard_versions = releases("MetabolicAtlas/standard-GEM", "github")[-1:]
     for model_release in releases(name_with_owner, provider):
