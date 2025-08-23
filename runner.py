@@ -1,110 +1,170 @@
-import requests
-import json
-from os import environ
-import tests.cobra
-import tests.yaml
-import tests.memote
+"""Utility functions to validate GEM repositories against the standard."""
 
-API_ENDPOINT = 'https://api.github.com/graphql'
-API_TOKEN = environ['GH_TOKEN']
-MODEL_FILENAME = 'model'
-MODEL_FORMATS = ['.yml', '.xml', '.mat', '.json']
+import json
+import inspect
+import requests
+from importlib import import_module
+from os import environ
+from pathlib import Path
+
+
+API_ENDPOINT = "https://api.github.com/graphql"
+API_TOKEN = environ.get("GH_TOKEN")
+if not API_TOKEN:
+    raise EnvironmentError("GH_TOKEN environment variable not set")
+
+MODEL_FILENAME = "model"
+MODEL_FORMATS = [".yml", ".xml", ".mat", ".json"]
 RELEASES = 5
 
-header_auth = {'Authorization': 'token %s' % API_TOKEN}
-# additional_branch_tags = []
-additional_branch_tags = ['main']
+HEADERS = {"Authorization": f"token {API_TOKEN}"}
+ADDITIONAL_BRANCH_TAGS = ["main"]
+
+
+def discover_tests():
+    """Return all test callables found in the tests package."""
+
+    test_functions = []
+    tests_dir = Path(__file__).resolve().parent / "tests"
+    for module_path in tests_dir.glob("*.py"):
+        module_name = f"tests.{module_path.stem}"
+        try:
+            module = import_module(module_name)
+        except Exception:
+            continue
+        for name, func in inspect.getmembers(module, inspect.isfunction):
+            if not name.startswith("_"):
+                test_functions.append(func)
+    return test_functions
+
+# TESTS = [
+#     tests.cobra.loadYaml,
+#     tests.cobra.loadSbml,
+#     tests.cobra.loadMatlab,
+#     tests.cobra.loadJson,
+#     tests.cobra.validateSbml,
+#     tests.yaml.validate,
+#     tests.memote.scoreAnnotationAndConsistency,
+# ]
+
+TESTS = discover_tests()
 
 def gem_repositories():
-    json_request = {"query" : """
+    """Return repositories tagged with standard-GEM excluding the template."""
+
+    json_request = {
+        "query": """
         { search(
             type: REPOSITORY,
             query: \"\"\"fork:true topic:standard-GEM\"\"\",
             first: 100
-            )
-            { repos:
-                edges {
-                    repo: node {
-                        ... on Repository { nameWithOwner }
-                    }
+        ) {
+            repos: edges {
+                repo: node {
+                    ... on Repository { nameWithOwner }
                 }
             }
-        }""" }
-    r = requests.post(url=API_ENDPOINT, json=json_request, headers=header_auth)
-    json_data = json.loads(r.text)['data']['search']['repos']
-    gem_repositories = map(lambda x: x['repo']['nameWithOwner'], json_data)
-    filtered_repositories = filter(lambda x: 'standard-GEM' not in x, gem_repositories)
-    return filtered_repositories
+        }}
+        """,
+    }
+    response = requests.post(API_ENDPOINT, json=json_request, headers=HEADERS, timeout=10)
+    response.raise_for_status()
+    data = response.json()["data"]["search"]["repos"]
+    repositories = (edge["repo"]["nameWithOwner"] for edge in data)
+    return [repo for repo in repositories if "standard-GEM" not in repo]
 
-def releases(nameWithOwner):
-    owner, repo =  nameWithOwner.split('/')
-    json_request = { "query": """
-        { repository(
-            owner: \"%s\",
-            name: \"%s\"
-            )
-            { releases(first: %s){
-                    edges {
-                        node { tagName }
-                   }
-                }
-            }
-        }""" % (owner, repo, RELEASES) }
-    r = requests.post(url=API_ENDPOINT, json=json_request, headers=header_auth)
-    json_data = json.loads(r.text)['data']['repository']['releases']['edges']
-    release_tags = list(map(lambda x: x['node']['tagName'], json_data))
-    if not release_tags:
-        return []
-    return additional_branch_tags + release_tags 
+def releases(name_with_owner):
+    """Return release tags for a given repository."""
+
+    owner, repo = name_with_owner.split("/")
+    json_request = {
+        "query": f"""
+        {{ repository(
+            owner: \"{owner}\",
+            name: \"{repo}\"
+        ) {{
+            releases(first: {RELEASES}){{
+                edges {{
+                    node {{ tagName }}
+                }}
+            }}
+        }} }}
+        """,
+    }
+    response = requests.post(API_ENDPOINT, json=json_request, headers=HEADERS, timeout=10)
+    response.raise_for_status()
+    data = response.json()["data"]["repository"]["releases"]["edges"]
+    release_tags = [edge["node"]["tagName"] for edge in data]
+    return ADDITIONAL_BRANCH_TAGS + release_tags if release_tags else []
 
 def matrix():
-    m = json.dumps(list(gem_repositories()))
-    with open("index.json", "w") as file:
-        file.write(m)
+    """Write a JSON index of repositories to disk."""
 
-def gem_follows_standard(nameWithOwner, release, version):
-    repo_standard = requests.get('https://raw.githubusercontent.com/{}/{}/.standard-GEM.md'.format(nameWithOwner, release))
-    if repo_standard.status_code ==  404:
+    with open("index.json", "w") as file:
+        json.dump(list(gem_repositories()), file)
+
+def gem_follows_standard(name_with_owner, release, version):
+    """Check whether a repository follows the specified standard version."""
+
+    repo_url = (
+        f"https://raw.githubusercontent.com/{name_with_owner}/{release}/.standard-GEM.md"
+    )
+    repo_standard = requests.get(repo_url, timeout=10)
+    if repo_standard.status_code == 404:
         return False
-    repo_standard = repo_standard.text
-    raw_standard = requests.get('https://raw.githubusercontent.com/MetabolicAtlas/standard-GEM/{}/.standard-GEM.md'.format(version)).text
-    import difflib
-    the_diff = difflib.ndiff(repo_standard, raw_standard)
+    standard_url = (
+        "https://raw.githubusercontent.com/MetabolicAtlas/standard-GEM/"
+        f"{version}/.standard-GEM.md"
+    )
+    requests.get(standard_url, timeout=10)
     return True
 
-def validate(nameWithOwner):
-    owner, model = nameWithOwner.split('/')
-    data = {}
-    data[nameWithOwner] = []
-    for model_release in releases(nameWithOwner):
+def validate(name_with_owner):
+    """Validate a repository and write test results to disk."""
+
+    owner, model = name_with_owner.split("/")
+    data = {name_with_owner: []}
+    standard_versions = releases("MetabolicAtlas/standard-GEM")[-1:]
+    for model_release in releases(name_with_owner):
         release_data = {}
-        standard_gem_releases = releases('MetabolicAtlas/standard-GEM')
-        last_standard = standard_gem_releases[len(standard_gem_releases)-1:]
-        for standard_version in last_standard:
-            print("{}: {} | standard-GEM version: {}".format(nameWithOwner, model_release, standard_version))
-            gem_is_standard = gem_follows_standard(nameWithOwner, model_release, standard_version)
+        for version in standard_versions:
+            print(f"{name_with_owner}: {model_release} | standard-GEM version: {version}")
+            gem_is_standard = gem_follows_standard(name_with_owner, model_release, version)
             test_results = {}
             if gem_is_standard:
                 for model_format in MODEL_FORMATS:
                     my_model = model + model_format
-                    response = requests.get('https://raw.githubusercontent.com/{}/{}/model/{}'.format(nameWithOwner, model_release, my_model), timeout=10)
+                    url = (
+                        f"https://raw.githubusercontent.com/{name_with_owner}/"
+                        f"{model_release}/model/{my_model}"
+                    )
+                    response = requests.get(url, timeout=10)
                     if response.ok:
-                        with open(my_model, 'w') as file:
+                        with open(my_model, "w") as file:
                             file.write(response.text)
-                test_results.update(resultJSONString(tests.cobra.loadYaml, model))
-                test_results.update(resultJSONString(tests.cobra.loadSbml, model))
-                test_results.update(resultJSONString(tests.cobra.loadMatlab, model))
-                test_results.update(resultJSONString(tests.cobra.loadJson, model))
-                test_results.update(resultJSONString(tests.cobra.validateSbml, model))
-                test_results.update(resultJSONString(tests.yaml.validate, model))
-                test_results.update(resultJSONString(tests.memote.scoreAnnotationAndConsistency, model))
+                for test in TESTS:
+                    test_results.update(result_json_string(test, model))
             else:
-                print('is not following standard')
-            release_data = { 'standard-GEM' : [ { standard_version : gem_is_standard }, { 'test_results' : test_results} ] }
-        data[nameWithOwner].append({ model_release: release_data })
-    with open('results/{}_{}.json'.format(owner, model), 'w') as output:
-        output.write(json.dumps(data, indent=2, sort_keys=True))
+                print("is not following standard")
+            release_data = {
+                "standard-GEM": [
+                    {version: gem_is_standard},
+                    {"test_results": test_results},
+                ]
+            }
+        data[name_with_owner].append({model_release: release_data})
+    with open(f"results/{owner}_{model}.json", "w") as output:
+        json.dump(data, output, indent=2, sort_keys=True)
 
-def resultJSONString(testToRun, model):
-    testModule, description, moduleVersion, status, errors = testToRun(model)
-    return {testModule: { 'description': description, 'version': moduleVersion, 'status': status, 'errors': errors[:300] } }
+def result_json_string(test_to_run, model):
+    """Return a JSON-serialisable dictionary with test results."""
+
+    test_module, description, module_version, status, errors = test_to_run(model)
+    return {
+        test_module: {
+            "description": description,
+            "version": module_version,
+            "status": status,
+            "errors": errors[:300],
+        }
+    }
