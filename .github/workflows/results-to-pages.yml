@@ -36,6 +36,7 @@ jobs:
           mkdir gh-pages
           cp index.json gh-pages/
           cp -r results gh-pages/
+          cp -r avatars gh-pages/
           cp gh-pages-index.html gh-pages/index.html
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v4
