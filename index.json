@@ -13,10 +13,13 @@
     "z-haiman/RBC-GEM",
     "tibbdc/vna-GEM",
     "AlmaasLab/T66-GEM",
+    "mdziurzynski/iUmbe1-GEM",
     "FengxuSysbio/Mech-GEM",
     "Total-RD/Mgaditana-GEM",
-    "mdziurzynski/iUmbe1-GEM",
     "SysBioChalmers/sint-GEM"
   ],
-  "gitlab": []
+  "gitlab": [
+    "wurssb/Modelling/AWIEJM-GEM",
+    "wurssb/Modelling/Anaerotignum_neopropionicum"
+  ]
 }
