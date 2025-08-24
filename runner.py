@@ -118,8 +118,18 @@ def gem_repositories():
 def matrix():
     """Write a provider-keyed JSON index of repositories to disk."""
 
-    with open("index.json", "w") as file:
-        json.dump(gem_repositories(), file, indent=2, sort_keys=True)
+    with open("index.json", "r+") as handle:
+        current = json.load(handle)
+
+        discovered = gem_repositories()
+        for provider in set(current) | set(discovered):
+            repos = set(current[provider])
+            repos.update(discovered[provider])
+            current[provider] = sorted(repos)
+
+        handle.seek(0)
+        json.dump(current, handle, indent=2, sort_keys=True)
+        handle.truncate()
 
 def repository_metadata(name_with_owner, provider, existing_avatar=None):
     """Return metadata for a repository.
