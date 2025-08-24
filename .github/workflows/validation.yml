@@ -3,7 +3,7 @@ name: GEM validation pipeline
 on:
   push:
   schedule:
-    - cron: "0 0 * * *"
+    - cron: "10 0 * * *"
 
 jobs:
   setup:
