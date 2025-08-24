@@ -335,12 +335,23 @@ def gem_follows_standard(name_with_owner, release, version, provider):
     repo_standard = requests.get(repo_url, timeout=10)
     if repo_standard.status_code == 404:
         return False
+
     standard_url = (
         "https://raw.githubusercontent.com/MetabolicAtlas/standard-GEM/"
         f"{version}/.standard-GEM.md"
     )
-    requests.get(standard_url, timeout=10)
-    return True
+    standard_md = requests.get(standard_url, timeout=10)
+    if standard_md.status_code == 404:
+        return False
+
+    def strip_checkboxes(text):
+        """Remove Markdown checkboxes such as ``[ ]`` or ``[x]`` from *text*."""
+        return re.sub(r"\[[ xX]\]", "", text)
+    
+    repo_clean = strip_checkboxes(repo_standard.text)
+    standard_clean = strip_checkboxes(standard_md.text)
+    return repo_clean == standard_clean
+    
 
 def validate(name_with_owner, provider):
     """Validate a repository and write test results to disk."""
