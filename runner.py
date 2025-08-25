@@ -26,7 +26,7 @@ GITLAB_HEADERS = {"Authorization": f"Bearer {GITLAB_TOKEN}"}
 
 MODEL_FILENAME = "model"
 MODEL_FORMATS = [".yml", ".xml", ".mat", ".json"]
-RELEASES = 5
+RELEASES = 10
 ADDITIONAL_BRANCHES = ["main"]
 AVATARS_DIR = Path("avatars")
 RESULTS_DIR = Path("results")
@@ -319,9 +319,9 @@ def releases(name_with_owner, provider):
         ]
     else:
         raise ValueError(f"Unknown provider: {provider}")
-    releases_info.sort(key=lambda x: x[1] or "", reverse = True)
+    releases_info.sort(key=lambda x: x[1] or "")
     release_names = [name for name, _ in releases_info]
-    return ADDITIONAL_BRANCHES + release_names
+    return release_names
 
 def gem_follows_standard(name_with_owner, release, version, provider):
     """Check whether a repository follows the specified standard version."""
@@ -362,27 +362,24 @@ def run_validation(name_with_owner, tag, provider, standard_versions, model, dat
         print(f"{name_with_owner}: {tag} | standard-GEM version: {version}")
         gem_is_standard = gem_follows_standard(name_with_owner, tag, version, provider)
         test_results = {}
-        if gem_is_standard:
-            for model_format in MODEL_FORMATS:
-                my_model = model + model_format
-                if provider == "github":
-                    url = (
-                        f"https://raw.githubusercontent.com/{name_with_owner}/"
-                        f"{tag}/model/{my_model}"
-                    )
-                else:
-                    url = (
-                        f"https://gitlab.com/{name_with_owner}/-/raw/"
-                        f"{tag}/model/{my_model}"
-                    )
-                response = requests.get(url, timeout=10)
-                if response.ok:
-                    with open(my_model, "w") as file:
-                        file.write(response.text)
-            for test in TESTS:
-                test_results.update(result_json_string(test, model))
-        else:
-            print("is not following standard")
+        for model_format in MODEL_FORMATS:
+            my_model = model + model_format
+            if provider == "github":
+                url = (
+                    f"https://raw.githubusercontent.com/{name_with_owner}/"
+                    f"{tag}/model/{my_model}"
+                )
+            else:
+                url = (
+                    f"https://gitlab.com/{name_with_owner}/-/raw/"
+                    f"{tag}/model/{my_model}"
+                )
+            response = requests.get(url, timeout=10)
+            if response.ok:
+                with open(my_model, "w") as file:
+                    file.write(response.text)
+        for test in TESTS:
+            test_results.update(result_json_string(test, model))
         validating_tag["standard-GEM"] = [
             {version: gem_is_standard},
             {"test_results": test_results},
@@ -391,7 +388,8 @@ def run_validation(name_with_owner, tag, provider, standard_versions, model, dat
         for r in data[model]["releases"]:
             for t in r:
                 if t == tag:
-                    data[model]["releases"][tag] = validating_tag
+                    r.update({tag : validating_tag})
+                    break
     else: 
         data[model]["releases"] = [{tag: validating_tag}] + data[model]["releases"]
     with open(filename, "w") as output:
@@ -415,10 +413,13 @@ def validate(name_with_owner, provider):
     standard_versions = releases("MetabolicAtlas/standard-GEM", "github")[-1:]
     to_validate = ""
     newer_releases = releases(name_with_owner, provider)
+    existing_tags = []
+    for release in prev_releases:
+        for k in release:
+            existing_tags.append(k)
     for model_release in newer_releases:
-        existing_tags = {k for release in prev_releases for k in release}
         if model_release not in existing_tags:
-            print(f"{model_release} | {existing_tags}")
+            print(f"{model_release} | {newer_releases} | {existing_tags}")
             to_validate = model_release
             break
 
