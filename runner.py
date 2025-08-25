@@ -27,7 +27,7 @@ GITLAB_HEADERS = {"Authorization": f"Bearer {GITLAB_TOKEN}"}
 MODEL_FILENAME = "model"
 MODEL_FORMATS = [".yml", ".xml", ".mat", ".json"]
 RELEASES = 5
-ADDITIONAL_BRANCH_TAGS = ["main"]
+ADDITIONAL_BRANCHES = ["main"]
 AVATARS_DIR = Path("avatars")
 RESULTS_DIR = Path("results")
 
@@ -131,12 +131,8 @@ def matrix():
         json.dump(current, handle, indent=2, sort_keys=True)
         handle.truncate()
 
-def repository_metadata(name_with_owner, provider, existing_avatar=None):
-    """Return metadata for a repository.
-
-    If ``existing_avatar`` is provided, it will be reused and no new
-    avatar will be downloaded.
-    """
+def repository_metadata(name_with_owner, provider, existing_avatar):
+    """Return metadata for a repository."""
 
     owner, repo = name_with_owner.rsplit("/", 1)
     if provider == "github":
@@ -277,7 +273,7 @@ def releases(name_with_owner, provider):
     """Return release tags for a given repository."""
 
     owner, repo = name_with_owner.rsplit("/", 1)
-    release_tags = []
+    releases_info = []
     if provider == "github":
         json_request = {
             "query": f"""
@@ -287,7 +283,7 @@ def releases(name_with_owner, provider):
             ) {{
                 releases(first: {RELEASES}){{
                     edges {{
-                        node {{ tagName }}
+                        node {{ tagName createdAt }}
                     }}
                 }}
             }} }}
@@ -298,13 +294,16 @@ def releases(name_with_owner, provider):
         )
         response.raise_for_status()
         data = response.json()["data"]["repository"]["releases"]["edges"]
-        release_tags = [edge["node"]["tagName"] for edge in data]
+        releases_info = [
+            (edge["node"]["tagName"], edge["node"]["createdAt"])
+            for edge in data
+        ]
     elif provider == "gitlab":
         json_request = {
             "query": f"""
             {{ project(fullPath: \"{name_with_owner}\") {{
                 releases(first: {RELEASES}) {{
-                    edges {{ node {{ tagName }} }}
+                    edges {{ node {{ tagName releasedAt}} }}
                 }}
             }} }}
             """,
@@ -314,10 +313,15 @@ def releases(name_with_owner, provider):
         )
         response.raise_for_status()
         data = response.json()["data"]["project"]["releases"]["edges"]
-        release_tags = [edge["node"]["tagName"] for edge in data]
+        releases_info = [
+            (edge["node"]["tagName"], edge["node"]["releasedAt"])
+            for edge in data
+        ]
     else:
         raise ValueError(f"Unknown provider: {provider}")
-    return ADDITIONAL_BRANCH_TAGS + release_tags
+    releases_info.sort(key=lambda x: x[1] or "", reverse = True)
+    release_names = [name for name, _ in releases_info]
+    return ADDITIONAL_BRANCHES + release_names
 
 def gem_follows_standard(name_with_owner, release, version, provider):
     """Check whether a repository follows the specified standard version."""
@@ -352,6 +356,47 @@ def gem_follows_standard(name_with_owner, release, version, provider):
     standard_clean = strip_checkboxes(standard_md.text)
     return repo_clean == standard_clean
     
+def run_validation(name_with_owner, tag, provider, standard_versions, model, data, filename):
+    validating_tag = {}
+    for version in standard_versions:
+        print(f"{name_with_owner}: {tag} | standard-GEM version: {version}")
+        gem_is_standard = gem_follows_standard(name_with_owner, tag, version, provider)
+        test_results = {}
+        if gem_is_standard:
+            for model_format in MODEL_FORMATS:
+                my_model = model + model_format
+                if provider == "github":
+                    url = (
+                        f"https://raw.githubusercontent.com/{name_with_owner}/"
+                        f"{tag}/model/{my_model}"
+                    )
+                else:
+                    url = (
+                        f"https://gitlab.com/{name_with_owner}/-/raw/"
+                        f"{tag}/model/{my_model}"
+                    )
+                response = requests.get(url, timeout=10)
+                if response.ok:
+                    with open(my_model, "w") as file:
+                        file.write(response.text)
+            for test in TESTS:
+                test_results.update(result_json_string(test, model))
+        else:
+            print("is not following standard")
+        validating_tag["standard-GEM"] = [
+            {version: gem_is_standard},
+            {"test_results": test_results},
+        ]
+    if tag in ADDITIONAL_BRANCHES and data[model]["releases"] != []:
+        for r in data[model]["releases"]:
+            for t in r:
+                if t == tag:
+                    data[model]["releases"][tag] = validating_tag
+    else: 
+        data[model]["releases"] = [{tag: validating_tag}] + data[model]["releases"]
+    with open(filename, "w") as output:
+        json.dump(data, output, indent=2, sort_keys=True)
+
 
 def validate(name_with_owner, provider):
     """Validate a repository and write test results to disk."""
@@ -359,61 +404,31 @@ def validate(name_with_owner, provider):
     owner, model = name_with_owner.rsplit("/", 1)
     filename = RESULTS_DIR / f"{model}.json"
     prev_avatar = None
+    prev_releases = []
     if filename.exists():
         with open(filename) as file:
             previous = json.load(file)
-        prev_avatar = (
-            previous.get(model, {})
-            .get("metadata", {})
-            .get("avatar")
-        )
-    metadata = repository_metadata(
-        name_with_owner, provider, existing_avatar=prev_avatar
-    )
-    metadata.setdefault("owner", owner)
-    data = {model: {"metadata": metadata, "releases": []}}
+            prev_avatar = previous[model].get("metadata", {}).get("avatar")
+            prev_releases = previous[model].get("releases", [])
+    metadata = repository_metadata(name_with_owner, provider, prev_avatar)
+    data = {model: {"metadata": metadata, "releases": prev_releases}}
     standard_versions = releases("MetabolicAtlas/standard-GEM", "github")[-1:]
-    for model_release in releases(name_with_owner, provider):
-        release_data = {}
-        for version in standard_versions:
-            print(
-                f"{name_with_owner}: {model_release} | standard-GEM version: {version}"
-            )
-            gem_is_standard = gem_follows_standard(
-                name_with_owner, model_release, version, provider
-            )
-            test_results = {}
-            if gem_is_standard:
-                for model_format in MODEL_FORMATS:
-                    my_model = model + model_format
-                    if provider == "github":
-                        url = (
-                            f"https://raw.githubusercontent.com/{name_with_owner}/"
-                            f"{model_release}/model/{my_model}"
-                        )
-                    else:
-                        url = (
-                            f"https://gitlab.com/{name_with_owner}/-/raw/"
-                            f"{model_release}/model/{my_model}"
-                        )
-                    response = requests.get(url, timeout=10)
-                    if response.ok:
-                        with open(my_model, "w") as file:
-                            file.write(response.text)
-                for test in TESTS:
-                    test_results.update(result_json_string(test, model))
-            else:
-                print("is not following standard")
-            release_data = {
-                "standard-GEM": [
-                    {version: gem_is_standard},
-                    {"test_results": test_results},
-                ]
-            }
-        data[model]["releases"].append({model_release: release_data})
-    with open(filename, "w") as output:
-        json.dump(data, output, indent=2, sort_keys=True)
+    validated_any = False
+    if not validated_any:
+        newer_releases = releases(name_with_owner, provider)
+        for model_release in newer_releases:
+            print(f"{model_release} | {prev_releases}")
+            existing_tags = {k for release in prev_releases for k in release}
+            if model_release not in existing_tags:
+                to_validate = model_release
+                validated_any = True
+                break
 
+    if not validated_any:
+        to_validate = ADDITIONAL_BRANCHES[0]
+
+    run_validation(name_with_owner, to_validate, provider, standard_versions, model, data, filename)
+    
 def result_json_string(test_to_run, model):
     """Return a JSON-serialisable dictionary with test results."""
 
