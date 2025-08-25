@@ -80,19 +80,23 @@ jobs:
         run : |
           git config user.name github-actions[bot]
           git config user.email github-actions@github.com
-          git pull
+          git pull --rebase
           git add results/*.json avatars/*
-          git commit -m 'update validation results for ${{ matrix.gem }}'
-          if ! git push; then
-            for attempt in 1 2 3; do
-              git pull --rebase
-              if git push; then
-                break
-              fi
-              if [ "$attempt" -eq 3 ]; then
-                echo "Failed to push after $attempt attempts" >&2
-                exit 1
-              fi
-              sleep ${{ strategy.job-index }}
-            done
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m 'update validation results for ${{ matrix.gem }}'
+            if ! git push; then
+              for attempt in 1 2 3; do
+                git pull --rebase
+                if git push; then
+                  break
+                fi
+                if [ "$attempt" -eq 3 ]; then
+                  echo "Failed to push after $attempt attempts" >&2
+                  exit 1
+                fi
+                sleep $(( $attempt * ${{ strategy.job-index }} ))
+              done
+            fi
           fi
