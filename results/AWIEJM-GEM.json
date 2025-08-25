@@ -1,0 +1,68 @@
+{
+  "AWIEJM-GEM": {
+    "metadata": {
+      "avatar": null,
+      "commits": 1,
+      "contributors": 2,
+      "latest_commit_date": "2024-12-27T09:21:04.000+00:00",
+      "owner": "wurssb/Modelling"
+    },
+    "releases": [
+      {
+        "main": {
+          "standard-GEM": [
+            {
+              "0.5": false
+            },
+            {
+              "test_results": {
+                "cobrapy-load-json": {
+                  "description": "Check if the model in JSON format can be loaded with cobrapy.",
+                  "errors": "File missing",
+                  "status": false,
+                  "version": "0.26.2"
+                },
+                "cobrapy-load-matlab": {
+                  "description": "Check if the model in Matlab format can be loaded with cobrapy.",
+                  "errors": "File missing",
+                  "status": false,
+                  "version": "0.26.2"
+                },
+                "cobrapy-load-sbml": {
+                  "description": "Check if the model in SBML format can be loaded with cobrapy.",
+                  "errors": "\"The file with 'AWIEJM-GEM.xml' does not exist, or is not an SBML string. Provide the path to an existing SBML file or a valid SBML string representation:\\n\"",
+                  "status": false,
+                  "version": "0.26.2"
+                },
+                "cobrapy-load-yaml": {
+                  "description": "Check if the model in YAML can be loaded with cobrapy.",
+                  "errors": "File missing",
+                  "status": false,
+                  "version": "0.26.2"
+                },
+                "cobrapy-validate-sbml": {
+                  "description": "Check with cobrapy if the model in SBML format is valid.",
+                  "errors": "\"The file with 'AWIEJM-GEM.xml' does not exist, or is not an SBML string. Provide the path to an existing SBML file or a valid SBML string representation:\\n\"",
+                  "status": false,
+                  "version": "0.26.2"
+                },
+                "memote-score": {
+                  "description": "Check the score of the model in SBML format with Memote.",
+                  "errors": "\"The file with 'AWIEJM-GEM.xml' does not exist, or is not an SBML string. Provide the path to an existing SBML file or a valid SBML string representation:\\n\"",
+                  "status": false,
+                  "version": "0.13.0"
+                },
+                "yamllint": {
+                  "description": "Check if the model in YAML format is formatted correctly.",
+                  "errors": "\"[Errno 2] No such file or directory: 'AWIEJM-GEM.yml'\"",
+                  "status": false,
+                  "version": "1.29.0"
+                }
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
