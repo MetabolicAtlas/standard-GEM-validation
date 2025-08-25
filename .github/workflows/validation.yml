@@ -80,7 +80,7 @@ jobs:
         run : |
           git config user.name github-actions[bot]
           git config user.email github-actions@github.com
-          git pull --rebase
+          git pull --ff
           git add results/*.json avatars/*
           if git diff --cached --quiet; then
             echo "No changes to commit."
