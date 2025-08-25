@@ -76,9 +76,6 @@ jobs:
           git config --global --add safe.directory /__w/standard-GEM-validation/standard-GEM-validation
           python -c 'import runner; runner.validate("${{ matrix.gem }}", "${{ matrix.provider }}")'
 
-      - name: Delay job by index
-        run: sleep ${{ strategy.job-index }}
-
       - name: Commit and push validation output
         run : |
           git config user.name github-actions[bot]
@@ -86,4 +83,16 @@ jobs:
           git pull
           git add results/*.json avatars/*
           git commit -m 'update validation results for ${{ matrix.gem }}'
-          git pull --rebase && git push
+          if ! git push; then
+            for attempt in 1 2 3; do
+              git pull --rebase
+              if git push; then
+                break
+              fi
+              if [ "$attempt" -eq 3 ]; then
+                echo "Failed to push after $attempt attempts" >&2
+                exit 1
+              fi
+              sleep ${{ strategy.job-index }}
+            done
+          fi
