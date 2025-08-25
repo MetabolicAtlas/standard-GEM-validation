@@ -1,0 +1,25 @@
+{
+  "Opol-GSMM": {
+    "metadata": {
+      "avatar": "iAMB-RWTH-Aachen.png",
+      "commits": 32,
+      "contributors": 2,
+      "latest_commit_date": "2024-08-27T15:32:07Z",
+      "owner": "iAMB-RWTH-Aachen"
+    },
+    "releases": [
+      {
+        "main": {
+          "standard-GEM": [
+            {
+              "0.4": false
+            },
+            {
+              "test_results": {}
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
