@@ -417,9 +417,9 @@ def validate(name_with_owner, provider):
     if not validated_any:
         newer_releases = releases(name_with_owner, provider)
         for model_release in newer_releases:
-            print(f"{model_release} | {prev_releases}")
             existing_tags = {k for release in prev_releases for k in release}
             if model_release not in existing_tags:
+                print(f"{model_release} | {existing_tags}")
                 to_validate = model_release
                 validated_any = True
                 break
