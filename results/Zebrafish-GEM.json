@@ -1,18 +1,18 @@
 {
-  "vna-GEM": {
+  "Zebrafish-GEM": {
     "metadata": {
-      "avatar": "tibbdc.png",
-      "commits": 20,
-      "contributors": 2,
-      "latest_commit_date": "2020-09-07T11:09:42Z",
-      "owner": "tibbdc"
+      "avatar": "SysBioChalmers.png",
+      "commits": 55,
+      "contributors": 3,
+      "latest_commit_date": "2023-12-10T15:36:44Z",
+      "owner": "SysBioChalmers"
     },
     "releases": [
       {
-        "0.1": {
+        "v1.0.0": {
           "standard-GEM": [
             {
-              "0.5": false
+              "0.5": true
             },
             {
               "test_results": {
@@ -30,32 +30,32 @@
                 },
                 "cobrapy-load-sbml": {
                   "description": "Check if the model in SBML format can be loaded with cobrapy.",
-                  "errors": "\"The file with 'vna-GEM.xml' does not exist, or is not an SBML string. Provide the path to an existing SBML file or a valid SBML string representation:\\n\"",
-                  "status": false,
+                  "errors": "",
+                  "status": true,
                   "version": "0.26.2"
                 },
                 "cobrapy-load-yaml": {
                   "description": "Check if the model in YAML can be loaded with cobrapy.",
-                  "errors": "File missing",
-                  "status": false,
+                  "errors": "",
+                  "status": true,
                   "version": "0.26.2"
                 },
                 "cobrapy-validate-sbml": {
                   "description": "Check with cobrapy if the model in SBML format is valid.",
-                  "errors": "\"The file with 'vna-GEM.xml' does not exist, or is not an SBML string. Provide the path to an existing SBML file or a valid SBML string representation:\\n\"",
+                  "errors": "\"{'SBML_FATAL': [], 'SBML_ERROR': [], 'SBML_SCHEMA_ERROR': [], 'SBML_WARNING': ['E0 (Warning): General SBML conformance (core, L3); RDF does not contain valid ModelHistory; LibSBML expected to read the annotation into a ModelHistory object. Unfortunately, some attributes were not present or correct ",
                   "status": false,
                   "version": "0.26.2"
                 },
                 "memote-score": {
                   "description": "Check the score of the model in SBML format with Memote.",
-                  "errors": "\"The file with 'vna-GEM.xml' does not exist, or is not an SBML string. Provide the path to an existing SBML file or a valid SBML string representation:\\n\"",
-                  "status": false,
+                  "errors": "",
+                  "status": 0.4315590437353351,
                   "version": "0.13.0"
                 },
                 "yamllint": {
                   "description": "Check if the model in YAML format is formatted correctly.",
-                  "errors": "\"[Errno 2] No such file or directory: 'vna-GEM.yml'\"",
-                  "status": false,
+                  "errors": [],
+                  "status": true,
                   "version": "1.29.0"
                 }
               }

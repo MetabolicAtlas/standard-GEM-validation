@@ -12,7 +12,7 @@
         "main": {
           "standard-GEM": [
             {
-              "0.4": true
+              "0.5": true
             },
             {
               "test_results": {

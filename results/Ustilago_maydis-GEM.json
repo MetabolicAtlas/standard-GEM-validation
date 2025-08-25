@@ -9,22 +9,10 @@
     },
     "releases": [
       {
-        "main": {
-          "standard-GEM": [
-            {
-              "0.4": false
-            },
-            {
-              "test_results": {}
-            }
-          ]
-        }
-      },
-      {
         "v1.1": {
           "standard-GEM": [
             {
-              "0.4": true
+              "0.5": false
             },
             {
               "test_results": {
