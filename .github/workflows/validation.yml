@@ -76,14 +76,14 @@ jobs:
           git config --global --add safe.directory /__w/standard-GEM-validation/standard-GEM-validation
           python -c 'import runner; runner.validate("${{ matrix.gem }}", "${{ matrix.provider }}")'
 
-      - name: Update branch
-        run: git pull --ff
+      - name: Delay job by index
+        run: sleep ${{ strategy.job-index }}
 
-      - name: Auto-commit results
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_user_name: validation-bot
-          commit_message: update validation results for ${{ matrix.gem }}
-          file_pattern: 'results/*.json avatars/*'
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Commit and push validation output
+        run : |
+          git config user.name github-actions[bot]
+          git config user.email github-actions@github.com
+          git pull
+          git add results/*.json avatars/*
+          git commit -m 'update validation results for ${{ matrix.gem }}'
+          git pull --rebase && git push

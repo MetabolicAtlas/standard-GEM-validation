@@ -413,18 +413,16 @@ def validate(name_with_owner, provider):
     metadata = repository_metadata(name_with_owner, provider, prev_avatar)
     data = {model: {"metadata": metadata, "releases": prev_releases}}
     standard_versions = releases("MetabolicAtlas/standard-GEM", "github")[-1:]
-    validated_any = False
-    if not validated_any:
-        newer_releases = releases(name_with_owner, provider)
-        for model_release in newer_releases:
-            existing_tags = {k for release in prev_releases for k in release}
-            if model_release not in existing_tags:
-                print(f"{model_release} | {existing_tags}")
-                to_validate = model_release
-                validated_any = True
-                break
+    to_validate = ""
+    newer_releases = releases(name_with_owner, provider)
+    for model_release in newer_releases:
+        existing_tags = {k for release in prev_releases for k in release}
+        if model_release not in existing_tags:
+            print(f"{model_release} | {existing_tags}")
+            to_validate = model_release
+            break
 
-    if not validated_any:
+    if to_validate == "":
         to_validate = ADDITIONAL_BRANCHES[0]
 
     run_validation(name_with_owner, to_validate, provider, standard_versions, model, data, filename)
