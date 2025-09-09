@@ -2,12 +2,67 @@
   "Ecoli-GEM": {
     "metadata": {
       "avatar": "SysBioChalmers.png",
-      "commits": 108,
+      "commits": 118,
       "contributors": 2,
-      "latest_commit_date": "2025-09-01T14:19:49Z",
+      "latest_commit_date": "2025-09-08T06:29:17Z",
       "owner": "SysBioChalmers"
     },
     "releases": [
+      {
+        "0.2.0": {
+          "standard-GEM": [
+            {
+              "0.5": true
+            },
+            {
+              "test_results": {
+                "cobrapy-load-json": {
+                  "description": "Check if the model in JSON format can be loaded with cobrapy.",
+                  "errors": "",
+                  "status": true,
+                  "version": "0.26.2"
+                },
+                "cobrapy-load-matlab": {
+                  "description": "Check if the model in Matlab format can be loaded with cobrapy.",
+                  "errors": "File missing",
+                  "status": false,
+                  "version": "0.26.2"
+                },
+                "cobrapy-load-sbml": {
+                  "description": "Check if the model in SBML format can be loaded with cobrapy.",
+                  "errors": "",
+                  "status": true,
+                  "version": "0.26.2"
+                },
+                "cobrapy-load-yaml": {
+                  "description": "Check if the model in YAML can be loaded with cobrapy.",
+                  "errors": "",
+                  "status": true,
+                  "version": "0.26.2"
+                },
+                "cobrapy-validate-sbml": {
+                  "description": "Check with cobrapy if the model in SBML format is valid.",
+                  "errors": "\"{'SBML_FATAL': [], 'SBML_ERROR': [], 'SBML_SCHEMA_ERROR': [], 'SBML_WARNING': [], 'COBRA_FATAL': [], 'COBRA_ERROR': [\\\"'' is not a valid SBML 'SId'.\\\"], 'COBRA_WARNING': [], 'COBRA_CHECK': []}\"",
+                  "status": false,
+                  "version": "0.26.2"
+                },
+                "memote-score": {
+                  "description": "Check the score of the model in SBML format with Memote.",
+                  "errors": "",
+                  "status": 0.539989463150812,
+                  "version": "0.13.0"
+                },
+                "yamllint": {
+                  "description": "Check if the model in YAML format is formatted correctly.",
+                  "errors": "[\"1:1: missing document start \\\"---\\\" (document-start)\", \"9:3: wrong indentation: expected 4 but found 2 (indentation)\", \"16:7: wrong indentation: expected 8 but found 6 (indentation)\", \"19:9: wrong indentation: expected 10 but found 8 (indentation)\", \"29:9: wrong indentation: expected 10 but found ",
+                  "status": false,
+                  "version": "1.29.0"
+                }
+              }
+            }
+          ]
+        }
+      },
       {
         "0.1.0": {
           "standard-GEM": [
