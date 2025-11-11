@@ -1,0 +1,68 @@
+{
+  "eciYali5-GEM": {
+    "metadata": {
+      "avatar": "bioengtaltech.png",
+      "commits": 27,
+      "contributors": 1,
+      "latest_commit_date": "2025-11-04T09:28:51Z",
+      "owner": "bioengtaltech"
+    },
+    "releases": [
+      {
+        "v1.0.0": {
+          "standard-GEM": [
+            {
+              "0.5": true
+            },
+            {
+              "test_results": {
+                "cobrapy-load-json": {
+                  "description": "Check if the model in JSON format can be loaded with cobrapy.",
+                  "errors": "File missing",
+                  "status": false,
+                  "version": "0.26.2"
+                },
+                "cobrapy-load-matlab": {
+                  "description": "Check if the model in Matlab format can be loaded with cobrapy.",
+                  "errors": "File missing",
+                  "status": false,
+                  "version": "0.26.2"
+                },
+                "cobrapy-load-sbml": {
+                  "description": "Check if the model in SBML format can be loaded with cobrapy.",
+                  "errors": "",
+                  "status": true,
+                  "version": "0.26.2"
+                },
+                "cobrapy-load-yaml": {
+                  "description": "Check if the model in YAML can be loaded with cobrapy.",
+                  "errors": "\"while parsing a block mapping\\n  in \\\"eciYali5-GEM.yml\\\", line 65984, column 7\\nexpected <block end>, but found '<scalar>'\\n  in \\\"eciYali5-GEM.yml\\\", line 65984, column 16\"",
+                  "status": false,
+                  "version": "0.26.2"
+                },
+                "cobrapy-validate-sbml": {
+                  "description": "Check with cobrapy if the model in SBML format is valid.",
+                  "errors": "",
+                  "status": true,
+                  "version": "0.26.2"
+                },
+                "memote-score": {
+                  "description": "Check the score of the model in SBML format with Memote.",
+                  "errors": "",
+                  "status": 0.2364007468586893,
+                  "version": "0.13.0"
+                },
+                "yamllint": {
+                  "description": "Check if the model in YAML format is formatted correctly.",
+                  "errors": "[\"64227:3: wrong indentation: expected 4 but found 2 (indentation)\", \"77484:3: wrong indentation: expected 4 but found 2 (indentation)\", \"65984:16: syntax error: expected <block end>, but found '<scalar>' (syntax)\"]",
+                  "status": false,
+                  "version": "1.29.0"
+                }
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
