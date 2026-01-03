@@ -9,7 +9,7 @@ jobs:
   setup:
     runs-on: ubuntu-latest
     container:
-      image: ghcr.io/metabolicatlas/memote-docker:0.13
+      image: ghcr.io/metabolicatlas/memote-docker:0.17
       volumes:
         - ${{ github.workspace }}:/project:rw
       options: --user root --workdir /project
@@ -52,7 +52,7 @@ jobs:
     needs: setup
     runs-on: ubuntu-latest
     container:
-      image: ghcr.io/metabolicatlas/memote-docker:0.13
+      image: ghcr.io/metabolicatlas/memote-docker:0.17
       volumes:
         - ${{ github.workspace }}:/project:rw
       options: --user root --workdir /project
