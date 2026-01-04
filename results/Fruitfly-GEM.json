@@ -9,6 +9,61 @@
     },
     "releases": [
       {
+        "main": {
+          "standard-GEM": [
+            {
+              "0.5": true
+            },
+            {
+              "test_results": {
+                "cobrapy-load-json": {
+                  "description": "Check if the model in JSON format can be loaded with cobrapy.",
+                  "errors": "File missing",
+                  "status": false,
+                  "version": "0.30.0"
+                },
+                "cobrapy-load-matlab": {
+                  "description": "Check if the model in Matlab format can be loaded with cobrapy.",
+                  "errors": "File missing",
+                  "status": false,
+                  "version": "0.30.0"
+                },
+                "cobrapy-load-sbml": {
+                  "description": "Check if the model in SBML format can be loaded with cobrapy.",
+                  "errors": "\"Something went wrong reading the SBML model. Most likely the SBML model is not valid. Please check that your model is valid using the `cobra.io.sbml.validate_sbml_model` function or via the online validator at https://sbml.org/validator_servlet/ .\\n\\t`(model, errors) = validate_sbml_model(filename)",
+                  "status": false,
+                  "version": "0.30.0"
+                },
+                "cobrapy-load-yaml": {
+                  "description": "Check if the model in YAML can be loaded with cobrapy.",
+                  "errors": "\"Unsupported operation: <ast.Subscript object at 0x7f4516f87130>\"",
+                  "status": false,
+                  "version": "0.30.0"
+                },
+                "cobrapy-validate-sbml": {
+                  "description": "Check with cobrapy if the model in SBML format is valid.",
+                  "errors": "\"{'SBML_FATAL': [], 'SBML_ERROR': [\\\"E2 (Error): SBML component consistency (fbc, L132896); 'fbc:geneProduct' must point to existing <GeneProduct>; The attribute 'fbc:geneProduct' on a <GeneProductRef>  if set, must refer to 'id' of a <GeneProduct> in the <Model>. \\\\nReference: L3V1 Fbc V3 Section 3",
+                  "status": false,
+                  "version": "0.30.0"
+                },
+                "memote-score": {
+                  "description": "Check the score of the model in SBML format with Memote.",
+                  "errors": "",
+                  "status": 0.30122216828365445,
+                  "version": "0.17.0"
+                },
+                "yamllint": {
+                  "description": "Check if the model in YAML format is formatted correctly.",
+                  "errors": [],
+                  "status": true,
+                  "version": "1.37.1"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
         "v1.7.0": {
           "standard-GEM": [
             {
