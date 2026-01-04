@@ -384,13 +384,14 @@ def run_validation(name_with_owner, tag, provider, standard_versions, model, dat
             {version: gem_is_standard},
             {"test_results": test_results},
         ]
-    if tag in ADDITIONAL_BRANCHES and data[model]["releases"] != []:
-        for r in data[model]["releases"]:
-            for t in r:
-                if t == tag:
-                    r.update({tag : validating_tag})
-                    break
-    else: 
+    # Always store the validated tag: update if present, otherwise prepend.
+    updated = False
+    for r in data[model]["releases"]:
+        if tag in r:
+            r.update({tag: validating_tag})
+            updated = True
+            break
+    if not updated:
         data[model]["releases"] = [{tag: validating_tag}] + data[model]["releases"]
     with open(filename, "w") as output:
         json.dump(data, output, indent=2, sort_keys=True)
