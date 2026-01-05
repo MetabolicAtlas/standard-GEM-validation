@@ -18,8 +18,8 @@
               "test_results": {
                 "cobrapy-load-json": {
                   "description": "Check if the model in JSON format can be loaded with cobrapy.",
-                  "errors": "\"Too many sessions, 7 active sessions for a baseline of 2\"",
-                  "status": false,
+                  "errors": "",
+                  "status": true,
                   "version": "0.30.0"
                 },
                 "cobrapy-load-matlab": {
@@ -30,26 +30,26 @@
                 },
                 "cobrapy-load-sbml": {
                   "description": "Check if the model in SBML format can be loaded with cobrapy.",
-                  "errors": "\"Something went wrong reading the SBML model. Most likely the SBML model is not valid. Please check that your model is valid using the `cobra.io.sbml.validate_sbml_model` function or via the online validator at https://sbml.org/validator_servlet/ .\\n\\t`(model, errors) = validate_sbml_model(filename)",
-                  "status": false,
+                  "errors": "",
+                  "status": true,
                   "version": "0.30.0"
                 },
                 "cobrapy-load-yaml": {
                   "description": "Check if the model in YAML can be loaded with cobrapy.",
-                  "errors": "\"Too many sessions, 7 active sessions for a baseline of 2\"",
-                  "status": false,
+                  "errors": "",
+                  "status": true,
                   "version": "0.30.0"
                 },
                 "cobrapy-validate-sbml": {
                   "description": "Check with cobrapy if the model in SBML format is valid.",
-                  "errors": "\"{'SBML_FATAL': [], 'SBML_ERROR': [], 'SBML_SCHEMA_ERROR': [], 'SBML_WARNING': [], 'COBRA_FATAL': ['Too many sessions, 7 active sessions for a baseline of 2'], 'COBRA_ERROR': [], 'COBRA_WARNING': [], 'COBRA_CHECK': []}\"",
+                  "errors": "\"{'SBML_FATAL': [], 'SBML_ERROR': [], 'SBML_SCHEMA_ERROR': [], 'SBML_WARNING': [], 'COBRA_FATAL': [], 'COBRA_ERROR': [\\\"'' is not a valid SBML 'SId'.\\\"], 'COBRA_WARNING': [], 'COBRA_CHECK': []}\"",
                   "status": false,
                   "version": "0.30.0"
                 },
                 "memote-score": {
                   "description": "Check the score of the model in SBML format with Memote.",
-                  "errors": "\"Something went wrong reading the SBML model. Most likely the SBML model is not valid. Please check that your model is valid using the `cobra.io.sbml.validate_sbml_model` function or via the online validator at https://sbml.org/validator_servlet/ .\\n\\t`(model, errors) = validate_sbml_model(filename)",
-                  "status": false,
+                  "errors": "",
+                  "status": 0.539989463150812,
                   "version": "0.17.0"
                 },
                 "yamllint": {
