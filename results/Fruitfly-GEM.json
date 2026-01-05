@@ -30,13 +30,13 @@
                 },
                 "cobrapy-load-sbml": {
                   "description": "Check if the model in SBML format can be loaded with cobrapy.",
-                  "errors": "\"Something went wrong reading the SBML model. Most likely the SBML model is not valid. Please check that your model is valid using the `cobra.io.sbml.validate_sbml_model` function or via the online validator at https://sbml.org/validator_servlet/ .\\n\\t`(model, errors) = validate_sbml_model(filename)",
-                  "status": false,
+                  "errors": "",
+                  "status": true,
                   "version": "0.30.0"
                 },
                 "cobrapy-load-yaml": {
                   "description": "Check if the model in YAML can be loaded with cobrapy.",
-                  "errors": "\"Unsupported operation: <ast.Subscript object at 0x7f4516f87130>\"",
+                  "errors": "\"Unsupported operation: <ast.Subscript object at 0x7f3cf8dc5690>\"",
                   "status": false,
                   "version": "0.30.0"
                 },
