@@ -36,7 +36,7 @@
                 },
                 "cobrapy-load-yaml": {
                   "description": "Check if the model in YAML can be loaded with cobrapy.",
-                  "errors": "\"Unsupported operation: <ast.Subscript object at 0x7f9ee27d2c50>\"",
+                  "errors": "\"Unsupported operation: <ast.Subscript object at 0x7f244b196bf0>\"",
                   "status": false,
                   "version": "0.30.0"
                 },
