@@ -30,26 +30,26 @@
                 },
                 "cobrapy-load-sbml": {
                   "description": "Check if the model in SBML format can be loaded with cobrapy.",
-                  "errors": "\"Something went wrong reading the SBML model. Most likely the SBML model is not valid. Please check that your model is valid using the `cobra.io.sbml.validate_sbml_model` function or via the online validator at https://sbml.org/validator_servlet/ .\\n\\t`(model, errors) = validate_sbml_model(filename)",
-                  "status": false,
+                  "errors": "",
+                  "status": true,
                   "version": "0.30.0"
                 },
                 "cobrapy-load-yaml": {
                   "description": "Check if the model in YAML can be loaded with cobrapy.",
-                  "errors": "\"Overage for too long, 3 active sessions and over the baseline for 41 minutes\"",
-                  "status": false,
+                  "errors": "",
+                  "status": true,
                   "version": "0.30.0"
                 },
                 "cobrapy-validate-sbml": {
                   "description": "Check with cobrapy if the model in SBML format is valid.",
-                  "errors": "\"{'SBML_FATAL': [], 'SBML_ERROR': [], 'SBML_SCHEMA_ERROR': [], 'SBML_WARNING': ['E0 (Warning): SBO term consistency (core, L1084); Invalid \\\\'sboTerm\\\\' attribute value for a Species object; The value of the \\\\'sboTerm\\\\' attribute on a <species> is expected to be an SBO identifier (http://www.biomo",
-                  "status": false,
+                  "errors": "",
+                  "status": true,
                   "version": "0.30.0"
                 },
                 "memote-score": {
                   "description": "Check the score of the model in SBML format with Memote.",
-                  "errors": "\"Something went wrong reading the SBML model. Most likely the SBML model is not valid. Please check that your model is valid using the `cobra.io.sbml.validate_sbml_model` function or via the online validator at https://sbml.org/validator_servlet/ .\\n\\t`(model, errors) = validate_sbml_model(filename)",
-                  "status": false,
+                  "errors": "",
+                  "status": 0.33298955004843017,
                   "version": "0.17.0"
                 },
                 "yamllint": {
