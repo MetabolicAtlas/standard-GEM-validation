@@ -2,12 +2,67 @@
   "Human-GEM": {
     "metadata": {
       "avatar": "SysBioChalmers.png",
-      "commits": 2758,
+      "commits": 2759,
       "contributors": 22,
-      "latest_commit_date": "2026-03-20T14:16:30Z",
+      "latest_commit_date": "2026-03-30T14:59:13Z",
       "owner": "SysBioChalmers"
     },
     "releases": [
+      {
+        "v2.0.0": {
+          "standard-GEM": [
+            {
+              "0.5": false
+            },
+            {
+              "test_results": {
+                "cobrapy-load-json": {
+                  "description": "Check if the model in JSON format can be loaded with cobrapy.",
+                  "errors": "File missing",
+                  "status": false,
+                  "version": "0.30.0"
+                },
+                "cobrapy-load-matlab": {
+                  "description": "Check if the model in Matlab format can be loaded with cobrapy.",
+                  "errors": "File missing",
+                  "status": false,
+                  "version": "0.30.0"
+                },
+                "cobrapy-load-sbml": {
+                  "description": "Check if the model in SBML format can be loaded with cobrapy.",
+                  "errors": "",
+                  "status": true,
+                  "version": "0.30.0"
+                },
+                "cobrapy-load-yaml": {
+                  "description": "Check if the model in YAML can be loaded with cobrapy.",
+                  "errors": "",
+                  "status": true,
+                  "version": "0.30.0"
+                },
+                "cobrapy-validate-sbml": {
+                  "description": "Check with cobrapy if the model in SBML format is valid.",
+                  "errors": "",
+                  "status": true,
+                  "version": "0.30.0"
+                },
+                "memote-score": {
+                  "description": "Check the score of the model in SBML format with Memote.",
+                  "errors": "",
+                  "status": 0.3069680087642714,
+                  "version": "0.17.0"
+                },
+                "yamllint": {
+                  "description": "Check if the model in YAML format is formatted correctly.",
+                  "errors": [],
+                  "status": true,
+                  "version": "1.37.1"
+                }
+              }
+            }
+          ]
+        }
+      },
       {
         "main": {
           "standard-GEM": [
