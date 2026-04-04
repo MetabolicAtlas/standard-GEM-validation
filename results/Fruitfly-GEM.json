@@ -30,13 +30,13 @@
                 },
                 "cobrapy-load-sbml": {
                   "description": "Check if the model in SBML format can be loaded with cobrapy.",
-                  "errors": "",
-                  "status": true,
+                  "errors": "\"Something went wrong reading the SBML model. Most likely the SBML model is not valid. Please check that your model is valid using the `cobra.io.sbml.validate_sbml_model` function or via the online validator at https://sbml.org/validator_servlet/ .\\n\\t`(model, errors) = validate_sbml_model(filename)",
+                  "status": false,
                   "version": "0.30.0"
                 },
                 "cobrapy-load-yaml": {
                   "description": "Check if the model in YAML can be loaded with cobrapy.",
-                  "errors": "\"Unsupported operation: <ast.Subscript object at 0x7f276d63e200>\"",
+                  "errors": "\"License 737632 has expired\"",
                   "status": false,
                   "version": "0.30.0"
                 },
@@ -48,8 +48,8 @@
                 },
                 "memote-score": {
                   "description": "Check the score of the model in SBML format with Memote.",
-                  "errors": "",
-                  "status": 0.30122216828365445,
+                  "errors": "\"Something went wrong reading the SBML model. Most likely the SBML model is not valid. Please check that your model is valid using the `cobra.io.sbml.validate_sbml_model` function or via the online validator at https://sbml.org/validator_servlet/ .\\n\\t`(model, errors) = validate_sbml_model(filename)",
+                  "status": false,
                   "version": "0.17.0"
                 },
                 "yamllint": {
