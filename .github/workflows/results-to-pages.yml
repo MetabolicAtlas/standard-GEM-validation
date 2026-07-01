@@ -1,4 +1,4 @@
-name: Deploy validation results to GH Pages
+name: Deploy documentation and validation results to GitHub Pages
 
 on:
   # Runs on pushes targeting the default branch
@@ -33,18 +33,26 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 1
-      - name: Prepare content
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+      - name: Prepare site source
         run: |
-          rm -rf gh-pages
-          mkdir gh-pages
-          cp index.json gh-pages/
-          cp -r results gh-pages/
-          cp -r avatars gh-pages/
-          cp gh-pages-index.html gh-pages/index.html
+          rm -rf pages-source
+          mkdir pages-source
+          cp -R docs/. pages-source/
+          cp gh-pages-index.html pages-source/index.html
+          cp index.json pages-source/
+          cp -r results pages-source/
+          cp -r avatars pages-source/
+      - name: Build documentation
+        uses: actions/jekyll-build-pages@v1
+        with:
+          source: ./pages-source
+          destination: ./_site
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v4
         with:
-          path: gh-pages
+          path: _site
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
