@@ -9,9 +9,11 @@ If you use _standard-GEM_ or this validation pipeline in your scientific work, p
 > Anton, M., et al (2023). _standard-GEM: standardization of open-source genome-scale metabolic models_. bioRxiv, 2023-03 [doi:10.1101/2023.03.21.512712](https://www.biorxiv.org/content/10.1101/2023.03.21.512712)
 
 
-### Using the validation data
+### Documentation and validation data
 
-The generated JSON files and avatars are published through GitHub Pages so that they can be consumed by other services. They are available at:
+Documentation source lives in [`docs/index.md`](docs/index.md) and is published as a single page at [`/docs/`](https://metabolicatlas.github.io/standard-GEM-validation/docs). Each JSON file contains metadata about the repository, release history, and test results for the model.
+
+The generated JSON files, and avatars are published through GitHub Pages so that they can be read by people and consumed by other services:
 
 ```
 https://metabolicatlas.github.io/standard-GEM-validation/index.json
@@ -19,6 +21,4 @@ https://metabolicatlas.github.io/standard-GEM-validation/results/<model>.json
 https://metabolicatlas.github.io/standard-GEM-validation/avatars/<avatar>.png
 ```
 
-Each JSON file contains metadata about the repository, release history, and test results for the model.
-
-A minimal redirect page [`gh-pages-index.html`](gh-pages-index.html) points to the interactive overview on [metabolicatlas.org](https://metabolicatlas.org/gem/standard-gems). That site uses the data published from this repository to display up‑to‑date information about standard‑GEM models.
+The interactive overview on [metabolicatlas.org](https://metabolicatlas.org/gems/standard-gems) uses the data published from this repository to display up-to-date information about standard-GEM models.

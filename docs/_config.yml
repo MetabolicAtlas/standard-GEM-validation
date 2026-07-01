@@ -1,0 +1,23 @@
+title: standard-GEM validation
+description: Documentation for the standard-GEM validation pipeline and published result data.
+url: https://metabolicatlas.github.io
+baseurl: /standard-GEM-validation
+markdown: kramdown
+remote_theme: just-the-docs/just-the-docs
+plugins:
+  - jekyll-remote-theme
+
+search_enabled: true
+heading_anchors: true
+aux_links:
+  "GitHub repository":
+    - "https://github.com/MetabolicAtlas/standard-GEM-validation"
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: default
+
+exclude:
+  - README.md
