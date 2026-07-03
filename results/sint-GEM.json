@@ -67,7 +67,7 @@
         "main": {
           "standard-GEM": [
             {
-              "0.5": true
+              "0.9": false
             },
             {
               "test_results": {
