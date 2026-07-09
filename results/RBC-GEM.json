@@ -18,7 +18,7 @@
               "test_results": {
                 "cobrapy-load-json": {
                   "description": "Check if the model in JSON format can be loaded with cobrapy.",
-                  "errors": "\"License 737632 has expired\"",
+                  "errors": "File missing",
                   "status": false,
                   "version": "0.30.0"
                 },
@@ -30,31 +30,31 @@
                 },
                 "cobrapy-load-sbml": {
                   "description": "Check if the model in SBML format can be loaded with cobrapy.",
-                  "errors": "\"Something went wrong reading the SBML model. Most likely the SBML model is not valid. Please check that your model is valid using the `cobra.io.sbml.validate_sbml_model` function or via the online validator at https://sbml.org/validator_servlet/ .\\n\\t`(model, errors) = validate_sbml_model(filename)",
+                  "errors": "\"The file with 'RBC-GEM.xml' does not exist, or is not an SBML string. Provide the path to an existing SBML file or a valid SBML string representation:\\n\"",
                   "status": false,
                   "version": "0.30.0"
                 },
                 "cobrapy-load-yaml": {
                   "description": "Check if the model in YAML can be loaded with cobrapy.",
-                  "errors": "\"License 737632 has expired\"",
+                  "errors": "File missing",
                   "status": false,
                   "version": "0.30.0"
                 },
                 "cobrapy-validate-sbml": {
                   "description": "Check with cobrapy if the model in SBML format is valid.",
-                  "errors": "\"{'SBML_FATAL': [], 'SBML_ERROR': [], 'SBML_SCHEMA_ERROR': [], 'SBML_WARNING': [], 'COBRA_FATAL': ['License 737632 has expired'], 'COBRA_ERROR': [], 'COBRA_WARNING': [], 'COBRA_CHECK': []}\"",
+                  "errors": "\"The file with 'RBC-GEM.xml' does not exist, or is not an SBML string. Provide the path to an existing SBML file or a valid SBML string representation:\\n\"",
                   "status": false,
                   "version": "0.30.0"
                 },
                 "memote-score": {
                   "description": "Check the score of the model in SBML format with Memote.",
-                  "errors": "\"Something went wrong reading the SBML model. Most likely the SBML model is not valid. Please check that your model is valid using the `cobra.io.sbml.validate_sbml_model` function or via the online validator at https://sbml.org/validator_servlet/ .\\n\\t`(model, errors) = validate_sbml_model(filename)",
+                  "errors": "\"The file with 'RBC-GEM.xml' does not exist, or is not an SBML string. Provide the path to an existing SBML file or a valid SBML string representation:\\n\"",
                   "status": false,
                   "version": "0.17.0"
                 },
                 "yamllint": {
                   "description": "Check if the model in YAML format is formatted correctly.",
-                  "errors": "[\"1:1: missing document start \\\"---\\\" (document-start)\", \"3:3: wrong indentation: expected at least 3 (indentation)\", \"10:7: wrong indentation: expected at least 7 (indentation)\", \"31:7: wrong indentation: expected at least 7 (indentation)\", \"38:9: wrong indentation: expected at least 9 (indentation",
+                  "errors": "\"[Errno 2] No such file or directory: 'RBC-GEM.yml'\"",
                   "status": false,
                   "version": "1.37.1"
                 }
