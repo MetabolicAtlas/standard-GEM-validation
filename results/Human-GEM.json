@@ -85,7 +85,7 @@
                 },
                 "cobrapy-load-sbml": {
                   "description": "Check if the model in SBML format can be loaded with cobrapy.",
-                  "errors": "\"The file with 'Human-GEM.xml' does not exist, or is not an SBML string. Provide the path to an existing SBML file or a valid SBML string representation:\\n\"",
+                  "errors": "\"Something went wrong reading the SBML model. Most likely the SBML model is not valid. Please check that your model is valid using the `cobra.io.sbml.validate_sbml_model` function or via the online validator at https://sbml.org/validator_servlet/ .\\n\\t`(model, errors) = validate_sbml_model(filename)",
                   "status": false,
                   "version": "0.30.0"
                 },
@@ -97,13 +97,13 @@
                 },
                 "cobrapy-validate-sbml": {
                   "description": "Check with cobrapy if the model in SBML format is valid.",
-                  "errors": "\"The file with 'Human-GEM.xml' does not exist, or is not an SBML string. Provide the path to an existing SBML file or a valid SBML string representation:\\n\"",
+                  "errors": "\"{'SBML_FATAL': [], 'SBML_ERROR': [], 'SBML_SCHEMA_ERROR': [], 'SBML_WARNING': [], 'COBRA_FATAL': ['License 737632 has expired'], 'COBRA_ERROR': [], 'COBRA_WARNING': [], 'COBRA_CHECK': []}\"",
                   "status": false,
                   "version": "0.30.0"
                 },
                 "memote-score": {
                   "description": "Check the score of the model in SBML format with Memote.",
-                  "errors": "\"The file with 'Human-GEM.xml' does not exist, or is not an SBML string. Provide the path to an existing SBML file or a valid SBML string representation:\\n\"",
+                  "errors": "\"Something went wrong reading the SBML model. Most likely the SBML model is not valid. Please check that your model is valid using the `cobra.io.sbml.validate_sbml_model` function or via the online validator at https://sbml.org/validator_servlet/ .\\n\\t`(model, errors) = validate_sbml_model(filename)",
                   "status": false,
                   "version": "0.17.0"
                 },
