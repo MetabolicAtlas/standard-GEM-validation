@@ -58,7 +58,7 @@ jobs:
       options: --user root --workdir /project
       env:
         GUROBI_LICENSE_B64: ${{ secrets.GUROBI_LICENSE_B64 }}
-    continue-on-error: true
+    # continue-on-error: true
     env:
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       GL_TOKEN: ${{ secrets.GL_TOKEN }}
@@ -76,6 +76,9 @@ jobs:
           '
         env:
           GUROBI_LICENSE_B64: ${{ secrets.GUROBI_LICENSE_B64 }}
+
+      - name: Check Gurobi license
+        run: python -c 'import gurobipy as gp; env = gp.Env(); env.dispose()'
 
       - name: Checkout repository
         uses: actions/checkout@v7
