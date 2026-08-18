@@ -56,7 +56,8 @@ The runner:
 3. Finds the first model release that has not already been stored in the local result file.
 4. Falls back to the `main` branch when there is no new release to validate.
 5. Downloads available model files from the repository `model/` directory.
-6. Runs all discovered test functions and writes the result JSON.
+6. Records reaction and metabolite counts from every model format that can be loaded, failing the run if the counts disagree.
+7. Runs all discovered test functions and writes the result JSON.
 
 The model file base name is the repository name. The runner looks for these formats:
 
@@ -153,12 +154,16 @@ At the top level, each file is keyed by model name:
 | `contributors` | Contributor count reported by the provider. |
 | `latest_commit_date` | Latest default-branch commit timestamp reported by the provider. |
 
-`releases` is an ordered list of validated tags or branches. Each entry stores the standard-GEM comparison and the collected test results:
+`releases` is an ordered list of validated tags or branches. Each entry stores model metrics, the standard-GEM comparison, and the collected test results:
 
 ```json
 [
   {
     "v1.0.0": {
+      "metrics": {
+        "reactions": 1234,
+        "metabolites": 987
+      },
       "standard-GEM": [
         { "0.5": true },
         {
@@ -176,6 +181,8 @@ At the top level, each file is keyed by model name:
   }
 ]
 ```
+
+The `metrics` object contains the number of reactions and metabolites in that specific release. The runner loads every downloaded format it can, verifies that all successfully loaded representations have identical counts, and fails validation if they disagree. If no format can be loaded, both values are `null` while the remaining validation results are still recorded.
 
 ### Avatars
 

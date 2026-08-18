@@ -11,7 +11,7 @@ If you use _standard-GEM_ or this validation pipeline in your scientific work, p
 
 ### Documentation and validation data
 
-Documentation source lives in [`docs/index.md`](docs/index.md) and is published as a single page at [`/docs/`](https://metabolicatlas.github.io/standard-GEM-validation/docs). Each JSON file contains metadata about the repository, release history, and test results for the model.
+Documentation source lives in [`docs/index.md`](docs/index.md) and is published as a single page at [`/docs/`](https://metabolicatlas.github.io/standard-GEM-validation/docs). Each JSON file contains metadata about the repository, release history, model metrics (reaction and metabolite counts) for each validated release, and test results for the model.
 
 The generated JSON files, and avatars are published through GitHub Pages so that they can be read by people and consumed by other services:
 

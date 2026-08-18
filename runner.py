@@ -355,13 +355,60 @@ def gem_follows_standard(name_with_owner, release, version, provider):
     repo_clean = strip_checkboxes(repo_standard.text)
     standard_clean = strip_checkboxes(standard_md.text)
     return repo_clean == standard_clean
-    
+
+
+def model_metrics(model, model_formats):
+    """Return matching reaction and metabolite counts from all loadable files."""
+
+    metrics = None
+    metrics_source = None
+
+    try:
+        import cobra
+    except ImportError as error:
+        print(f"Could not collect model metrics: {error}")
+        return {"reactions": None, "metabolites": None}
+
+    loaders = {
+        ".yml": cobra.io.load_yaml_model,
+        ".xml": cobra.io.read_sbml_model,
+        ".mat": cobra.io.load_matlab_model,
+        ".json": cobra.io.load_json_model,
+    }
+    for model_format in model_formats:
+        model_path = Path(f"{model}{model_format}")
+        if not model_path.is_file():
+            continue
+        try:
+            loaded_model = loaders[model_format](str(model_path))
+            format_metrics = {
+                "reactions": len(loaded_model.reactions),
+                "metabolites": len(loaded_model.metabolites),
+            }
+        except Exception as error:
+            print(f"Could not collect metrics from {model_path}: {error}")
+            continue
+
+        if metrics is None:
+            metrics = format_metrics
+            metrics_source = model_path
+        elif format_metrics != metrics:
+            raise ValueError(
+                "Model metrics do not match across formats: "
+                f"{metrics_source} has {metrics}, but {model_path} has "
+                f"{format_metrics}"
+            )
+
+    return metrics or {"reactions": None, "metabolites": None}
+
+
 def run_validation(name_with_owner, tag, provider, standard_versions, model, data, filename):
     validating_tag = {}
     for version in standard_versions:
         print(f"{name_with_owner}: {tag} | standard-GEM version: {version}")
         gem_is_standard = gem_follows_standard(name_with_owner, tag, version, provider)
         test_results = {}
+        downloaded_formats = []
         for model_format in MODEL_FORMATS:
             my_model = model + model_format
             if provider == "github":
@@ -376,8 +423,10 @@ def run_validation(name_with_owner, tag, provider, standard_versions, model, dat
                 )
             response = requests.get(url, timeout=10)
             if response.ok:
-                with open(my_model, "w") as file:
-                    file.write(response.text)
+                with open(my_model, "wb") as file:
+                    file.write(response.content)
+                downloaded_formats.append(model_format)
+        validating_tag["metrics"] = model_metrics(model, downloaded_formats)
         for test in TESTS:
             test_results.update(result_json_string(test, model))
         validating_tag["standard-GEM"] = [
