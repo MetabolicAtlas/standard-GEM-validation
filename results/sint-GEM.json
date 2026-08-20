@@ -65,6 +65,10 @@
       },
       {
         "main": {
+          "metrics": {
+            "metabolites": null,
+            "reactions": null
+          },
           "standard-GEM": [
             {
               "0.9": false
