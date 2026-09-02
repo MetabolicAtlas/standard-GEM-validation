@@ -1,0 +1,72 @@
+{
+  "haecon-GEM": {
+    "metadata": {
+      "avatar": "SysBioChalmers.png",
+      "commits": 18,
+      "contributors": 2,
+      "latest_commit_date": "2026-08-31T09:57:50Z",
+      "owner": "SysBioChalmers"
+    },
+    "releases": [
+      {
+        "main": {
+          "metrics": {
+            "metabolites": null,
+            "reactions": null
+          },
+          "standard-GEM": [
+            {
+              "0.9": false
+            },
+            {
+              "test_results": {
+                "cobrapy-load-json": {
+                  "description": "Check if the model in JSON format can be loaded with cobrapy.",
+                  "errors": "File missing",
+                  "status": false,
+                  "version": "0.30.0"
+                },
+                "cobrapy-load-matlab": {
+                  "description": "Check if the model in Matlab format can be loaded with cobrapy.",
+                  "errors": "File missing",
+                  "status": false,
+                  "version": "0.30.0"
+                },
+                "cobrapy-load-sbml": {
+                  "description": "Check if the model in SBML format can be loaded with cobrapy.",
+                  "errors": "\"The file with 'haecon-GEM.xml' does not exist, or is not an SBML string. Provide the path to an existing SBML file or a valid SBML string representation:\\n\"",
+                  "status": false,
+                  "version": "0.30.0"
+                },
+                "cobrapy-load-yaml": {
+                  "description": "Check if the model in YAML can be loaded with cobrapy.",
+                  "errors": "File missing",
+                  "status": false,
+                  "version": "0.30.0"
+                },
+                "cobrapy-validate-sbml": {
+                  "description": "Check with cobrapy if the model in SBML format is valid.",
+                  "errors": "\"The file with 'haecon-GEM.xml' does not exist, or is not an SBML string. Provide the path to an existing SBML file or a valid SBML string representation:\\n\"",
+                  "status": false,
+                  "version": "0.30.0"
+                },
+                "memote-score": {
+                  "description": "Check the score of the model in SBML format with Memote.",
+                  "errors": "\"The file with 'haecon-GEM.xml' does not exist, or is not an SBML string. Provide the path to an existing SBML file or a valid SBML string representation:\\n\"",
+                  "status": false,
+                  "version": "0.17.0"
+                },
+                "yamllint": {
+                  "description": "Check if the model in YAML format is formatted correctly.",
+                  "errors": "\"[Errno 2] No such file or directory: 'haecon-GEM.yml'\"",
+                  "status": false,
+                  "version": "1.37.1"
+                }
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
