@@ -2,12 +2,71 @@
   "Human-GEM": {
     "metadata": {
       "avatar": "SysBioChalmers.png",
-      "commits": 2759,
-      "contributors": 22,
-      "latest_commit_date": "2026-03-30T14:59:13Z",
+      "commits": 2812,
+      "contributors": 24,
+      "latest_commit_date": "2026-09-07T21:29:53Z",
       "owner": "SysBioChalmers"
     },
     "releases": [
+      {
+        "v2.0.1": {
+          "metrics": {
+            "metabolites": 8460,
+            "reactions": 12877
+          },
+          "standard-GEM": [
+            {
+              "0.9": false
+            },
+            {
+              "test_results": {
+                "cobrapy-load-json": {
+                  "description": "Check if the model in JSON format can be loaded with cobrapy.",
+                  "errors": "File missing",
+                  "status": false,
+                  "version": "0.30.0"
+                },
+                "cobrapy-load-matlab": {
+                  "description": "Check if the model in Matlab format can be loaded with cobrapy.",
+                  "errors": "File missing",
+                  "status": false,
+                  "version": "0.30.0"
+                },
+                "cobrapy-load-sbml": {
+                  "description": "Check if the model in SBML format can be loaded with cobrapy.",
+                  "errors": "",
+                  "status": true,
+                  "version": "0.30.0"
+                },
+                "cobrapy-load-yaml": {
+                  "description": "Check if the model in YAML can be loaded with cobrapy.",
+                  "errors": "",
+                  "status": true,
+                  "version": "0.30.0"
+                },
+                "cobrapy-validate-sbml": {
+                  "description": "Check with cobrapy if the model in SBML format is valid.",
+                  "errors": "\"{'SBML_FATAL': [], 'SBML_ERROR': [\\\"E0 (Error): SBML component consistency (fbc, L189436); Chemical formula must be string; The value of attribute 'fbc:chemicalFormula' on the SBML <species> object must be set to a string consisting only of atomic names or user defined compounds and their occurrenc",
+                  "status": false,
+                  "version": "0.30.0"
+                },
+                "memote-score": {
+                  "description": "Check the score of the model in SBML format with Memote.",
+                  "errors": "",
+                  "status": 0.30938215484976134,
+                  "version": "0.17.0"
+                },
+                "yamllint": {
+                  "description": "Check if the model in YAML format is formatted correctly.",
+                  "errors": "[\"1:1: missing document start \\\"---\\\" (document-start)\", \"3:3: wrong indentation: expected at least 3 (indentation)\", \"13:3: wrong indentation: expected at least 3 (indentation)\", \"36976:13: truthy value should be one of [false, true] (truthy)\", \"36979:16: truthy value should be one of [false, true]",
+                  "status": false,
+                  "version": "1.37.1"
+                }
+              }
+            }
+          ]
+        }
+      },
       {
         "v2.0.0": {
           "standard-GEM": [
