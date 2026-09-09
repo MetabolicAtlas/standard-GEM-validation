@@ -1,0 +1,72 @@
+{
+  "papla-GEM": {
+    "metadata": {
+      "avatar": "SysBioChalmers.png",
+      "commits": 71,
+      "contributors": 3,
+      "latest_commit_date": "2022-02-04T19:51:15Z",
+      "owner": "SysBioChalmers"
+    },
+    "releases": [
+      {
+        "v1.0.0": {
+          "metrics": {
+            "metabolites": 2117,
+            "reactions": 2449
+          },
+          "standard-GEM": [
+            {
+              "0.9": false
+            },
+            {
+              "test_results": {
+                "cobrapy-load-json": {
+                  "description": "Check if the model in JSON format can be loaded with cobrapy.",
+                  "errors": "File missing",
+                  "status": false,
+                  "version": "0.30.0"
+                },
+                "cobrapy-load-matlab": {
+                  "description": "Check if the model in Matlab format can be loaded with cobrapy.",
+                  "errors": "File missing",
+                  "status": false,
+                  "version": "0.30.0"
+                },
+                "cobrapy-load-sbml": {
+                  "description": "Check if the model in SBML format can be loaded with cobrapy.",
+                  "errors": "",
+                  "status": true,
+                  "version": "0.30.0"
+                },
+                "cobrapy-load-yaml": {
+                  "description": "Check if the model in YAML can be loaded with cobrapy.",
+                  "errors": "",
+                  "status": true,
+                  "version": "0.30.0"
+                },
+                "cobrapy-validate-sbml": {
+                  "description": "Check with cobrapy if the model in SBML format is valid.",
+                  "errors": "",
+                  "status": true,
+                  "version": "0.30.0"
+                },
+                "memote-score": {
+                  "description": "Check the score of the model in SBML format with Memote.",
+                  "errors": "",
+                  "status": 0.2524692448062228,
+                  "version": "0.17.0"
+                },
+                "yamllint": {
+                  "description": "Check if the model in YAML format is formatted correctly.",
+                  "errors": [],
+                  "status": true,
+                  "version": "1.37.1"
+                }
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
