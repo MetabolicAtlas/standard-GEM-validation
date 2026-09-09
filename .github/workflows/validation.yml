@@ -90,6 +90,12 @@ jobs:
           git config --global --add safe.directory /__w/standard-GEM-validation/standard-GEM-validation
           python -c 'import runner; runner.validate("${{ matrix.gem }}", "${{ matrix.provider }}")'
 
+      # Hold the matrix slot while the last WLS token expires, assuming a
+      # five-minute token lifetime plus a one-minute margin.
+      - name: Wait for Gurobi license token expiry
+        if: always()
+        run: sleep 360
+
       - name: Commit and push validation output
         run : |
           git config user.name github-actions[bot]
