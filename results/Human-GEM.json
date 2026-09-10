@@ -2,9 +2,9 @@
   "Human-GEM": {
     "metadata": {
       "avatar": "SysBioChalmers.png",
-      "commits": 2812,
+      "commits": 2813,
       "contributors": 24,
-      "latest_commit_date": "2026-09-07T21:29:53Z",
+      "latest_commit_date": "2026-09-09T21:23:51Z",
       "owner": "SysBioChalmers"
     },
     "releases": [
@@ -125,8 +125,8 @@
       {
         "main": {
           "metrics": {
-            "metabolites": 8461,
-            "reactions": 12931
+            "metabolites": 8460,
+            "reactions": 12877
           },
           "standard-GEM": [
             {
@@ -160,20 +160,20 @@
                 },
                 "cobrapy-validate-sbml": {
                   "description": "Check with cobrapy if the model in SBML format is valid.",
-                  "errors": "",
-                  "status": true,
+                  "errors": "\"{'SBML_FATAL': [], 'SBML_ERROR': [\\\"E0 (Error): SBML component consistency (fbc, L189436); Chemical formula must be string; The value of attribute 'fbc:chemicalFormula' on the SBML <species> object must be set to a string consisting only of atomic names or user defined compounds and their occurrenc",
+                  "status": false,
                   "version": "0.30.0"
                 },
                 "memote-score": {
                   "description": "Check the score of the model in SBML format with Memote.",
                   "errors": "",
-                  "status": 0.3069680087642714,
+                  "status": 0.30938215484976134,
                   "version": "0.17.0"
                 },
                 "yamllint": {
                   "description": "Check if the model in YAML format is formatted correctly.",
-                  "errors": [],
-                  "status": true,
+                  "errors": "[\"1:1: missing document start \\\"---\\\" (document-start)\", \"3:3: wrong indentation: expected at least 3 (indentation)\", \"13:3: wrong indentation: expected at least 3 (indentation)\", \"36976:13: truthy value should be one of [false, true] (truthy)\", \"36979:16: truthy value should be one of [false, true]",
+                  "status": false,
                   "version": "1.37.1"
                 }
               }
