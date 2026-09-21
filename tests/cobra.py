@@ -38,10 +38,7 @@ def loadMatlab(model_name):
     status = False
     errors = ''
     try:
-        data_dir = Path(".") / ".." 
-        data_dir = data_dir.resolve()
-        model_path = data_dir / "{}.mat".format(model_name)
-        cobra.io.load_matlab_model(str(model_path.resolve()))
+        cobra.io.load_matlab_model(model_name + '.mat')
         status = True
     except FileNotFoundError:
         errors = "File missing"
