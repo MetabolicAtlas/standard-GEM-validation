@@ -28,8 +28,8 @@
                 },
                 "cobrapy-load-matlab": {
                   "description": "Check if the model in Matlab format can be loaded with cobrapy.",
-                  "errors": "File missing",
-                  "status": false,
+                  "errors": "",
+                  "status": true,
                   "version": "0.30.0"
                 },
                 "cobrapy-load-sbml": {
