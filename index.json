@@ -1,4 +1,4 @@
-{
+ {
   "github": [
     "AlmaasLab/T66-GEM",
     "FengxuSysbio/Mech-GEM",
@@ -16,6 +16,7 @@
     "SysBioChalmers/papla-GEM",
     "SysBioChalmers/sint-GEM",
     "SysBioChalmers/yeast-GEM",
+    "SysBioChalmers/panAsp-GEM",
     "Total-RD/Mgaditana-GEM",
     "bioengtaltech/eciYali5-GEM",
     "iAMB-RWTH-Aachen/Opol-GSMM",
