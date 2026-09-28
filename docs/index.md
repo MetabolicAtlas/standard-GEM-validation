@@ -95,6 +95,7 @@ test_module, description, module_version, status, errors
 | `cobrapy-load-matlab` | `tests/cobra.py` | The Matlab model can be loaded by cobrapy. | Boolean |
 | `cobrapy-load-json` | `tests/cobra.py` | The JSON model can be loaded by cobrapy. | Boolean |
 | `cobrapy-validate-sbml` | `tests/cobra.py` | The SBML model has no fatal, error, schema, or COBRA errors according to cobrapy. | Boolean |
+| `cobrar-load-sbml` | `tests/cobrar.py` | The SBML model can be loaded by cobrar. | Boolean |
 | `yamllint` | `tests/yaml.py` | The YAML model passes yamllint with default rules and disabled line length checks. | Boolean |
 | `memote-score` | `tests/memote.py` | A focused Memote suite for annotation, consistency, coverage, duplicate, transport, and balance checks. | Numeric score or `false` |
 

@@ -85,6 +85,22 @@ jobs:
         with:
           fetch-depth: 1
 
+      - name: Install latest cobrar release
+        run: |
+          apt-get update
+          apt-get install -y --no-install-recommends \
+            libglpk-dev \
+            libsbml5-dev \
+            r-base-dev \
+            r-cran-jsonlite \
+            r-cran-matrix \
+            r-cran-rcpparmadillo \
+            r-cran-remotes
+          Rscript --vanilla -e \
+            'remotes::install_github("Waschina/cobrar@*release", dependencies = FALSE, upgrade = "never")'
+        env:
+          GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Validate repository
         run: |
           git config --global --add safe.directory /__w/standard-GEM-validation/standard-GEM-validation
