@@ -1,3 +1,9 @@
+# standard-GEM 
+
+The `standard-GEM` initiative provides a community-driven, git-based template that streamlines the creation, curation, and long-term maintenance of genome-scale metabolic models (GEMs). By embedding FAIR principles directly into the model development workflow, standard-GEM ensures transparency, provenance tracking, and reproducibility at every stage. It defines a clear repository structure, enforces best practices in documentation, and integrates with automated validation pipelines, lowering the cost of model upkeep while raising quality and openness. Already adopted by multiple high-profile GEMs, standard-GEM transforms models from static research outputs into evolving digital infrastructure, enabling reliable reuse across platforms and fostering collaborative, community-driven systems biology research.
+
+> For an up-to-date listing of GEMs as result of this validation, see [metabolicatlas.org/gems/standard-gems](https://metabolicatlas.org/gems/standard-gems).
+
 # standard-GEM validation
 
 This repository stores the validation results for genome‑scale metabolic models (GEMs) that adopt the [standard-GEM](https://github.com/MetabolicAtlas/standard-GEM) format. A small utility in [`runner.py`](https://github.com/MetabolicAtlas/standard-GEM-validation/blob/main/runner.py) running daily with GitHub Actions discovers repositories tagged with `standard-gem`, runs a suite of tests from the [`tests`](https://github.com/MetabolicAtlas/standard-GEM-validation/tree/main/tests) package, and writes the outcomes to JSON files in [`results`](https://github.com/MetabolicAtlas/standard-GEM-validation/tree/main/results). Avatars of repository owners are cached in [`avatars`](https://github.com/MetabolicAtlas/standard-GEM-validation/tree/main/avatars).
