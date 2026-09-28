@@ -158,6 +158,12 @@
                   "status": true,
                   "version": "0.30.0"
                 },
+                "cobrapy-sbml-metadata": {
+                  "description": "Check that the SBML model includes a taxonomic name, taxonomy ID, and reference genome.",
+                  "errors": "{\"missing\": [\"taxonomy ID\", \"reference genome\"]}",
+                  "status": false,
+                  "version": "0.30.0"
+                },
                 "cobrapy-validate-sbml": {
                   "description": "Check with cobrapy if the model in SBML format is valid.",
                   "errors": "\"{'SBML_FATAL': [], 'SBML_ERROR': [\\\"E0 (Error): SBML component consistency (fbc, L189436); Chemical formula must be string; The value of attribute 'fbc:chemicalFormula' on the SBML <species> object must be set to a string consisting only of atomic names or user defined compounds and their occurrenc",
