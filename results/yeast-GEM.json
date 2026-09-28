@@ -158,6 +158,12 @@
                   "status": true,
                   "version": "0.30.0"
                 },
+                "cobrapy-sbml-metadata": {
+                  "description": "Check that the SBML model includes a taxonomic name, taxonomy ID, and reference genome.",
+                  "errors": "{\"missing\": [\"taxonomic name\", \"reference genome\"]}",
+                  "status": false,
+                  "version": "0.30.0"
+                },
                 "cobrapy-validate-sbml": {
                   "description": "Check with cobrapy if the model in SBML format is valid.",
                   "errors": "",
