@@ -164,6 +164,12 @@
                   "status": true,
                   "version": "0.30.0"
                 },
+                "cobrar-load-sbml": {
+                  "description": "Check if the model in SBML format can be loaded with cobrar.",
+                  "errors": "",
+                  "status": true,
+                  "version": "0.2.5"
+                },
                 "memote-score": {
                   "description": "Check the score of the model in SBML format with Memote.",
                   "errors": "",
