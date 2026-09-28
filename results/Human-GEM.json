@@ -164,6 +164,12 @@
                   "status": false,
                   "version": "0.30.0"
                 },
+                "cobrar-load-sbml": {
+                  "description": "Check if the model in SBML format can be loaded with cobrar.",
+                  "errors": "\"Error: The value of attribute 'fbc:chemicalFormula' on the SBML <species> object must be set to a string consisting only of atomic names or user defined compounds and their occurrence.\\nReference: L3V1 Fbc V3 Section 3.4\\n Encountered '-' when expecting a capital letter. The chemicalFormula 'C17H25",
+                  "status": false,
+                  "version": "0.2.5"
+                },
                 "memote-score": {
                   "description": "Check the score of the model in SBML format with Memote.",
                   "errors": "",
