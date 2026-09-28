@@ -1,5 +1,6 @@
 ---
 title: Documentation
+nav_order: 2
 description: Documentation for the standard-GEM validation framework, published data, and GitHub Pages deployment.
 permalink: /docs/
 ---
@@ -199,9 +200,11 @@ The avatar filename is referenced by each model result file under `metadata.avat
 
 GitHub Pages is deployed by `.github/workflows/results-to-pages.yml`.
 
-The workflow runs when changes land on `main`, when triggered manually, and on its daily schedule. It builds the Markdown documentation in `docs/` with Jekyll, then copies the generated validation artifacts into the same site artifact.
+The workflow runs when changes land on `main`, when triggered manually, and on its daily schedule. It builds the homepage from `README.md` and the Markdown documentation in `docs/` with Jekyll, then copies the generated validation artifacts into the same site artifact.
 
 ### Site source
+
+Homepage content lives in `README.md`. The workflow adds Jekyll front matter during the build so README edits are automatically reflected at `/`.
 
 Documentation source lives in `docs/index.md`. It renders to `/docs/` through its front matter permalink.
 
@@ -213,6 +216,7 @@ The deployed artifact contains:
 
 ```text
 /
+  index.html
   docs/
   index.json
   results/
