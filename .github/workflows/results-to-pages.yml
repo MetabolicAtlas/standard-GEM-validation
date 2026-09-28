@@ -40,11 +40,13 @@ jobs:
           rm -rf pages-source
           mkdir pages-source
           cp -R docs/. pages-source/
-          cp gh-pages-index.html pages-source/index.html
+          # README.md is the single source of homepage content.
+          printf '%s\n' '---' 'title: Home' 'nav_order: 1' 'permalink: /' '---' '' > pages-source/home.md
+          cat README.md >> pages-source/home.md
           cp index.json pages-source/
           cp -r results pages-source/
           cp -r avatars pages-source/
-      - name: Build documentation
+      - name: Build homepage and documentation
         uses: actions/jekyll-build-pages@v1
         with:
           source: ./pages-source
