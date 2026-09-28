@@ -28,7 +28,7 @@
                 },
                 "cobrapy-load-matlab": {
                   "description": "Check if the model in Matlab format can be loaded with cobrapy.",
-                  "errors": "\"Unsupported operation: <ast.Subscript object at 0x7f5e913b02e0>\"",
+                  "errors": "\"Unsupported operation: <ast.Subscript object at 0x7f2a1ace80d0>\"",
                   "status": false,
                   "version": "0.30.0"
                 },
@@ -40,7 +40,7 @@
                 },
                 "cobrapy-load-yaml": {
                   "description": "Check if the model in YAML can be loaded with cobrapy.",
-                  "errors": "\"Unsupported operation: <ast.Subscript object at 0x7f5e8950c340>\"",
+                  "errors": "\"Unsupported operation: <ast.Subscript object at 0x7f2a12d403a0>\"",
                   "status": false,
                   "version": "0.30.0"
                 },
@@ -49,6 +49,12 @@
                   "errors": "\"{'SBML_FATAL': [], 'SBML_ERROR': [\\\"E2 (Error): SBML component consistency (fbc, L132896); 'fbc:geneProduct' must point to existing <GeneProduct>; The attribute 'fbc:geneProduct' on a <GeneProductRef>  if set, must refer to 'id' of a <GeneProduct> in the <Model>. \\\\nReference: L3V1 Fbc V3 Section 3",
                   "status": false,
                   "version": "0.30.0"
+                },
+                "cobrar-load-sbml": {
+                  "description": "Check if the model in SBML format can be loaded with cobrar.",
+                  "errors": "",
+                  "status": true,
+                  "version": "0.2.5"
                 },
                 "memote-score": {
                   "description": "Check the score of the model in SBML format with Memote.",
