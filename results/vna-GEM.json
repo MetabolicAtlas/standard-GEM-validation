@@ -44,6 +44,12 @@
                   "status": false,
                   "version": "0.30.0"
                 },
+                "cobrapy-sbml-metadata": {
+                  "description": "Check that the SBML model includes a taxonomic name, taxonomy ID, and reference genome.",
+                  "errors": "File missing",
+                  "status": false,
+                  "version": "0.30.0"
+                },
                 "cobrapy-validate-sbml": {
                   "description": "Check with cobrapy if the model in SBML format is valid.",
                   "errors": "\"The file with 'vna-GEM.xml' does not exist, or is not an SBML string. Provide the path to an existing SBML file or a valid SBML string representation:\\n\"",
