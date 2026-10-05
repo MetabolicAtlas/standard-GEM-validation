@@ -28,7 +28,7 @@
                 },
                 "cobrapy-load-matlab": {
                   "description": "Check if the model in Matlab format can be loaded with cobrapy.",
-                  "errors": "\"Unsupported operation: <ast.Subscript object at 0x7fe9bb1d6f50>\"",
+                  "errors": "\"Unsupported operation: <ast.Subscript object at 0x7f6b94a81540>\"",
                   "status": false,
                   "version": "0.30.0"
                 },
@@ -40,7 +40,7 @@
                 },
                 "cobrapy-load-yaml": {
                   "description": "Check if the model in YAML can be loaded with cobrapy.",
-                  "errors": "\"Unsupported operation: <ast.Subscript object at 0x7fe9aad70340>\"",
+                  "errors": "\"Unsupported operation: <ast.Subscript object at 0x7f6b8caa0340>\"",
                   "status": false,
                   "version": "0.30.0"
                 },
