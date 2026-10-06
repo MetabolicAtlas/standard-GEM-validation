@@ -16,7 +16,7 @@
           },
           "standard-GEM": [
             {
-              "0.9": false
+              "1.0": false
             },
             {
               "test_results": {
@@ -28,7 +28,7 @@
                 },
                 "cobrapy-load-matlab": {
                   "description": "Check if the model in Matlab format can be loaded with cobrapy.",
-                  "errors": "\"Unsupported operation: <ast.Subscript object at 0x7f6b94a81540>\"",
+                  "errors": "\"Unsupported operation: <ast.Subscript object at 0x7fadc4607e50>\"",
                   "status": false,
                   "version": "0.30.0"
                 },
@@ -40,7 +40,7 @@
                 },
                 "cobrapy-load-yaml": {
                   "description": "Check if the model in YAML can be loaded with cobrapy.",
-                  "errors": "\"Unsupported operation: <ast.Subscript object at 0x7f6b8caa0340>\"",
+                  "errors": "\"Unsupported operation: <ast.Subscript object at 0x7fadb410c340>\"",
                   "status": false,
                   "version": "0.30.0"
                 },
